@@ -1,0 +1,25 @@
+[
+{
+"title":"Gameplay Basics",
+"questions":20,
+"icon":"gameplay.png",
+"file":"gameplay.json",
+"color":"#c2185b"
+},
+
+{
+"title":"Weapon Mastery",
+"questions":20,
+"icon":"weapon.png",
+"file":"weapons.json",
+"color":"#7b1fa2"
+},
+
+{
+"title":"Maps Quiz",
+"questions":25,
+"icon":"map.png",
+"file":"maps.json",
+"color":"#1976d2"
+}
+]
