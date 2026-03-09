@@ -1,0 +1,13 @@
+[
+{
+"question":"Which weapon has highest damage?",
+"options":["M1014","AWM","MP40","UMP"],
+"answer":"AWM"
+},
+
+{
+"question":"Which gun is best for close combat?",
+"options":["MP40","AWM","SKS","Kar98"],
+"answer":"MP40"
+}
+]
