@@ -1,0 +1,7 @@
+const score = localStorage.getItem("score");
+const total = localStorage.getItem("total");
+const name = localStorage.getItem("quizName");
+
+document.getElementById("quizName").innerText = name;
+
+document.getElementById("score").innerText = score + " / " + total;
