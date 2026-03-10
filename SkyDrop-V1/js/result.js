@@ -3,15 +3,15 @@ const total = localStorage.getItem("total");
 const name = localStorage.getItem("quizName");
 
 document.getElementById("quizName").innerText = name;
-
-document.getElementById("score").innerText =
-score + " / " + total;
+document.getElementById("score").innerText = score + " / " + total;
 
 
-history.pushState(null,null,location.href);
+/* Back button control */
 
-window.onpopstate = function(){
+history.pushState(null, null, location.href);
 
-location.href="index.html";
+window.onpopstate = function () {
+
+    location.replace("index.html");
 
 };
