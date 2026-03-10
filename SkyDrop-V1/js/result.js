@@ -4,4 +4,14 @@ const name = localStorage.getItem("quizName");
 
 document.getElementById("quizName").innerText = name;
 
-document.getElementById("score").innerText = score + " / " + total;
+document.getElementById("score").innerText =
+score + " / " + total;
+
+
+history.pushState(null,null,location.href);
+
+window.onpopstate = function(){
+
+location.href="index.html";
+
+};
