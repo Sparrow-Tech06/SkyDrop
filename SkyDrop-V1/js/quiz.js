@@ -26,14 +26,20 @@ const q = questions[current];
 let html = `<h5>${q.question}</h5>`;
 
 q.options.forEach((opt,i)=>{
+
 html += `
-<div>
-<label>
-<input type="radio" name="option" value="${i}">
+<div class="form-check">
+<input class="form-check-input"
+type="radio"
+name="option"
+value="${i}">
+
+<label class="form-check-label">
 ${opt}
 </label>
 </div>
 `;
+
 });
 
 document.getElementById("questionBox").innerHTML = html;
@@ -42,7 +48,8 @@ document.getElementById("questionBox").innerHTML = html;
 
 function nextQuestion(){
 
-const selected = document.querySelector("input[name='option']:checked");
+const selected =
+document.querySelector("input[name='option']:checked");
 
 if(!selected){
 alert("Select option");
@@ -56,14 +63,17 @@ score++;
 current++;
 
 if(current < questions.length){
+
 loadQuestion();
+
 }else{
 
 localStorage.setItem("score",score);
 localStorage.setItem("total",questions.length);
-localStorage.setItem("quizName",document.getElementById("quizTitle").innerText);
+localStorage.setItem("quizName",
+document.getElementById("quizTitle").innerText);
 
-location.href="result.html";
+location.replace("result.html");
 
 }
 
