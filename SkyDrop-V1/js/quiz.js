@@ -19,24 +19,6 @@ loadQuestion();
 
 });
 
-/* history protection */
-
-history.pushState(null,null,location.href);
-
-window.onpopstate=function(){
-
-if(confirm("Quiz running. Exit quiz?")){
-
-window.location.href="index.html";
-
-}else{
-
-history.pushState(null,null,location.href);
-
-}
-
-};
-
 function loadQuestion(){
 
 const q=questions[current];
@@ -46,7 +28,6 @@ let html=`<h5>${q.question}</h5>`;
 q.options.forEach((opt,i)=>{
 
 html+=`
-
 <div class="form-check">
 
 <input class="form-check-input"
@@ -54,12 +35,9 @@ type="radio"
 name="option"
 value="${i}">
 
-<label class="form-check-label">
-${opt}
-</label>
+<label class="form-check-label">${opt}</label>
 
 </div>
-
 `;
 
 });
@@ -75,7 +53,6 @@ const selected=document.querySelector("input[name='option']:checked");
 if(!selected){
 
 alert("Select option");
-
 return;
 
 }
@@ -94,14 +71,15 @@ loadQuestion();
 
 }else{
 
-localStorage.setItem("score",score);
-localStorage.setItem("total",questions.length);
-localStorage.setItem("quizName",document.getElementById("quizTitle").innerText);
+/* game end */
 
-/* go result */
+showResult(score,questions.length);
 
-window.location.replace("result.html");
+/* coin callback */
+
+mycoin();
+
+}
 
 }
 
-}
