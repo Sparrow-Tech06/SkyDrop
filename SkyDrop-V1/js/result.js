@@ -1,17 +1,17 @@
-const score = localStorage.getItem("score");
-const total = localStorage.getItem("total");
-const name = localStorage.getItem("quizName");
+const score=localStorage.getItem("score");
+const total=localStorage.getItem("total");
+const name=localStorage.getItem("quizName");
 
-document.getElementById("quizName").innerText = name;
-document.getElementById("score").innerText = score + " / " + total;
+document.getElementById("quizName").innerText=name;
 
+document.getElementById("score").innerText=score+" / "+total;
 
-/* Back button control */
+/* history protection */
 
-history.pushState(null, null, location.href);
+history.pushState(null,null,location.href);
 
-window.onpopstate = function () {
+window.onpopstate=function(){
 
-    location.replace("index.html");
+window.location.href="index.html";
 
 };
