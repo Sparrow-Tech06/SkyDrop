@@ -1,34 +1,54 @@
-const params = new URLSearchParams(location.search);
-const quizId = params.get("quiz");
+const params=new URLSearchParams(location.search);
+const quizId=params.get("quiz");
 
-let questions = [];
-let current = 0;
-let score = 0;
+let questions=[];
+let current=0;
+let score=0;
 
 fetch("data/quiz-data.json")
-.then(res => res.json())
-.then(data => {
+.then(res=>res.json())
+.then(data=>{
 
-const quiz = data.quizzes.find(q => q.id === quizId);
+const quiz=data.quizzes.find(q=>q.id===quizId);
 
-document.getElementById("quizTitle").innerText = quiz.title;
+document.getElementById("quizTitle").innerText=quiz.title;
 
-questions = quiz.questions;
+questions=quiz.questions;
 
 loadQuestion();
 
 });
 
+/* history protection */
+
+history.pushState(null,null,location.href);
+
+window.onpopstate=function(){
+
+if(confirm("Quiz running. Exit quiz?")){
+
+window.location.href="index.html";
+
+}else{
+
+history.pushState(null,null,location.href);
+
+}
+
+};
+
 function loadQuestion(){
 
-const q = questions[current];
+const q=questions[current];
 
-let html = `<h5>${q.question}</h5>`;
+let html=`<h5>${q.question}</h5>`;
 
 q.options.forEach((opt,i)=>{
 
-html += `
+html+=`
+
 <div class="form-check">
+
 <input class="form-check-input"
 type="radio"
 name="option"
@@ -37,32 +57,38 @@ value="${i}">
 <label class="form-check-label">
 ${opt}
 </label>
+
 </div>
+
 `;
 
 });
 
-document.getElementById("questionBox").innerHTML = html;
+document.getElementById("questionBox").innerHTML=html;
 
 }
 
 function nextQuestion(){
 
-const selected =
-document.querySelector("input[name='option']:checked");
+const selected=document.querySelector("input[name='option']:checked");
 
 if(!selected){
+
 alert("Select option");
+
 return;
+
 }
 
-if(parseInt(selected.value) === questions[current].answer){
+if(parseInt(selected.value)===questions[current].answer){
+
 score++;
+
 }
 
 current++;
 
-if(current < questions.length){
+if(current<questions.length){
 
 loadQuestion();
 
@@ -70,10 +96,11 @@ loadQuestion();
 
 localStorage.setItem("score",score);
 localStorage.setItem("total",questions.length);
-localStorage.setItem("quizName",
-document.getElementById("quizTitle").innerText);
+localStorage.setItem("quizName",document.getElementById("quizTitle").innerText);
 
-location.replace("result.html");
+/* go result */
+
+window.location.replace("result.html");
 
 }
 
