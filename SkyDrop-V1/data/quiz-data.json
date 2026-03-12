@@ -1,37 +1,20 @@
 {
   "quizzes": [
     {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
-      "icon": "icons/weapons.png",
+      "id": "weapons-master",
+      "title": "Weapons Master",
+      "icon": "https://cdn-icons-png.flaticon.com/512/8244/8244476.png",
       "questions": [
-        {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
-          "answer": 1
-        }
+        { "question": "Which gun has the highest damage in Free Fire?", "options": ["MP40", "AWM", "M1887", "SCAR"], "answer": 1 },
+        { "question": "Which SMG has the highest fire rate?", "options": ["UMP", "MP40", "P90", "Thompson"], "answer": 1 }
       ]
     },
     {
-      "id": "characters",
-      "title": "Free Fire Characters Quiz",
-      "icon": "icons/character.png",
+      "id": "char-skills",
+      "title": "Character Skills",
+      "icon": "https://cdn-icons-png.flaticon.com/512/8002/8002150.png",
       "questions": [
-        {
-          "question": "Who is the first Free Fire character?",
-          "options": ["Kelly","Adam","Alok","Chrono"],
-          "answer": 1
-        },
-        {
-          "question": "Which character gives speed ability?",
-          "options": ["Kelly","Skyler","Wukong","Hayato"],
-          "answer": 0
-        }
+        { "question": "What is DJ Alok's ability name?", "options": ["Drop the Beat", "Time Turner", "Xtreme Encounter", "Lead the Pack"], "answer": 0 }
       ]
     }
   ]
