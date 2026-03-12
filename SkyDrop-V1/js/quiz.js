@@ -1,48 +1,89 @@
-let quizData = [];
-let currentIndex = 0;
-let userScore = 0;
-let currentQuiz = null;
+const params=new URLSearchParams(location.search);
+const quizId=params.get("quiz");
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const params = new URLSearchParams(window.location.search);
-    const quizId = params.get('quiz');
+let quizTitle="";
+let questions=[];
+let current=0;
+let score=0;
 
-    const res = await fetch('data/quiz-data.json');
-    const data = await res.json();
-    currentQuiz = data.quizzes.find(q => q.id === quizId);
+fetch("data/quiz-data.json")
+.then(res=>res.json())
+.then(data=>{
 
-    if (!currentQuiz) return location.href = 'index.html';
-    renderQuestion();
+const quiz=data.quizzes.find(q=>q.id===quizId);
+
+quizTitle=quiz.title;
+
+document.getElementById("quizTitle").innerText=quiz.title;
+
+questions=quiz.questions;
+
+loadQuestion();
+
 });
 
-function renderQuestion() {
-    const q = currentQuiz.questions[currentIndex];
-    document.getElementById('quiz-title').innerText = currentQuiz.title;
-    document.getElementById('q-counter').innerText = `${currentIndex + 1}/${currentQuiz.questions.length}`;
-    document.getElementById('question-text').innerText = q.question;
-    
-    const optionsHtml = q.options.map((opt, i) => `
-        <input type="radio" name="quiz-opt" class="option-input" id="opt${i}" value="${i}">
-        <label class="option-label animate__animated animate__fadeInUp" for="opt${i}">${opt}</label>
-    `).join('');
-    
-    document.getElementById('options-list').innerHTML = optionsHtml;
-    document.getElementById('progress-bar').style.width = `${((currentIndex) / currentQuiz.questions.length) * 100}%`;
+function loadQuestion(){
+
+const q=questions[current];
+
+let html=`<h5>${q.question}</h5>`;
+
+q.options.forEach((opt,i)=>{
+
+html+=`
+
+<div class="form-check">
+
+<input class="form-check-input"
+type="radio"
+name="option"
+value="${i}">
+
+<label class="form-check-label">
+${opt}
+</label>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("questionBox").innerHTML=html;
+
 }
 
-document.getElementById('next-btn').addEventListener('click', async () => {
-    const selected = document.querySelector('input[name="quiz-opt"]:checked');
-    if (!selected) return alert("Please select an answer to survive!");
+function nextQuestion(){
 
-    if (parseInt(selected.value) === currentQuiz.questions[currentIndex].answer) {
-        userScore++;
-    }
+const selected=document.querySelector("input[name='option']:checked");
 
-    if (currentIndex < currentQuiz.questions.length - 1) {
-        currentIndex++;
-        renderQuestion();
-    } else {
-        await mycoin(currentQuiz.title);
-        showResultPopup(userScore, currentQuiz.questions.length, currentQuiz.title);
-    }
-});
+if(!selected){
+
+alert("Select option");
+return;
+
+}
+
+if(parseInt(selected.value)===questions[current].answer){
+
+score++;
+
+}
+
+current++;
+
+if(current<questions.length){
+
+loadQuestion();
+
+}else{
+
+showResult(score,questions.length,quizTitle);
+
+/* coin callback */
+
+mycoin(quizTitle);
+
+}
+
+}
