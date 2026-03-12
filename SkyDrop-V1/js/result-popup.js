@@ -1,9 +1,9 @@
-function showResult(score,total){
+function showResult(title,score,total){
 
-document.getElementById("resultTitle").innerText="Quiz Result";
+document.getElementById("resultGame").innerText = title;
 
-document.getElementById("resultScore").innerText=
-score+" / "+total;
+document.getElementById("resultScore").innerText =
+score + " / " + total;
 
 document.getElementById("resultPopup").style.display="flex";
 
