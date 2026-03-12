@@ -10,7 +10,7 @@ document.getElementById("resultPopup").style.display="flex";
 }
 
 function goHome(){
-
-window.location.href="index.html";
-
+  
+window.history.back();
+  
 }
