@@ -1,52 +1,61 @@
-let db;
+const DB_NAME = 'QuizWalletDB';
+const DB_VERSION = 1;
 
-const request=indexedDB.open("QuizWallet",2);
+const WalletDB = {
+    async init() {
+        return new Promise((resolve) => {
+            const request = indexedDB.open(DB_NAME, DB_VERSION);
+            request.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains('wallet')) db.createObjectStore('wallet', { keyPath: 'id' });
+                if (!db.objectStoreNames.contains('history')) db.createObjectStore('history', { autoIncrement: true });
+            };
+            request.onsuccess = () => resolve(request.result);
+        });
+    },
 
-request.onupgradeneeded=function(e){
+    async getCoins() {
+        const db = await this.init();
+        return new Promise((resolve) => {
+            const tx = db.transaction('wallet', 'readonly');
+            const req = tx.objectStore('wallet').get('user');
+            req.onsuccess = () => resolve(req.result ? req.result.coins : 0);
+        });
+    },
 
-db=e.target.result;
+    async addReward(amount, quizName) {
+        const db = await this.init();
+        const tx = db.transaction(['wallet', 'history'], 'readwrite');
+        
+        // Update Balance
+        const wallet = tx.objectStore('wallet');
+        const userReq = wallet.get('user');
+        userReq.onsuccess = () => {
+            let data = userReq.result || { id: 'user', coins: 0 };
+            data.coins += amount;
+            wallet.put(data);
+        };
 
-if(!db.objectStoreNames.contains("wallet")){
-db.createObjectStore("wallet",{keyPath:"id"});
-}
+        // Update History
+        const history = tx.objectStore('history');
+        history.add({
+            game: quizName,
+            coins: amount,
+            date: new Date().toLocaleString('en-IN', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+        });
+    },
 
-if(!db.objectStoreNames.contains("history")){
-db.createObjectStore("history",{autoIncrement:true});
-}
-
+    async getHistory() {
+        const db = await this.init();
+        return new Promise((resolve) => {
+            const tx = db.transaction('history', 'readonly');
+            const req = tx.objectStore('history').getAll();
+            req.onsuccess = () => resolve(req.result.reverse());
+        });
+    }
 };
 
-request.onsuccess=function(e){
-db=e.target.result;
-};
-
-function mycoin(gameName){
-
-const tx=db.transaction(["wallet","history"],"readwrite");
-
-const wallet=tx.objectStore("wallet");
-const history=tx.objectStore("history");
-
-const get=wallet.get("user");
-
-get.onsuccess=function(){
-
-let coins=0;
-
-if(get.result){
-coins=get.result.coins;
-}
-
-coins+=10;
-
-wallet.put({id:"user",coins:coins});
-
-history.add({
-game:gameName,
-coins:10,
-time:new Date().toLocaleString()
-});
-
-};
-
+// Global function as per requirements
+async function mycoin(quizTitle) {
+    await WalletDB.addReward(10, quizTitle);
 }
