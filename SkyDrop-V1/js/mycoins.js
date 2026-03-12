@@ -40,7 +40,7 @@ coins+=10;
 
 store.put({id:"user",coins:coins});
 
-alert("10 Coins Added! Total: "+coins);
+// alert("10 Coins Added! Total: "+coins);
 
 };
 
