@@ -1,42 +1,56 @@
 let db;
 
-const request = indexedDB.open("QuizWallet",1);
+const request=indexedDB.open("QuizWallet",2);
 
-request.onupgradeneeded = function(e){
+request.onsuccess=function(e){
 
-db = e.target.result;
+db=e.target.result;
 
-db.createObjectStore("wallet",{keyPath:"id"});
-
-};
-
-request.onsuccess = function(e){
-
-db = e.target.result;
-
-loadCoins();
+loadWallet();
 
 };
 
-function loadCoins(){
+function loadWallet(){
 
-const tx = db.transaction("wallet","readonly");
+const tx=db.transaction(["wallet","history"],"readonly");
 
-const store = tx.objectStore("wallet");
+const wallet=tx.objectStore("wallet");
+const history=tx.objectStore("history");
 
-const get = store.get("user");
+wallet.get("user").onsuccess=function(e){
 
-get.onsuccess = function(){
+let coins=0;
 
-let coins = 0;
-
-if(get.result){
-
-coins = get.result.coins;
-
+if(e.target.result){
+coins=e.target.result.coins;
 }
 
-document.getElementById("coinAmount").innerText = coins;
+document.getElementById("coinAmount").innerText=
+coins+" Coins";
+
+};
+
+const list=document.getElementById("historyList");
+
+history.openCursor().onsuccess=function(e){
+
+const cursor=e.target.result;
+
+if(cursor){
+
+const item=cursor.value;
+
+list.innerHTML+=`
+<li class="list-group-item">
+${item.game} +${item.coins}
+<br>
+<small>${item.time}</small>
+</li>
+`;
+
+cursor.continue();
+
+}
 
 };
 
