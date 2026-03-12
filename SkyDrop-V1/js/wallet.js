@@ -1,37 +1,71 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Load Total Balance
-    const balance = await WalletDB.getCoins();
-    document.getElementById('total-coins').innerText = balance;
+let db;
 
-    // 2. Load History
-    const historyData = await WalletDB.getHistory();
-    renderHistory(historyData);
-});
+const request=indexedDB.open("QuizWallet",1);
 
-function renderHistory(items) {
-    const listContainer = document.getElementById('history-list');
-    
-    // Agar history khali hai
-    if (items.length === 0) {
-        listContainer.innerHTML = `
-            <div class="text-center py-5">
-                <img src="https://cdn-icons-png.flaticon.com/512/4076/4076432.png" width="80" class="opacity-25 mb-3">
-                <p class="text-muted">No transactions yet.<br>Complete a quiz to earn coins!</p>
-            </div>
-        `;
-        return;
-    }
+request.onsuccess=function(e){
 
-    // List items generate karein
-    const html = items.map(item => `
-        <div class="history-card animate__animated animate__fadeInUp">
-            <div>
-                <div class="history-title">${item.game}</div>
-                <div class="history-date">${item.date}</div>
-            </div>
-            <div class="reward-amount">+${item.coins}</div>
-        </div>
-    `).join('');
+db=e.target.result;
 
-    listContainer.innerHTML = html;
+loadCoins();
+loadHistory();
+
+};
+
+function loadCoins(){
+
+const tx=db.transaction("wallet","readonly");
+const store=tx.objectStore("wallet");
+
+const get=store.get("user");
+
+get.onsuccess=function(){
+
+let coins=0;
+
+if(get.result){
+
+coins=get.result.coins;
+
+}
+
+document.getElementById("coinAmount").innerText=
+coins+" Coins";
+
+};
+
+}
+
+function loadHistory(){
+
+const tx=db.transaction("history","readonly");
+const store=tx.objectStore("history");
+
+const req=store.openCursor();
+
+req.onsuccess=function(e){
+
+const cursor=e.target.result;
+
+if(cursor){
+
+const item=cursor.value;
+
+const li=`
+<li class="list-group-item">
+
+${item.game} +${item.coins} coins
+<br>
+<small>${item.date}</small>
+
+</li>
+`;
+
+document.getElementById("historyList").innerHTML+=li;
+
+cursor.continue();
+
+}
+
+};
+
 }
