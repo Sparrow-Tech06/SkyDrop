@@ -13,8 +13,19 @@ const card=`
 style="cursor:pointer"
 onclick="openQuiz('${q.id}')">
 
-<h5>${q.title}</h5>
-<p>${q.questions.length} Questions</p>
+<div class="d-flex align-items-center">
+
+<img src="${q.icon}"
+style="width:40px;height:40px;margin-right:10px">
+
+<div>
+
+<h6 class="mb-1">${q.title}</h6>
+<small>${q.questions.length} Questions</small>
+
+</div>
+
+</div>
 
 </div>
 
@@ -28,7 +39,5 @@ container.innerHTML+=card;
 });
 
 function openQuiz(id){
-
 window.location.href="quiz.html?quiz="+id;
-
 }
