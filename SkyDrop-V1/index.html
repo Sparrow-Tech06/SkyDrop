@@ -12,65 +12,148 @@
 
 <style>
 
-/* Layout */
-.page-wrap{
+body{
+background:#f4f7fb;
+font-family:system-ui;
+}
+
+.app{
 max-width:660px;
 margin:auto;
 }
 
-/* Card UI */
+/* header */
+
+.app-header{
+padding:14px 8px;
+font-weight:600;
+font-size:20px;
+}
+
+/* card */
+
 .quiz-card{
-border-radius:16px;
-padding:14px;
+
 background:#ffffff;
+
+border-radius:18px;
+
+padding:16px;
+
+text-align:center;
+
 box-shadow:0 6px 18px rgba(0,0,0,0.08);
+
 transition:.25s;
-cursor:pointer;
+
 }
 
 .quiz-card:hover{
-transform:translateY(-3px);
+
+transform:translateY(-4px);
+
 box-shadow:0 10px 24px rgba(0,0,0,0.12);
+
 }
 
-.quiz-icon{
-width:42px;
-height:42px;
+/* icon box */
+
+.icon-box{
+
+background:#eef3f8;
+
+border-radius:12px;
+
+padding:14px;
+
+margin-bottom:10px;
+
+}
+
+.icon-box img{
+
+width:44px;
+
+height:44px;
+
 object-fit:contain;
+
 }
 
-/* Skeleton */
+/* title */
+
+.quiz-title{
+
+font-weight:600;
+
+font-size:15px;
+
+margin-bottom:2px;
+
+}
+
+.quiz-info{
+
+font-size:12px;
+
+color:#777;
+
+margin-bottom:10px;
+
+}
+
+/* button */
+
+.enroll-btn{
+
+width:100%;
+
+border:none;
+
+border-radius:20px;
+
+padding:7px;
+
+font-size:13px;
+
+color:#fff;
+
+background:#3da1c9;
+
+}
+
+/* skeleton */
 
 .skeleton{
-animation:skeleton-loading 1s linear infinite alternate;
-border-radius:8px;
+
+animation:skeleton 1s linear infinite alternate;
+
+border-radius:10px;
+
 }
 
-@keyframes skeleton-loading{
-0%{background:#eeeeee;}
-100%{background:#e0e0e0;}
+@keyframes skeleton{
+
+0%{background:#ececec}
+
+100%{background:#e0e0e0}
+
 }
 
-.skeleton-img{
-width:42px;
-height:42px;
-border-radius:8px;
+.skeleton-box{
+
+height:72px;
+
+margin-bottom:10px;
+
 }
 
 .skeleton-text{
+
 height:10px;
+
 margin-bottom:6px;
-width:100%;
-}
 
-.skeleton-text.small{
-width:60%;
-}
-
-/* Title */
-.app-title{
-font-weight:700;
-font-size:20px;
 }
 
 </style>
@@ -78,19 +161,15 @@ font-size:20px;
 </head>
 
 
-<body class="bg-light">
+<body>
 
-<div class="page-wrap">
+<div class="app">
 
-<header class="d-flex justify-content-between align-items-center py-3 px-2">
+<header class="app-header d-flex justify-content-between align-items-center">
 
-<h1 class="app-title m-0">
-Free Fire Quiz
-</h1>
+<span>Free Fire Quiz</span>
 
-<a href="wallet.html" class="btn btn-warning btn-sm">
-My Coins
-</a>
+<a href="wallet.html" class="btn btn-warning btn-sm">My Coins</a>
 
 </header>
 
@@ -101,64 +180,29 @@ My Coins
 
 <div class="row g-3" id="quizContainer">
 
-<!-- Skeleton Cards -->
+
+<!-- skeleton cards -->
 
 <div class="col-6">
-<div class="quiz-card d-flex align-items-center">
+<div class="quiz-card">
 
-<div class="skeleton skeleton-img me-3"></div>
-
-<div class="flex-grow-1">
+<div class="skeleton skeleton-box"></div>
 
 <div class="skeleton skeleton-text"></div>
-<div class="skeleton skeleton-text small"></div>
 
-</div>
+<div class="skeleton skeleton-text"></div>
 
 </div>
 </div>
 
 <div class="col-6">
-<div class="quiz-card d-flex align-items-center">
+<div class="quiz-card">
 
-<div class="skeleton skeleton-img me-3"></div>
-
-<div class="flex-grow-1">
+<div class="skeleton skeleton-box"></div>
 
 <div class="skeleton skeleton-text"></div>
-<div class="skeleton skeleton-text small"></div>
-
-</div>
-
-</div>
-</div>
-
-<div class="col-6">
-<div class="quiz-card d-flex align-items-center">
-
-<div class="skeleton skeleton-img me-3"></div>
-
-<div class="flex-grow-1">
 
 <div class="skeleton skeleton-text"></div>
-<div class="skeleton skeleton-text small"></div>
-
-</div>
-
-</div>
-</div>
-
-<div class="col-6">
-<div class="quiz-card d-flex align-items-center">
-
-<div class="skeleton skeleton-img me-3"></div>
-
-<div class="flex-grow-1">
-
-<div class="skeleton skeleton-text"></div>
-<div class="skeleton skeleton-text small"></div>
-
-</div>
 
 </div>
 </div>
@@ -191,21 +235,31 @@ const card=`
 
 <div class="col-6">
 
-<div class="quiz-card d-flex align-items-center"
+<div class="quiz-card" onclick="openQuiz('${q.id}')">
 
-onclick="openQuiz('${q.id}')">
+<div class="icon-box">
 
-<img src="${q.icon}" class="quiz-icon me-3">
-
-<div>
-
-<div class="fw-semibold">${q.title}</div>
-
-<small class="text-muted">
-${q.questions.length} Questions
-</small>
+<img src="${q.icon}">
 
 </div>
+
+<div class="quiz-title">
+
+${q.title}
+
+</div>
+
+<div class="quiz-info">
+
+${q.questions.length} Questions
+
+</div>
+
+<button class="enroll-btn">
+
+Play Quiz
+
+</button>
 
 </div>
 
@@ -219,6 +273,7 @@ container.innerHTML+=card;
 
 });
 
+
 function openQuiz(id){
 
 window.location.href="quiz.html?quiz="+id;
@@ -230,3 +285,4 @@ window.location.href="quiz.html?quiz="+id;
 
 </body>
 </html>
+
