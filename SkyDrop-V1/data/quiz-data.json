@@ -3,6 +3,7 @@
     {
       "id": "weapons",
       "title": "Free Fire Weapons Quiz",
+      "icon": "icons/weapons.png",
       "questions": [
         {
           "question": "Which gun has the highest damage?",
@@ -19,6 +20,7 @@
     {
       "id": "characters",
       "title": "Free Fire Characters Quiz",
+      "icon": "icons/character.png",
       "questions": [
         {
           "question": "Who is the first Free Fire character?",
