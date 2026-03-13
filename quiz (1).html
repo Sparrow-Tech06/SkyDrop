@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz with Smart Timer</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', system-ui;
+        }
+        .quiz-header {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .progress-bar-timer {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4e73df, #36b9cc);
+            width: 100%;
+            transition: width 1s linear;
+            border-radius: 30px;
+        }
+        .timer-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .question-card {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .option-item {
+            background: #f8fafd;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 12px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .option-item:hover:not(.disabled-click) {
+            background: #eef2f7;
+            border-color: #4e73df20;
+        }
+        .option-correct {
+            background: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+            animation: correctPulse 0.6s ease;
+        }
+        .option-wrong {
+            background: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+            animation: wrongShake 0.4s ease;
+        }
+        @keyframes correctPulse {
+            0% { transform: scale(1); background: #d4edda; }
+            50% { transform: scale(1.02); background: #c3e6cb; }
+            100% { transform: scale(1); background: #d4edda; }
+        }
+        @keyframes wrongShake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-4px); }
+            100% { transform: translateX(0); }
+        }
+        .disabled-click {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .mycoins-btn {
+            background: #ffc107;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            transition: 0.2s;
+        }
+        .mycoins-btn:hover {
+            background: #e0a800;
+            transform: scale(1.02);
+        }
+        .waiting-message {
+            text-align: center;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 50px;
+            color: #856404;
+            font-weight: 500;
+        }
+        /* result popup */
+        #resultPopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .result-box {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center quiz-header">
+                <h4 class="mb-0 fw-bold">{{ quizTitle || 'Loading quiz...' }}</h4>
+                <a href="wallet.html" class="btn mycoins-btn">
+                    <i class="fas fa-coins me-1"></i> My Coins
+                </a>
+            </div>
+
+            <!-- Timer & Progress Bar - Show only if quiz loaded and not finished -->
+            <div v-if="questions.length && currentIndex < questions.length" class="bg-white p-3 rounded-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="timer-text"><i class="far fa-clock me-2"></i>{{ timer }}s</span>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">{{ currentIndex+1 }}/{{ questions.length }}</span>
+                </div>
+                <div class="progress-bar-timer">
+                    <div class="progress-fill" :style="{ width: (timer/5)*100 + '%' }"></div>
+                </div>
+            </div>
+
+            <!-- Question Box -->
+            <div v-if="questions.length && currentIndex < questions.length" class="question-card">
+                <h5 class="fw-semibold mb-4">{{ currentQuestion.question }}</h5>
+                <div>
+                    <div v-for="(opt, idx) in currentQuestion.options" :key="idx"
+                         class="option-item d-flex align-items-center"
+                         :class="{
+                             'option-correct': showFeedback && idx === currentQuestion.answer,
+                             'option-wrong': showFeedback && selectedOption === idx && idx !== currentQuestion.answer,
+                             'disabled-click': showFeedback || (timer === 0 && !selectedOption)
+                         }"
+                         @click="(!showFeedback && timer > 0) && selectOption(idx)">
+                        <span class="me-3">{{ String.fromCharCode(65+idx) }}.</span>
+                        <span>{{ opt }}</span>
+                        <span v-if="showFeedback && idx === currentQuestion.answer" class="ms-auto text-success">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
+                        <span v-if="showFeedback && selectedOption === idx && idx !== currentQuestion.answer" class="ms-auto text-danger">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waiting message (when timer ended but no answer selected) -->
+            <div v-if="questions.length && currentIndex < questions.length && timer === 0 && !selectedOption" 
+                 class="waiting-message mt-3">
+                <i class="fas fa-hourglass-end me-2"></i>Time ended! No answer selected. Waiting for next question? 
+                <span class="d-block mt-2 text-muted">(Quiz will not proceed automatically)</span>
+            </div>
+        </div>
+
+        <!-- RESULT POPUP -->
+        <div id="resultPopup">
+            <div class="result-box">
+                <h4 class="mb-3">{{ quizTitle }}</h4>
+                <h1 class="display-1 fw-bold">{{ score }} / {{ questions.length }}</h1>
+                <button class="btn btn-success mt-4 px-5 py-2 rounded-pill" @click="goHome">
+                    <i class="fas fa-home me-2"></i>Back Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted, computed, watch } = Vue;
+
+        const app = createApp({
+            setup() {
+                // state
+                const quizId = ref(new URLSearchParams(location.search).get('quiz'));
+                const quizTitle = ref('');
+                const questions = ref([]);
+                const currentIndex = ref(0);
+                const score = ref(0);
+                const timer = ref(5);
+                const selectedOption = ref(null);
+                const showFeedback = ref(false);
+                const canAutoAdvance = ref(false); // flag to know if we should move to next when timer ends
+                
+                let timerInterval = null;
+
+                // computed
+                const currentQuestion = computed(() => questions.value[currentIndex.value] || {});
+
+                // methods
+                const loadQuiz = async () => {
+                    try {
+                        const res = await fetch('data/quiz-data.json');
+                        const data = await res.json();
+                        const quiz = data.quizzes.find(q => q.id === quizId.value);
+                        if (quiz) {
+                            quizTitle.value = quiz.title;
+                            questions.value = quiz.questions;
+                            document.getElementById('quizTitle') && (document.getElementById('quizTitle').innerText = quiz.title);
+                        }
+                        startTimer();
+                    } catch (error) {
+                        console.error('Quiz load failed', error);
+                    }
+                };
+
+                const startTimer = () => {
+                    // Clear any existing interval
+                    if (timerInterval) clearInterval(timerInterval);
+                    
+                    // Reset states for new question
+                    timer.value = 5;
+                    selectedOption.value = null;
+                    showFeedback.value = false;
+                    canAutoAdvance.value = false;
+
+                    // Start countdown
+                    timerInterval = setInterval(() => {
+                        if (timer.value > 0) {
+                            timer.value -= 1;
+                        } else {
+                            // Timer reached zero
+                            clearInterval(timerInterval);
+                            
+                            // If user had selected an answer, we can advance
+                            if (selectedOption.value !== null) {
+                                // Advance to next question automatically
+                                advanceToNext();
+                            }
+                            // else: do nothing, wait indefinitely (user might never select)
+                        }
+                    }, 1000);
+                };
+
+                const selectOption = (idx) => {
+                    if (showFeedback.value || timer.value === 0) return;
+                    
+                    selectedOption.value = idx;
+                    showFeedback.value = true;
+                    
+                    // Check if answer is correct
+                    if (idx === currentQuestion.value.answer) {
+                        score.value += 1;
+                    }
+                    
+                    // Mark that we can auto-advance when timer ends
+                    canAutoAdvance.value = true;
+                    
+                    // Note: We DO NOT advance immediately. Wait for timer to finish.
+                };
+
+                const advanceToNext = () => {
+                    // Move to next question or finish quiz
+                    if (currentIndex.value + 1 < questions.value.length) {
+                        currentIndex.value++;
+                        startTimer();
+                    } else {
+                        // Quiz completed
+                        finishQuiz();
+                    }
+                };
+
+                const finishQuiz = () => {
+                    clearInterval(timerInterval);
+                    
+                    // Show result popup
+                    const popup = document.getElementById('resultPopup');
+                    if (popup) {
+                        popup.style.display = 'flex';
+                    }
+                    
+                    // Call mycoin callback (only callback, no alert)
+                    if (typeof mycoin === 'function') {
+                        mycoin(quizTitle.value);
+                    }
+                };
+
+                const goHome = () => {
+                    window.location.href = 'index.html'; // adjust as needed
+                };
+
+                // Watch timer to auto-advance when conditions met
+                watch(timer, (newVal) => {
+                    // When timer hits 0 AND user has selected an answer, advance
+                    if (newVal === 0 && canAutoAdvance.value) {
+                        advanceToNext();
+                    }
+                });
+
+                // Watch currentIndex to reset timer related flags
+                watch(currentIndex, () => {
+                    // Cleanup before next question starts
+                });
+
+                onMounted(() => {
+                    loadQuiz();
+                });
+
+                return {
+                    quizTitle,
+                    questions,
+                    currentIndex,
+                    currentQuestion,
+                    score,
+                    timer,
+                    selectedOption,
+                    showFeedback,
+                    selectOption,
+                    goHome
+                };
+            }
+        });
+
+        app.mount('#app');
+
+        // Placeholder for mycoin function (to be overridden by external script)
+        function mycoin(title) {
+            console.log('Coin callback for:', title);
+            // No alert, just callback
+        }
+    </script>
+
+    <!-- External scripts (preserved) -->
+    <script src="js/mycoins.js"></script>
+    <script src="js/result-popup.js"></script>
+</body>
+</html>
