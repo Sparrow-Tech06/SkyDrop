@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz with Timer & Animation</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            background: #f4f6fb;
+            font-family: 'Segoe UI', system-ui;
+        }
+        .quiz-header {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .progress-bar-timer {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 30px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4e73df, #36b9cc);
+            width: 100%;
+            transition: width 1s linear;
+            border-radius: 30px;
+        }
+        .timer-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .question-card {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .option-item {
+            background: #f8fafd;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 12px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .option-item:hover {
+            background: #eef2f7;
+            border-color: #4e73df20;
+        }
+        .option-correct {
+            background: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724;
+            animation: correctPulse 0.6s ease;
+        }
+        .option-wrong {
+            background: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24;
+            animation: wrongShake 0.4s ease;
+        }
+        @keyframes correctPulse {
+            0% { transform: scale(1); background: #d4edda; }
+            50% { transform: scale(1.02); background: #c3e6cb; }
+            100% { transform: scale(1); background: #d4edda; }
+        }
+        @keyframes wrongShake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-4px); }
+            100% { transform: translateX(0); }
+        }
+        .disabled-click {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .btn-next {
+            background: linear-gradient(145deg, #4e73df, #224abe);
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 15px #4e73df50;
+            transition: 0.2s;
+            color: white;
+        }
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px #4e73df70;
+        }
+        .btn-next:active {
+            transform: translateY(2px);
+        }
+        /* result popup same as before */
+        #resultPopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .result-box {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px black;
+        }
+        .mycoins-btn {
+            background: #ffc107;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            transition: 0.2s;
+        }
+        .mycoins-btn:hover {
+            background: #e0a800;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container py-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center quiz-header">
+                <h4 id="quizTitle" class="mb-0 fw-bold">Loading quiz...</h4>
+                <a href="wallet.html" class="btn mycoins-btn">
+                    <i class="fas fa-coins me-1"></i> My Coins
+                </a>
+            </div>
+
+            <!-- Timer & Progress Bar -->
+            <div v-if="questions.length > 0 && currentIndex < questions.length" class="bg-white p-3 rounded-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="timer-text"><i class="far fa-clock me-2"></i>{{ timer }}s</span>
+                    <span class="badge bg-primary rounded-pill px-3 py-2">{{ currentIndex+1 }}/{{ questions.length }}</span>
+                </div>
+                <div class="progress-bar-timer">
+                    <div class="progress-fill" :style="{ width: (timer/5)*100 + '%' }"></div>
+                </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="question-card" v-if="questions.length > 0 && currentIndex < questions.length">
+                <h5 class="fw-semibold mb-4">{{ currentQuestion.question }}</h5>
+                <div>
+                    <div v-for="(opt, idx) in currentQuestion.options" :key="idx"
+                         class="option-item d-flex align-items-center"
+                         :class="{
+                             'option-correct': showFeedback && idx === currentQuestion.answer,
+                             'option-wrong': showFeedback && selectedOption === idx && idx !== currentQuestion.answer,
+                             'disabled-click': showFeedback
+                         }"
+                         @click="!showFeedback && selectOption(idx)">
+                        <span class="me-3">{{ String.fromCharCode(65+idx) }}.</span>
+                        <span>{{ opt }}</span>
+                        <span v-if="showFeedback && idx === currentQuestion.answer" class="ms-auto text-success">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
+                        <span v-if="showFeedback && selectedOption === idx && idx !== currentQuestion.answer" class="ms-auto text-danger">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <div class="text-center" v-if="questions.length > 0 && currentIndex < questions.length">
+                <button class="btn btn-next px-5 py-3" @click="nextQuestion" :disabled="!canGoNext">
+                    Next <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- RESULT POPUP (same structure) -->
+        <div id="resultPopup">
+            <div class="result-box">
+                <h4 id="resultTitle" class="mb-3">{{ quizTitle }}</h4>
+                <h1 id="resultScore" class="display-1 fw-bold">{{ finalScore }} / {{ totalQuestions }}</h1>
+                <button class="btn btn-success mt-4 px-5 py-2 rounded-pill" @click="goHome">
+                    <i class="fas fa-home me-2"></i>Back Home
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted, computed, watch } = Vue;
+
+        const app = createApp({
+            setup() {
+                // data
+                const quizId = ref(new URLSearchParams(location.search).get('quiz'));
+                const quizTitle = ref('');
+                const questions = ref([]);
+                const currentIndex = ref(0);
+                const score = ref(0);
+                const timer = ref(5);
+                const selectedOption = ref(null);
+                const showFeedback = ref(false);
+                const canGoNext = ref(false);
+                let timerInterval = null;
+
+                // computed
+                const currentQuestion = computed(() => questions.value[currentIndex.value] || {});
+                const finalScore = computed(() => score.value);
+                const totalQuestions = computed(() => questions.value.length);
+
+                // methods
+                const loadQuiz = async () => {
+                    try {
+                        const res = await fetch('data/quiz-data.json');
+                        const data = await res.json();
+                        const quiz = data.quizzes.find(q => q.id === quizId.value);
+                        if (quiz) {
+                            quizTitle.value = quiz.title;
+                            questions.value = quiz.questions;
+                            document.getElementById('quizTitle').innerText = quiz.title; // for old ref
+                        }
+                        startTimer();
+                    } catch (error) {
+                        console.error('Quiz load failed', error);
+                    }
+                };
+
+                const startTimer = () => {
+                    if (timerInterval) clearInterval(timerInterval);
+                    timer.value = 5;
+                    showFeedback.value = false;
+                    selectedOption.value = null;
+                    canGoNext.value = false;
+
+                    timerInterval = setInterval(() => {
+                        if (timer.value > 0) {
+                            timer.value -= 1;
+                        } else {
+                            // time over : auto mark wrong? Actually we force next but must show feedback if no selection?
+                            if (!showFeedback.value) {
+                                // no answer selected -> mark as wrong (no selection)
+                                showFeedback.value = true;
+                                canGoNext.value = true;
+                                clearInterval(timerInterval);
+                                // no score increment
+                            }
+                        }
+                    }, 1000);
+                };
+
+                const selectOption = (idx) => {
+                    if (showFeedback.value) return;
+                    selectedOption.value = idx;
+                    showFeedback.value = true;
+                    clearInterval(timerInterval);
+
+                    // check answer
+                    if (idx === currentQuestion.value.answer) {
+                        score.value += 1;
+                    }
+
+                    canGoNext.value = true;
+                };
+
+                const nextQuestion = () => {
+                    if (!canGoNext.value) return;
+
+                    if (currentIndex.value + 1 < questions.value.length) {
+                        currentIndex.value++;
+                        startTimer();
+                    } else {
+                        // quiz finished
+                        clearInterval(timerInterval);
+                        showResult();
+                        // call mycoin (external function)
+                        if (typeof mycoin === 'function') {
+                            mycoin(quizTitle.value);
+                        }
+                    }
+                };
+
+                const showResult = () => {
+                    document.getElementById('resultTitle').innerText = quizTitle.value;
+                    document.getElementById('resultScore').innerText = `${score.value} / ${questions.value.length}`;
+                    document.getElementById('resultPopup').style.display = 'flex';
+                };
+
+                const goHome = () => {
+                    window.location.href = 'index.html'; // or home page
+                };
+
+                // watcher: if timer reaches 0 and no feedback, auto reveal (wrong)
+                watch(timer, (newVal) => {
+                    if (newVal === 0 && !showFeedback.value) {
+                        // auto timeout : no answer selected -> show correct answer in green, no selection mark
+                        showFeedback.value = true;
+                        canGoNext.value = true;
+                        clearInterval(timerInterval);
+                        // no score increment
+                    }
+                });
+
+                onMounted(() => {
+                    loadQuiz();
+                });
+
+                return {
+                    quizId,
+                    quizTitle,
+                    questions,
+                    currentIndex,
+                    score,
+                    timer,
+                    selectedOption,
+                    showFeedback,
+                    canGoNext,
+                    currentQuestion,
+                    finalScore,
+                    totalQuestions,
+                    selectOption,
+                    nextQuestion,
+                    goHome
+                };
+            }
+        });
+
+        app.mount('#app');
+
+        // keep external functions (mycoin, etc) if they exist
+        function mycoin(title) {
+            console.log('Coin callback for:', title);
+            // your existing mycoin logic
+        }
+    </script>
+
+    <!-- external scripts (preserved) -->
+    <script src="js/mycoins.js"></script>
+    <script src="js/result-popup.js"></script>
+</body>
+</html>
