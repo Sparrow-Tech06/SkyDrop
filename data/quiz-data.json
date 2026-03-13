@@ -1,0 +1,36 @@
+{
+  "quizzes": [
+    {
+      "id": "weapons",
+      "title": "Free Fire Weapons Quiz",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "characters",
+      "title": "Free Fire Characters Quiz",
+      "questions": [
+        {
+          "question": "Who is the first Free Fire character?",
+          "options": ["Kelly","Adam","Alok","Chrono"],
+          "answer": 1
+        },
+        {
+          "question": "Which character gives speed ability?",
+          "options": ["Kelly","Skyler","Wukong","Hayato"],
+          "answer": 0
+        }
+      ]
+    }
+  ]
+}
