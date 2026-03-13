@@ -7,6 +7,7 @@ request.onupgradeneeded=function(e){
 db=e.target.result;
 
 db.createObjectStore("wallet",{keyPath:"id"});
+db.createObjectStore("history",{autoIncrement:true});
 
 };
 
@@ -16,15 +17,14 @@ db=e.target.result;
 
 };
 
-/* callback function */
+function mycoin(gameName){
 
-function mycoin(){
+const tx=db.transaction(["wallet","history"],"readwrite");
 
-const tx=db.transaction("wallet","readwrite");
+const wallet=tx.objectStore("wallet");
+const history=tx.objectStore("history");
 
-const store=tx.objectStore("wallet");
-
-const get=store.get("user");
+const get=wallet.get("user");
 
 get.onsuccess=function(){
 
@@ -38,9 +38,19 @@ coins=get.result.coins;
 
 coins+=10;
 
-store.put({id:"user",coins:coins});
+wallet.put({id:"user",coins:coins});
 
-// alert("10 Coins Added! Total: "+coins);
+/* history save */
+
+history.add({
+
+game:gameName,
+coins:10,
+date:new Date().toLocaleString()
+
+});
+
+alert("10 Coins Added");
 
 };
 
