@@ -17,6 +17,70 @@
       ]
     },
     {
+      "id": "weapons",
+      "title": "Free Fire Weapons Quiz",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "weapons",
+      "title": "Free Fire Weapons Quiz",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "weapons",
+      "title": "Free Fire Weapons Quiz",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "weapons",
+      "title": "Free Fire Weapons Quiz",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    {
       "id": "characters",
       "title": "Free Fire Characters Quiz",
       "questions": [
