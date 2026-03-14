@@ -1,8 +1,8 @@
 {
   "quizzes": [
     {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
+      "id": "Map Master",
+      "title": "Map Knowledge Quiz",
       "questions": [
         {
           "question": "Which gun has the highest damage?",
@@ -18,8 +18,42 @@
     },
     
     {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
+      "id": "Arsenal Quiz",
+      "title": "Gun Category Guess",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    
+    {
+      "id": "Hero Skills",
+      "title": "Character Role Guess",
+      "questions": [
+        {
+          "question": "Which gun has the highest damage?",
+          "options": ["MP40","AWM","UMP","M4A1"],
+          "answer": 1
+        },
+        {
+          "question": "Which gun uses SMG ammo?",
+          "options": ["AK47","MP40","M1014","Groza"],
+          "answer": 1
+        }
+      ]
+    },
+    
+    {
+      "id": "Pet Powers",
+      "title": "Pet Skill Guess",
       "questions": [
         {
           "question": "Which gun has the highest damage?",
@@ -34,8 +68,8 @@
       ]
     },
     {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
+      "id": "Odd Hunter",
+      "title": "Find the Odd",
       "questions": [
         {
           "question": "Which gun has the highest damage?",
@@ -50,40 +84,8 @@
       ]
     },
     {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
-      "questions": [
-        {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
-          "answer": 1
-        }
-      ]
-    },
-    {
-      "id": "weapons",
-      "title": "Free Fire Weapons Quiz",
-      "questions": [
-        {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
-          "answer": 1
-        }
-      ]
-    },
-    {
-      "id": "characters",
-      "title": "Free Fire Characters Quiz",
+      "id": "Event Recall",
+      "title": "Event History Quiz",
       "questions": [
         {
           "question": "Who is the first Free Fire character?",
