@@ -1,100 +1,78 @@
 {
   "quizzes": [
     {
-      "id": "Map Master",
-      "title": "Map Knowledge Quiz",
+      "id": "gun-iq",
+      "title": "Gun IQ",
+      "icon": "https://cdn-icons-png.flaticon.com/512/8244/8244476.png",
       "questions": [
         {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
+          "question": "Which gun has the highest damage in Free Fire?",
+          "options": ["MP40", "AWM", "M1887", "SCAR"],
           "answer": 1
         }
       ]
     },
-    
+
     {
-      "id": "Arsenal Quiz",
-      "title": "Gun Category Guess",
+      "id": "map-iq",
+      "title": "Map IQ",
+      "icon": "https://cdn-icons-png.flaticon.com/512/854/854878.png",
       "questions": [
         {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
+          "question": "Which is the most popular map in Free Fire?",
+          "options": ["Bermuda", "Kalahari", "Purgatory", "Alpine"],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
+      "id": "hero-skills",
+      "title": "Hero Skills",
+      "icon": "https://cdn-icons-png.flaticon.com/512/8002/8002150.png",
+      "questions": [
         {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
+          "question": "What is DJ Alok's ability name?",
+          "options": ["Drop the Beat", "Time Turner", "Xtreme Encounter", "Lead the Pack"],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
+      "id": "pet-powers",
+      "title": "Pet Powers",
+      "icon": "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+      "questions": [
+        {
+          "question": "Which pet increases EP conversion?",
+          "options": ["Falco", "Ottero", "Mr. Waggor", "Rockie"],
           "answer": 1
         }
       ]
     },
-    
+
     {
-      "id": "Hero Skills",
-      "title": "Character Role Guess",
+      "id": "battle-iq",
+      "title": "Battle IQ",
+      "icon": "https://cdn-icons-png.flaticon.com/512/833/833314.png",
       "questions": [
         {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
+          "question": "Which item protects you from enemy fire?",
+          "options": ["Medkit", "Gloo Wall", "Grenade", "Flashbang"],
           "answer": 1
         }
       ]
     },
-    
+
     {
-      "id": "Pet Powers",
-      "title": "Pet Skill Guess",
+      "id": "ff-events",
+      "title": "FF Events",
+      "icon": "https://cdn-icons-png.flaticon.com/512/3652/3652191.png",
       "questions": [
         {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
-          "answer": 1
-        }
-      ]
-    },
-    {
-      "id": "Odd Hunter",
-      "title": "Find the Odd",
-      "questions": [
-        {
-          "question": "Which gun has the highest damage?",
-          "options": ["MP40","AWM","UMP","M4A1"],
-          "answer": 1
-        },
-        {
-          "question": "Which gun uses SMG ammo?",
-          "options": ["AK47","MP40","M1014","Groza"],
-          "answer": 1
-        }
-      ]
-    },
-    {
-      "id": "Event Recall",
-      "title": "Event History Quiz",
-      "questions": [
-        {
-          "question": "Who is the first Free Fire character?",
-          "options": ["Kelly","Adam","Alok","Chrono"],
-          "answer": 1
-        },
-        {
-          "question": "Which character gives speed ability?",
-          "options": ["Kelly","Skyler","Wukong","Hayato"],
+          "question": "Which event usually gives free skins?",
+          "options": ["Booyah Day", "Diamond Royale", "Lucky Wheel", "Top Up"],
           "answer": 0
         }
       ]
