@@ -5,9 +5,9 @@
 
 --bg:#ffffff;
 --border:#eeeeee;
---icon-bg:#e3e3e3;
+--icon-bg:#fff ;
 --text-dark:#222;
---brand:#1e88ff;
+--brand:#000 ; /* 1e88ff; */
 
 /* darker pastel colors */
 
@@ -64,13 +64,13 @@ gap:10px;
 .icon-btn{
 width:36px;
 height:36px;
+border:1px solid var(--border);
 border-radius:10px;
 display:flex;
 align-items:center;
 justify-content:center;
 background:var(--icon-bg);
 text-decoration:none;
-color:var(--text-dark);
 font-size:20px;
 
 }
