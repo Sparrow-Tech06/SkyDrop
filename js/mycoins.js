@@ -50,7 +50,7 @@ date:new Date().toLocaleString()
 
 });
 
-alert("10 Coins Added");
+// alert("10 Coins Added");
 
 };
 
