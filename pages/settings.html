@@ -1,148 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no,viewport-fit=cover">         
+    <title>SkyDrop</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no,viewport-fit=cover">         
-
-<title> SkyDrop </title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  
-<link href="../css/settings.css" rel="stylesheet">
-  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../css/settings.css" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="app-container">
 
-<!-- Sticky header -->
+    <header class="topbar" id="topbar">
+        <a href="index.html" class="btn btn-light btn-sm">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <img src="https://picsum.photos/100" id="topImg">
+        <span class="topbar-name" id="topName">SOMNATH PAL</span>
+    </header>
 
-<header class="topbar" id="topbar">
+    <section class="profile" id="profileHeader">
+        <img src="https://picsum.photos/100" class="profile-img" id="profileImg" loading="lazy" draggable="false">        
+        <div>
+            <div class="profile-name">SOMNATH PAL</div>
+            <div class="profile-version">Version 1.0.0</div>
+        </div>
+    </section>
 
-<a href="#" class="btn btn-light btn-sm">
-<i class="bi bi-arrow-left"></i>
-</a>
-
-<img src="https://picsum.photos/100" id="topImg">
-
-<span class="topbar-name" id="topName">SOMNATH PAL</span>
-
-</header>
-
-
-<!-- Profile section -->
-
-<section class="profile" id="profileHeader">
-
-<img src="https://picsum.photos/100" class="profile-img" id="profileImg" loading="lazy" draggable="false">        
-
-<div>
-<div class="profile-name">SOMNATH PAL</div>
-<div class="profile-version">Version 1.0.0</div>
-</div>
-
-</section>
-
-<main class="mb-5">
-
-<nav class="menu-card">
-<ul id="menuList"></ul>
-</nav>
-
-</main>
+    <main class="mb-5">
+        <nav class="menu-card">
+            <ul id="menuList"></ul>
+        </nav>
+    </main>
 
 </div>
-
 
 <script>
-
-/* menu data */
-
-const menuData=[
-{title:"Account History",icon:"clock-history"},
-{title:"My Rewards",icon:"trophy"},
-{title:"Privacy",icon:"lock"},
-{title:"Account History",icon:"clock-history"},
-{title:"My Rewards",icon:"trophy"},
-{title:"Privacy",icon:"lock"},
-{title:"Account History",icon:"clock-history"},
-{title:"My Rewards",icon:"trophy"},
-{title:"Privacy",icon:"lock"},
-{title:"Help & FAQ",icon:"question-circle"},
-{title:"Delete Account",icon:"trash"},
-{title:"Logout",icon:"box-arrow-right"}
+/* Updated menu data with specific links */
+const menuData = [
+    { title: "Account History", icon: "clock-history", link: "history.html" },
+    { title: "My Rewards", icon: "trophy", link: "../coin/rewards.html" },
+    { title: "Privacy Policy", icon: "lock", link: "privacy.html" },
+    { title: "About Us", icon: "info-circle", link: "about.html" },
+    { title: "Contact Us", icon: "envelope", link: "contact.html" },
+    { title: "Settings", icon: "gear", link: "settings_details.html" },
+    { title: "Help & FAQ", icon: "question-circle", link: "help.html" },
+    { title: "Delete Account", icon: "trash", link: "delete_account.html" },
+    { title: "Logout", icon: "box-arrow-right", link: "logout.php" }
 ];
 
-const menuList=document.getElementById("menuList");
+const menuList = document.getElementById("menuList");
 
-menuData.forEach((item,i)=>{
+menuData.forEach((item, i) => {
+    const li = document.createElement("li");
 
-const li=document.createElement("li");
+    // Yahan href="${item.link}" add kiya gaya hai
+    li.innerHTML = `
+    <a href="${item.link}" class="menu-item">
+        <div class="menu-left">
+            <div class="icon-circle">
+                <i class="bi bi-${item.icon}"></i>
+            </div>
+            <span>${item.title}</span>
+        </div>
+        <i class="bi bi-chevron-right arrow"></i>
+    </a>
+    `;
 
-li.innerHTML=`
-<a href="#" class="menu-item">
+    menuList.appendChild(li);
 
-<div class="menu-left">
-
-<div class="icon-circle">
-<i class="bi bi-${item.icon}"></i>
-</div>
-
-<span>${item.title}</span>
-
-</div>
-
-<i class="bi bi-chevron-right arrow"></i>
-
-</a>
-`;
-
-menuList.appendChild(li);
-
-if(i<menuData.length-1){
-
-const divider=document.createElement("div");
-divider.className="menu-divider";
-menuList.appendChild(divider);
-
-}
-
+    if (i < menuData.length - 1) {
+        const divider = document.createElement("div");
+        divider.className = "menu-divider";
+        menuList.appendChild(divider);
+    }
 });
 
+/* Premium scroll animation logic */
+const profileHeader = document.getElementById("profileHeader");
+const profileImg = document.getElementById("profileImg");
+const topbar = document.getElementById("topbar");
 
-/* Premium scroll animation */
+window.addEventListener("scroll", () => {
+    const rect = profileHeader.getBoundingClientRect();
+    let progress = Math.min(Math.max(-rect.top / 120, 0), 1);
 
-const profileHeader=document.getElementById("profileHeader");
-const profileImg=document.getElementById("profileImg");
-const topbar=document.getElementById("topbar");
+    /* profile image shrink */
+    profileImg.style.transform = `scale(${1 - progress * 0.2})`;
 
-window.addEventListener("scroll",()=>{
-
-const rect=profileHeader.getBoundingClientRect();
-
-let progress=Math.min(Math.max(-rect.top/120,0),1);
-
-/* profile image shrink */
-
-profileImg.style.transform=`scale(${1-progress*0.2})`;
-
-/* sticky header */
-
-if(progress>0.20){
-
-topbar.classList.add("show","active");
-
-}else{
-
-topbar.classList.remove("show","active");
-
-}
-
+    /* sticky header show/hide */
+    if (progress > 0.20) {
+        topbar.classList.add("show", "active");
+    } else {
+        topbar.classList.remove("show", "active");
+    }
 });
-
 </script>
 
 </body>
