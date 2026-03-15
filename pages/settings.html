@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>User Profile</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#fff;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+.app-container{
+max-width:660px;
+margin:auto;
+}
+
+/* profile */
+
+.profile{
+display:flex;
+align-items:center;
+gap:15px;
+padding:20px;
+}
+
+.profile img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.profile-name{
+font-size:20px;
+font-weight:600;
+}
+
+.profile-version{
+font-size:14px;
+color:#777;
+}
+
+/* menu */
+
+.menu-card{
+border:1px solid #eee;
+border-radius:16px;
+overflow:hidden;
+}
+
+.menu-item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:16px 18px;
+text-decoration:none;
+color:#333;
+}
+
+.menu-item:hover{
+background:#fafafa;
+}
+
+.menu-left{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.icon-circle{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#f1f2f3;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+}
+
+.menu-divider{
+height:1px;
+background:#eee;
+margin:0 18px;
+}
+
+.arrow{
+color:#777;
+font-size:20px;
+}
+
+ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+<header class="profile">
+
+<img src="https://picsum.photos/100" alt="Profile">
+
+<div>
+
+<div class="profile-name">SOMNATH PAL</div>
+
+<div class="profile-version">Version 1.0.0</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+<nav class="menu-card">
+
+<ul id="menuList"></ul>
+
+</nav>
+
+</main>
+
+</div>
+
+
+<script>
+
+const menuData = [
+
+{
+title:"Account History",
+icon:"clock-history",
+link:"#"
+},
+
+{
+title:"My Rewards",
+icon:"trophy",
+link:"#"
+},
+
+{
+title:"Privacy",
+icon:"lock",
+link:"#"
+},
+
+{
+title:"Help & FAQ",
+icon:"question-circle",
+link:"#"
+},
+
+{
+title:"Delete Account",
+icon:"trash",
+link:"#"
+},
+
+{
+title:"Logout",
+icon:"box-arrow-right",
+link:"#"
+}
+
+];
+
+
+const menuList = document.getElementById("menuList");
+
+menuData.forEach((item,index)=>{
+
+const li = document.createElement("li");
+
+li.innerHTML = `
+
+<a href="${item.link}" class="menu-item">
+
+<div class="menu-left">
+
+<div class="icon-circle">
+<i class="bi bi-${item.icon}"></i>
+</div>
+
+<span>${item.title}</span>
+
+</div>
+
+<i class="bi bi-chevron-right arrow"></i>
+
+</a>
+
+`;
+
+menuList.appendChild(li);
+
+if(index < menuData.length-1){
+
+const divider = document.createElement("div");
+divider.className = "menu-divider";
+menuList.appendChild(divider);
+
+}
+
+});
+
+</script>
+
+</body>
+  </html>
+
