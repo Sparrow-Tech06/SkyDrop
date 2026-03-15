@@ -63,6 +63,19 @@
     },
 
     {
+      "id": "odd-hunter",
+      "title": "Odd Hunter",
+      "icon": "https://cdn-icons-png.flaticon.com/512/854/854878.png",
+      "questions": [
+        {
+          "question": "Which is the most popular map in Free Fire?",
+          "options": ["Bermuda", "Kalahari", "Purgatory", "Alpine"],
+          "answer": 0
+        }
+      ]
+    },
+
+    {
       "id": "ff-events",
       "title": "FF Events",
       "icon": "https://cdn-icons-png.flaticon.com/512/3652/3652191.png",
