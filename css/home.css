@@ -9,6 +9,10 @@
 --text-dark:#222;
 --brand:#000 ; /* 1e88ff; */
 
+--wallet-color:#ffb300;
+--chat-color:#00bcd4;
+--settings-color:#6c757d;
+    
 /* darker pastel colors */
 
 --card1:#ffd4d4;
@@ -72,7 +76,22 @@ justify-content:center;
 background:var(--icon-bg);
 text-decoration:none;
 font-size: 18px;
+transition:.25s;
+}
 
+/* 1st icon (Wallet) */
+.header-icons .icon-btn:nth-child(1) i{
+  color:var(--wallet-color);
+}
+
+/* 2nd icon (Chat) */
+.header-icons .icon-btn:nth-child(2) i{
+  color:var(--chat-color);
+}
+
+/* 3rd icon (Settings) */
+.header-icons .icon-btn:nth-child(3) i{
+  color:var(--settings-color);
 }
 
 /* ---------------- QUIZ CARD ---------------- */
