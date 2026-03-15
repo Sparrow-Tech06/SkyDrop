@@ -21,7 +21,7 @@
             top: 0;
             z-index: 1000;
             background: #fff;
-            border-bottom: #eee ;
+            border-bottom: 1px solib #eee ;
         }
 
         .header {
@@ -41,7 +41,7 @@
             font-size: 20px;
             cursor: pointer;
             margin-right: 8px;
-            background: #f1f1f1 ;
+            background: #fafafa ;
         }
 
         .balance-card {
