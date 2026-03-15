@@ -32,8 +32,8 @@
         }
 
         .back-btn {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -41,7 +41,7 @@
             font-size: 20px;
             cursor: pointer;
             margin-right: 8px;
-            background: #fafafa ;
+            background: #e3e3e3 ;
         }
 
         .balance-card {
