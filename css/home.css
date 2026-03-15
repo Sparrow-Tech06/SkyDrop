@@ -1,0 +1,151 @@
+
+/* ---------------- ROOT ---------------- */
+
+:root{
+
+--bg:#ffffff;
+--border:#eeeeee;
+--icon-bg:#e3e3e3;
+--text-dark:#222;
+--brand:#1e88ff;
+
+/* darker pastel colors */
+
+--card1:#ffd4d4;
+--card2:#d6e2ff;
+--card3:#d6ffe0;
+--card4:#ffe9c9;
+--card5:#ead6ff;
+--card6:#d6f6ff;
+
+}
+/* ---------------- Universal ---------------- */
+ * {
+    margin: 0 ;
+    padding: 0 ;
+    box-sizing: border-box ;
+    user-select: none ;
+  }
+/* ---------------- BODY ---------------- */
+
+body{
+background:var(--bg);
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
+color:var(--text-dark);
+}
+
+/* ---------------- HEADER ---------------- */
+
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:var(--bg);
+border-bottom:1px solid var(--border);
+padding:10px 16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.brand{
+font-weight:700;
+font-size:24px;
+color:var(--brand);
+}
+
+/* ---------------- HEADER ICONS ---------------- */
+
+.header-icons{
+display:flex;
+gap:10px;
+}
+
+.icon-btn{
+width:36px;
+height:36px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--icon-bg);
+text-decoration:none;
+color:var(--text-dark);
+font-size:20px;
+
+}
+
+/* ---------------- QUIZ CARD ---------------- */
+
+.quiz-card{
+border-radius:18px;
+padding: 20px;
+text-align:center;
+cursor:pointer;
+transition:0.15s;
+}
+
+.quiz-card:active{
+transform:scale(.96);
+}
+
+/* ---------------- IMAGE ---------------- */
+
+.quiz-img{
+width:60px;
+height:60px;
+object-fit:contain;
+margin:auto;
+margin-bottom:8px;
+background:#ffffffcc;
+padding:10px;
+border-radius:10px;
+}
+
+/* ---------------- TEXT ---------------- */
+
+.quiz-title{
+font-size:14px;
+font-weight:600;
+margin-bottom:3px;
+}
+
+.quiz-sub{
+font-size:12px;
+opacity:.7;
+}
+
+/* ---------------- CARD COLORS ---------------- */
+
+#quizContainer article:nth-child(6n+1) .quiz-card{background:var(--card1)}
+#quizContainer article:nth-child(6n+2) .quiz-card{background:var(--card2)}
+#quizContainer article:nth-child(6n+3) .quiz-card{background:var(--card3)}
+#quizContainer article:nth-child(6n+4) .quiz-card{background:var(--card4)}
+#quizContainer article:nth-child(6n+5) .quiz-card{background:var(--card5)}
+#quizContainer article:nth-child(6n+6) .quiz-card{background:var(--card6)}
+
+/* ---------------- SKELETON ---------------- */
+
+.skeleton{
+height:120px;
+border-radius:18px;
+background:linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%);
+background-size:400% 100%;
+animation:skeleton 1.2s infinite;
+
+}
+
+@keyframes skeleton{
+0%{background-position:100% 0}
+100%{background-position:0 0}
+}
+
+/* ---------------- ERROR MESSAGE ---------------- */
+
+.error{
+text-align:center;
+padding:40px;
+color:#888;
+
+}
+
