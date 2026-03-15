@@ -30,7 +30,7 @@
 
 body{
 background:var(--bg);
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
+font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 color:var(--text-dark);
 }
 
