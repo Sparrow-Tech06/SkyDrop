@@ -259,7 +259,10 @@ this.selected=null;
 if(this.current>=this.questions.length){
 
 this.showResultPopup=true;
-
+  
+/* coin callback */
+mycoin(this.quizTitle);
+  
 if(window.Android && typeof Android.onQuizComplete==="function"){
 
 Android.onQuizComplete(this.score);
