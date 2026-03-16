@@ -22,6 +22,9 @@
 --card5:#ead6ff;
 --card6:#d6f6ff;
 
+--sky: #91D06C;
+--drop: #FF9760 ;
+
 }
 /* ---------------- Universal ---------------- */
  * {
@@ -53,10 +56,12 @@ justify-content:space-between;
 }
 
 .brand{
-font-weight:620;
-font-size:22px;
+font-weight:600;
+font-size:20px;
 color:var(--brand);
 }
+.sky { color: var(--sky); }
+.drop { color: var(--drop); }
 
 /* ---------------- HEADER ICONS ---------------- */
 
