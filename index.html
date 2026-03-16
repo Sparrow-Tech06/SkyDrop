@@ -28,8 +28,8 @@
 
 <nav class="header-icons">
 
-<a href="coins/wallet.html" class="icon-btn" aria-label="Wallet">
-<i class="bi bi-coin"></i>
+<a href="coins/wallet.html" class="icon-btn coin-box" aria-label="Wallet">
+<i class="bi bi-coin"></i> <span id="coinBalance">0</span>
 </a>
 
 <a href="notifications/notifications.html" class="icon-btn" aria-label="Wallet">
@@ -60,6 +60,41 @@
 </main>
 
 <script src="js/home.js" defer> </script>
+<script>
+     let db;
+
+const request = indexedDB.open("QuizWallet",1);
+
+request.onsuccess = function(e){
+
+db = e.target.result;
+
+loadCoins();
+
+};
+
+function loadCoins(){
+
+const tx = db.transaction("wallet","readonly");
+
+const store = tx.objectStore("wallet");
+
+const get = store.get("user");
+
+get.onsuccess = function(){
+
+let coins = 0;
+
+if(get.result){
+coins = get.result.coins;
+}
+
+document.getElementById("coinBalance").innerText = coins;
+
+};
+
+}
+</script>
 
 </body>
 </html>
