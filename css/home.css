@@ -83,11 +83,11 @@ text-decoration:none;
 font-size: 18px;
 transition:.25s;
 }
+.icon-btn:active { transform: scale(0.96); }
 
 /* 1st icon (Wallet) */
 .header-icons .icon-btn:nth-child(1) i{
   color:var(--wallet-color);
-  font-size: 12px ;
 }
 
 /* 2nd icon (Chat) */
@@ -99,6 +99,7 @@ transition:.25s;
 .header-icons .icon-btn:nth-child(3) i{
   color:var(--settings-color);
 }
+#coinBalance { font-size: 12px ; }
 
 /* ---------------- QUIZ CARD ---------------- */
 
