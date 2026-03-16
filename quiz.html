@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Quiz</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+
+body{
+background:#fff;
+font-family:system-ui;
+}
+
+/* header */
+
+.quiz-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.counter{
+font-weight:600;
+color:#666;
+}
+
+/* timer */
+
+.timer{
+height:7px;
+background:#e3e3e3;
+border-radius:20px;
+overflow:hidden;
+margin:15px 0;
+}
+
+.timer-bar{
+height:100%;
+background:linear-gradient(90deg,#6a5cff,#4dabff);
+width:100%;
+transition:width 1s linear;
+}
+
+/* card */
+
+.question-card{
+background:linear-gradient(145deg,#ffffff,#f8f9ff);
+border-radius:16px;
+padding:20px;
+box-shadow:0 5px 20px rgba(0,0,0,0.06);
+}
+
+/* options */
+
+.option{
+background:#f4f6ff;
+padding:14px;
+border-radius:10px;
+margin-top:10px;
+cursor:pointer;
+transition:.25s;
+border:2px solid transparent;
+}
+
+.option:hover{
+transform:scale(1.02);
+}
+
+.option.correct{
+background:#d7f9e3;
+border-color:#2ecc71;
+}
+
+.option.wrong{
+background:#ffdede;
+border-color:#e74c3c;
+}
+
+/* result popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+border-radius:14px;
+text-align:center;
+width:90%;
+max-width:380px;
+}
+
+.score{
+font-size:42px;
+font-weight:700;
+color:#4e73ff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app" class="container py-4">
+
+<div class="quiz-header">
+
+<h5>{{quizTitle}}</h5>
+
+<div class="counter">
+{{current+1}} / {{questions.length}}
+</div>
+
+<a href="wallet.html" class="btn btn-warning btn-sm">
+My Coins
+</a>
+
+</div>
+
+<!-- TIMER -->
+
+<div class="timer">
+<div class="timer-bar" :style="{width:(timeLeft/5*100)+'%'}"></div>
+</div>
+
+<!-- QUESTION -->
+
+<div class="question-card">
+
+<h5 class="mb-3">
+{{questions[current]?.question}}
+</h5>
+
+<div v-for="(opt,i) in questions[current]?.options"
+:key="i"
+class="option"
+:class="optionClass(i)"
+@click="selectAnswer(i)">
+
+{{opt}}
+
+</div>
+
+</div>
+
+<!-- RESULT -->
+
+<div v-if="showResultPopup" class="popup">
+
+<div class="popup-box">
+
+<h4>Quiz Finished</h4>
+
+<div class="score">
+{{score}} / {{questions.length}}
+</div>
+
+<a href="index.html" class="btn btn-success mt-3">
+Back Home
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const {createApp}=Vue;
+
+createApp({
+
+data(){
+
+return{
+
+quizTitle:"",
+
+questions:[],
+
+current:0,
+
+score:0,
+
+selected:null,
+
+timeLeft:5,
+
+timer:null,
+
+showResultPopup:false
+
+}
+
+},
+
+mounted(){
+
+const params=new URLSearchParams(location.search);
+
+const quizId=params.get("quiz");
+
+fetch("data/quiz-data.json")
+
+.then(r=>r.json())
+
+.then(data=>{
+
+const quiz=data.quizzes.find(q=>q.id===quizId);
+
+this.quizTitle=quiz.title;
+
+this.questions=quiz.questions;
+
+this.startTimer();
+
+});
+
+},
+
+methods:{
+
+startTimer(){
+
+clearInterval(this.timer);
+
+this.timeLeft=5;
+
+this.timer=setInterval(()=>{
+
+this.timeLeft--;
+
+if(this.timeLeft<=0){
+
+clearInterval(this.timer);
+
+if(this.selected!==null){
+
+this.nextQuestion();
+
+}
+
+}
+
+},1000);
+
+},
+
+selectAnswer(i){
+
+if(this.selected!==null) return;
+
+this.selected=i;
+
+const correct=this.questions[this.current].answer;
+
+if(i===correct){
+
+this.score++;
+
+if(window.Android && typeof Android.onCorrectAnswer==="function"){
+
+Android.onCorrectAnswer();
+
+}
+
+}else{
+
+if(window.Android && typeof Android.onWrongAnswer==="function"){
+
+Android.onWrongAnswer();
+
+}
+
+}
+
+},
+
+optionClass(i){
+
+const correct=this.questions[this.current]?.answer;
+
+if(this.selected===null) return "";
+
+if(i===correct) return "correct";
+
+if(i===this.selected && i!==correct) return "wrong";
+
+return "";
+
+},
+
+nextQuestion(){
+
+this.current++;
+
+this.selected=null;
+
+if(this.current>=this.questions.length){
+
+this.showResultPopup=true;
+
+if(window.Android && typeof Android.onQuizComplete==="function"){
+
+Android.onQuizComplete(this.score);
+
+}
+
+}else{
+
+this.startTimer();
+
+}
+
+}
+
+}
+
+}).mount("#app");
+
+</script>
+
+</body>
+</html>
