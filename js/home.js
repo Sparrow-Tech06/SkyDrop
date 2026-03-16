@@ -1,7 +1,7 @@
 
 const container = document.getElementById("quizContainer")
 
-fetch("https://sparrow-tech06.github.io/SkyDrop/bata/quiz-data.json")
+fetch("https://sparrow-tech06.github.io/SkyDrop/data/quiz-data.json")
 
 .then(res=>res.json())
 
