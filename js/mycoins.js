@@ -1,16 +1,22 @@
 let db;
 
-// Open / Create DB
-const request = indexedDB.open("QuizAppDB", 1);
+const request = indexedDB.open("QuizWallet", 1);
+
+/* CREATE DB STRUCTURE */
 
 request.onupgradeneeded = function (e) {
     db = e.target.result;
 
     if (!db.objectStoreNames.contains("wallet")) {
-        const store = db.createObjectStore("wallet", { keyPath: "id" });
-        store.put({ id: 1, coins: 0 }); // default wallet
+        db.createObjectStore("wallet", { keyPath: "id" });
+    }
+
+    if (!db.objectStoreNames.contains("history")) {
+        db.createObjectStore("history", { autoIncrement: true });
     }
 };
+
+/* DB READY */
 
 request.onsuccess = function (e) {
     db = e.target.result;
@@ -21,33 +27,43 @@ request.onerror = function () {
 };
 
 
-// 🔥 MAIN CALLBACK FUNCTION
-function mycoin(quizName) {
+/* 🔥 MAIN CALLBACK FUNCTION */
+
+function mycoin(gameName) {
+
     if (!db) {
-        alert("DB not ready");
+        alert("Database not ready");
         return;
     }
 
-    const tx = db.transaction("wallet", "readwrite");
-    const store = tx.objectStore("wallet");
+    const tx = db.transaction(["wallet", "history"], "readwrite");
 
-    const getReq = store.get(1);
+    const walletStore = tx.objectStore("wallet");
+    const historyStore = tx.objectStore("history");
+
+    const getReq = walletStore.get("user");
 
     getReq.onsuccess = function () {
+
         let data = getReq.result;
 
         if (!data) {
-            data = { id: 1, coins: 0 };
+            data = { id: "user", coins: 0 };
         }
 
-        data.coins += 10; // 🎯 add 10 coins
+        // ✅ ADD COINS
+        data.coins += 10;
 
-        store.put(data);
+        walletStore.put(data);
 
-        console.log(`✅ 10 coins added for quiz: ${quizName}`);
+        // ✅ ADD HISTORY ENTRY
+        historyStore.add({
+            game: gameName,
+            coins: 10,
+            date: new Date().toLocaleString()
+        });
+
+        console.log("✅ 10 coins added + history stored");
     };
 
-    tx.oncomplete = function () {
-        console.log("Transaction completed");
-    };
 }
