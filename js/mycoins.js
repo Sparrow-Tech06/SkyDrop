@@ -2,22 +2,16 @@
 
 function mycoin(quizId, quizName){
 
-    let rewardKey = "reward_" + quizId;
-
-    // prevent duplicate reward
-    if(localStorage.getItem(rewardKey)){
-        console.log("Already rewarded for this quiz");
-        return;
-    }
-
+    // get existing coins
     let coins = parseInt(localStorage.getItem("coins")) || 0;
 
+    // add 10 coins every time
     coins += 10;
 
+    // save coins
     localStorage.setItem("coins", coins);
-    localStorage.setItem(rewardKey, true);
 
-    // history save
+    // save history
     let history = JSON.parse(localStorage.getItem("coinHistory")) || [];
 
     history.push({
@@ -28,5 +22,5 @@ function mycoin(quizId, quizName){
 
     localStorage.setItem("coinHistory", JSON.stringify(history));
 
-    console.log("10 coins added");
+    console.log("10 coins added for quiz:", quizName);
 }
