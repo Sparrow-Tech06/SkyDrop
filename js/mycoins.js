@@ -1,28 +1,53 @@
 // js/mycoins.js
 
-// get current coins
-function getCoins() {
-    return parseInt(localStorage.getItem("coins")) || 0;
-}
-
-// update coins in storage
-function setCoins(value) {
-    localStorage.setItem("coins", value);
-}
-
-// callback function (called after quiz ends)
 function mycoin(quizTitle) {
 
-    let currentCoins = getCoins();
+    const request = indexedDB.open("QuizWallet", 1);
 
-    // add 10 coins
-    let newCoins = currentCoins + 10;
+    request.onsuccess = function (e) {
 
-    setCoins(newCoins);
+        const db = e.target.result;
 
-    console.log(`Quiz "${quizTitle}" completed. +10 coins added.`);
-    console.log(`Total Coins: ${newCoins}`);
+        const tx = db.transaction(["wallet", "history"], "readwrite");
 
-    // optional: show alert or toast
-    alert("🎉 You earned 10 coins!");
+        const walletStore = tx.objectStore("wallet");
+        const historyStore = tx.objectStore("history");
+
+        const getUser = walletStore.get("user");
+
+        getUser.onsuccess = function () {
+
+            let currentCoins = 0;
+
+            if (getUser.result) {
+                currentCoins = getUser.result.coins;
+            }
+
+            let newCoins = currentCoins + 10;
+
+            // update wallet
+            walletStore.put({
+                id: "user",
+                coins: newCoins
+            });
+
+            // add history entry
+            historyStore.add({
+                game: quizTitle,
+                coins: 10,
+                date: new Date().toLocaleString()
+            });
+
+            console.log("Coins Added:", newCoins);
+
+            alert("🎉 10 Coins Added to Wallet!");
+
+        };
+
+    };
+
+    request.onerror = function () {
+        console.error("DB Error while adding coins");
+    };
+
 }
