@@ -6,16 +6,34 @@ request.onupgradeneeded=function(e){
 
 db=e.target.result;
 
+if(!db.objectStoreNames.contains("wallet")){
 db.createObjectStore("wallet",{keyPath:"id"});
+}
+
+if(!db.objectStoreNames.contains("history")){
 db.createObjectStore("history",{autoIncrement:true});
+}
 
 };
 
 request.onsuccess=function(e){
 db=e.target.result;
+console.log("DB Ready");
 };
 
+request.onerror=function(e){
+console.error("DB Error",e);
+};
+
+
+/* ===================== ADD COINS ===================== */
+
 function mycoin(gameName){
+
+if(!db){
+setTimeout(()=>mycoin(gameName),200);
+return;
+}
 
 const tx=db.transaction(["wallet","history"],"readwrite");
 
@@ -26,17 +44,13 @@ const get=wallet.get("user");
 
 get.onsuccess=function(){
 
-let coins=0;
+let coins = get.result ? get.result.coins : 0;
 
-if(get.result){
-coins=get.result.coins;
-}
-
-coins+=10;
+coins += 10;
 
 wallet.put({id:"user",coins:coins});
 
-/* history save */
+/* history */
 
 history.add({
 game:gameName,
@@ -44,17 +58,71 @@ coins:10,
 date:new Date().toLocaleString()
 });
 
- alert("10 Coins Added");
+};
 
+/* debug */
 
-/* 👉 Android WebView notify */
+tx.oncomplete=function(){
+console.log("Coins Added Successfully");
+};
+
+tx.onerror=function(e){
+console.error("Transaction Error",e);
+};
+
+/* Android callback */
 
 if (window.Android && typeof Android.onCoinAdded === "function") {
+Android.onCoinAdded();
+}
 
-Android.onCoinAdded();   // only notify
+}
 
-// Android.onCoinAdded(10);  // notify + coin amount
 
+/* ===================== GET COINS ===================== */
+
+function getCoins(callback){
+
+if(!db){
+setTimeout(()=>getCoins(callback),200);
+return;
+}
+
+const tx=db.transaction("wallet","readonly");
+const store=tx.objectStore("wallet");
+
+const get=store.get("user");
+
+get.onsuccess=function(){
+callback(get.result ? get.result.coins : 0);
+};
+
+}
+
+
+/* ===================== GET HISTORY ===================== */
+
+function getHistory(callback){
+
+if(!db){
+setTimeout(()=>getHistory(callback),200);
+return;
+}
+
+const tx=db.transaction("history","readonly");
+const store=tx.objectStore("history");
+
+const data=[];
+
+store.openCursor().onsuccess=function(e){
+
+const cursor=e.target.result;
+
+if(cursor){
+data.push(cursor.value);
+cursor.continue();
+}else{
+callback(data.reverse());
 }
 
 };
