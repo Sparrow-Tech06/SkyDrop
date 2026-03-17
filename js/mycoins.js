@@ -1,69 +1,28 @@
-let db;
+// js/mycoins.js
 
-const request = indexedDB.open("QuizWallet", 1);
+// get current coins
+function getCoins() {
+    return parseInt(localStorage.getItem("coins")) || 0;
+}
 
-/* CREATE DB STRUCTURE */
+// update coins in storage
+function setCoins(value) {
+    localStorage.setItem("coins", value);
+}
 
-request.onupgradeneeded = function (e) {
-    db = e.target.result;
+// callback function (called after quiz ends)
+function mycoin(quizTitle) {
 
-    if (!db.objectStoreNames.contains("wallet")) {
-        db.createObjectStore("wallet", { keyPath: "id" });
-    }
+    let currentCoins = getCoins();
 
-    if (!db.objectStoreNames.contains("history")) {
-        db.createObjectStore("history", { autoIncrement: true });
-    }
-};
+    // add 10 coins
+    let newCoins = currentCoins + 10;
 
-/* DB READY */
+    setCoins(newCoins);
 
-request.onsuccess = function (e) {
-    db = e.target.result;
-};
+    console.log(`Quiz "${quizTitle}" completed. +10 coins added.`);
+    console.log(`Total Coins: ${newCoins}`);
 
-request.onerror = function () {
-    console.error("DB Error");
-};
-
-
-/* 🔥 MAIN CALLBACK FUNCTION */
-
-function mycoin(gameName) {
-
-    if (!db) {
-        alert("Database not ready");
-        return;
-    }
-
-    const tx = db.transaction(["wallet", "history"], "readwrite");
-
-    const walletStore = tx.objectStore("wallet");
-    const historyStore = tx.objectStore("history");
-
-    const getReq = walletStore.get("user");
-
-    getReq.onsuccess = function () {
-
-        let data = getReq.result;
-
-        if (!data) {
-            data = { id: "user", coins: 0 };
-        }
-
-        // ✅ ADD COINS
-        data.coins += 10;
-
-        walletStore.put(data);
-
-        // ✅ ADD HISTORY ENTRY
-        historyStore.add({
-            game: gameName,
-            coins: 10,
-            date: new Date().toLocaleString()
-        });
-
-        console.log("✅ 10 coins added + history stored");
-    };
-
+    // optional: show alert or toast
+    alert("🎉 You earned 10 coins!");
 }
