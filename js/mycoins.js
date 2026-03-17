@@ -44,7 +44,7 @@ coins:10,
 date:new Date().toLocaleString()
 });
 
-// alert("10 Coins Added");
+ alert("10 Coins Added");
 
 
 /* 👉 Android WebView notify */
