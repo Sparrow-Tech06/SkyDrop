@@ -63,7 +63,7 @@
 <script>
  function loadCoins(){
     let coins = parseInt(localStorage.getItem("coins")) || 0;
-    document.getElementById("coinBtn").innerText = "coins;  /* innerText = "Coins: " + coins;  */
+    document.getElementById("coinBtn").innerText = coins;  /* innerText = "Coins: " + coins;  */
 }
 
 loadCoins();
