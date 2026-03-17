@@ -1,53 +1,32 @@
 // js/mycoins.js
 
-function mycoin(quizTitle) {
+function mycoin(quizId, quizName){
 
-    const request = indexedDB.open("QuizWallet", 1);
+    let rewardKey = "reward_" + quizId;
 
-    request.onsuccess = function (e) {
+    // prevent duplicate reward
+    if(localStorage.getItem(rewardKey)){
+        console.log("Already rewarded for this quiz");
+        return;
+    }
 
-        const db = e.target.result;
+    let coins = parseInt(localStorage.getItem("coins")) || 0;
 
-        const tx = db.transaction(["wallet", "history"], "readwrite");
+    coins += 10;
 
-        const walletStore = tx.objectStore("wallet");
-        const historyStore = tx.objectStore("history");
+    localStorage.setItem("coins", coins);
+    localStorage.setItem(rewardKey, true);
 
-        const getUser = walletStore.get("user");
+    // history save
+    let history = JSON.parse(localStorage.getItem("coinHistory")) || [];
 
-        getUser.onsuccess = function () {
+    history.push({
+        quiz: quizName,
+        reward: 10,
+        date: new Date().toLocaleString()
+    });
 
-            let currentCoins = 0;
+    localStorage.setItem("coinHistory", JSON.stringify(history));
 
-            if (getUser.result) {
-                currentCoins = getUser.result.coins;
-            }
-
-            let newCoins = currentCoins + 10;
-
-            // update wallet
-            walletStore.put({
-                id: "user",
-                coins: newCoins
-            });
-
-            // add history entry
-            historyStore.add({
-                game: quizTitle,
-                coins: 10,
-                date: new Date().toLocaleString()
-            });
-
-            console.log("Coins Added:", newCoins);
-
-            alert("🎉 10 Coins Added to Wallet!");
-
-        };
-
-    };
-
-    request.onerror = function () {
-        console.error("DB Error while adding coins");
-    };
-
+    console.log("10 coins added");
 }
