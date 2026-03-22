@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+/* THEME */
+:root{
+  --bg:#1c1c1e;
+  --card:#2c2c2e;
+  --accent:#ff6a00;
+  --text:#ffffff;
+  --soft:#3a3a3c;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.btn-warning{
+  background:var(--accent);
+  border:none;
+  color:#fff;
+}
+
+/* QUESTION BOX */
+#questionBox{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  border:2px solid var(--accent);
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+  animation:fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1;}
+}
+
+/* OPTIONS */
+.form-check{
+  background:var(--soft);
+  padding:12px;
+  border-radius:10px;
+  margin-top:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.form-check:hover{
+  background:var(--accent);
+}
+
+.form-check-input{
+  display:none;
+}
+
+.form-check:nth-child(2)::before{content:"A. "; font-weight:bold;}
+.form-check:nth-child(3)::before{content:"B. "; font-weight:bold;}
+.form-check:nth-child(4)::before{content:"C. "; font-weight:bold;}
+.form-check:nth-child(5)::before{content:"D. "; font-weight:bold;}
+
+.form-check:has(input:checked){
+  background:var(--accent);
+  box-shadow:0 0 10px rgba(255,106,0,0.6);
+}
+
+/* BUTTON */
+.btn-primary{
+  background:var(--accent);
+  border:none;
+  width:100%;
+  border-radius:10px;
+  padding:12px;
+}
+
+/* RESULT PAGE */
+#resultPage{
+  display:none;
+  text-align:center;
+  padding-top:40px;
+  animation:fadeIn 0.5s ease;
+}
+
+.result-card{
+  background:var(--card);
+  padding:25px;
+  border-radius:16px;
+  border:2px solid var(--accent);
+  box-shadow:0 0 25px rgba(255,106,0,0.5);
+}
+
+.score-big{
+  font-size:40px;
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container py-4" id="quizPage">
+
+  <div class="d-flex justify-content-between mb-4 align-items-center">
+    <h5 id="quizTitle"></h5>
+    <a href="wallet.html" class="btn btn-warning btn-sm">💰 My Coins</a>
+  </div>
+
+  <div id="questionBox" class="mb-4"></div>
+
+  <button class="btn btn-primary" onclick="nextQuestion()">Next Question</button>
+
+</div>
+
+<!-- RESULT PAGE -->
+<div class="container" id="resultPage">
+
+  <div class="result-card">
+
+    <h3 id="resultMsg"></h3>
+
+    <div class="score-big mt-2" id="finalScore"></div>
+
+    <p class="mt-2">💰 Coins Earned: <span id="finalCoins"></span></p>
+
+    <div class="mt-3">
+      <button class="btn btn-primary" onclick="restart()">Play Again</button>
+      <button class="btn btn-outline-light" onclick="goHome()">Home</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- scripts -->
+<script src="js/mycoins.js"></script>
+<script src="js/result-popup.js"></script>
+
+<script>
+const params = new URLSearchParams(location.search);
+const quizId = params.get("quiz");
+
+let quizTitle = "";
+let questions = [];
+let current = 0;
+let score = 0;
+
+// load quiz
+fetch("data/quiz-data.json")
+.then(res => res.json())
+.then(data => {
+
+  const quiz = data.quizzes.find(q => q.id === quizId);
+
+  if(!quiz){
+    alert("Invalid Quiz ID");
+    window.location.href = "index.html";
+    return;
+  }
+
+  if(!quiz.questions || quiz.questions.length === 0){
+    alert("No questions available");
+    return;
+  }
+
+  quizTitle = quiz.title;
+
+  document.getElementById("quizTitle").innerHTML = `
+    <img src="${quiz.icon}" width="30" class="me-2">
+    ${quiz.title}
+  `;
+
+  questions = quiz.questions;
+  loadQuestion();
+});
+
+// load question
+function loadQuestion(){
+
+  const q = questions[current];
+
+  let html = `<h5>${q.question}</h5>`;
+
+  q.options.forEach((opt,i)=>{
+    html += `
+      <div class="form-check">
+        <input class="form-check-input"
+        type="radio"
+        name="option"
+        value="${i}">
+        <label class="form-check-label">${opt}</label>
+      </div>
+    `;
+  });
+
+  document.getElementById("questionBox").innerHTML = html;
+}
+
+// next question
+function nextQuestion(){
+
+  const selected = document.querySelector("input[name='option']:checked");
+
+  if(!selected){
+    alert("Select option");
+    return;
+  }
+
+  if(parseInt(selected.value) === questions[current].answer){
+    score++;
+  }
+
+  current++;
+
+  if(current < questions.length){
+    loadQuestion();
+  } else {
+
+    showResultPage();
+
+    mycoin(quizId, quizTitle);
+  }
+}
+
+// RESULT PAGE
+function showResultPage(){
+
+  document.getElementById("quizPage").style.display = "none";
+  document.getElementById("resultPage").style.display = "block";
+
+  document.getElementById("finalScore").innerText =
+    `${score} / ${questions.length}`;
+
+  const coins = score * 10;
+  document.getElementById("finalCoins").innerText = coins;
+
+  // performance message
+  let msg = "";
+  if(score === questions.length){
+    msg = "🔥 Pro Player!";
+  } else if(score >= questions.length/2){
+    msg = "😎 Good Try!";
+  } else {
+    msg = "😅 Try Again!";
+  }
+
+  document.getElementById("resultMsg").innerText = msg;
+}
+
+// restart
+function restart(){
+  location.reload();
+}
+
+</script>
+
+</body>
+</html>
