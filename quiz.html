@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Quiz App</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+:root{
+  --bg:#1c1c1e;
+  --card:#2c2c2e;
+  --accent:#ff6a00;
+  --text:#fff;
+  --soft:#3a3a3c;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Segoe UI', sans-serif;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+}
+
+.card-box{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  border:2px solid var(--accent);
+}
+
+.option{
+  background:var(--soft);
+  padding:14px;
+  border-radius:10px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.option.correct{background:#28a745;}
+.option.wrong{background:#dc3545;}
+.option.disabled{pointer-events:none;opacity:0.7;}
+
+.progress{height:6px;}
+.progress-bar{background:var(--accent);}
+</style>
+
+</head>
+
+<body>
+
+<div id="app" class="container py-4">
+
+  <div class="header mb-3">
+    <h5>{{ quizTitle }}</h5>
+    <a href="wallet.html" class="btn btn-warning btn-sm">💰 Coins</a>
+  </div>
+
+  <div class="progress mb-3">
+    <div class="progress-bar" :style="{width: progress + '%'}"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div v-if="!finished">
+
+    <div class="card-box">
+      <h5>{{ currentQ.question }}</h5>
+
+      <div v-for="(opt,i) in currentQ.options"
+           :key="i"
+           class="option"
+           :class="getOptionClass(i)"
+           @click="select(i)">
+        <b>{{ labels[i] }}</b> {{ opt }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESULT -->
+  <div v-if="finished" id="resultPage"></div>
+
+</div>
+
+<script src="js/mycoins.js"></script>
+<script src="js/resultPage.js"></script>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+
+data(){
+  return{
+    quizId:null,
+    quizTitle:"",
+    questions:[],
+    current:0,
+    score:0,
+    selected:null,
+    finished:false,
+    answered:false,
+    labels:["A.","B.","C.","D."]
+  }
+},
+
+computed:{
+  currentQ(){ return this.questions[this.current] || {}; },
+  progress(){ return (this.current / this.questions.length) * 100; },
+  message(){
+    if(this.score === this.questions.length) return "🔥 Pro Player!";
+    if(this.score >= this.questions.length/2) return "😎 Good Try!";
+    return "😅 Try Again!";
+  }
+},
+
+methods:{
+
+  getOptionClass(i){
+    if(!this.answered) return {};
+    if(i === this.currentQ.answer) return "correct";
+    if(i === this.selected) return "wrong";
+    return "disabled";
+  },
+
+  select(i){
+    if(this.answered) return;
+
+    this.selected = i;
+    this.answered = true;
+
+    if(i === this.currentQ.answer){
+      this.score++;
+    }
+
+    setTimeout(()=>this.next(),600);
+  },
+
+  next(){
+    this.selected = null;
+    this.answered = false;
+    this.current++;
+
+    if(this.current >= this.questions.length){
+
+      this.finished = true;
+
+      const accuracy = (this.score / this.questions.length) * 100;
+
+      // ✅ Reward Logic
+      if(accuracy >= 50){
+        if(typeof mycoin === "function"){
+          mycoin(this.quizId, this.quizTitle);
+        }
+      }
+
+      setTimeout(()=>{
+        ResultPage.show({
+          score:this.score,
+          total:this.questions.length,
+          message:this.message,
+          accuracy:accuracy
+        });
+      },100);
+    }
+  }
+
+},
+
+mounted(){
+  const params = new URLSearchParams(location.search);
+  this.quizId = params.get("quiz");
+
+  fetch("data/quiz-data.json")
+  .then(res=>res.json())
+  .then(data=>{
+    const quiz = data.quizzes.find(q=>q.id===this.quizId);
+    if(!quiz){ alert("Invalid Quiz"); return; }
+
+    this.quizTitle = quiz.title;
+    this.questions = quiz.questions;
+  });
+}
+
+}).mount("#app");
+</script>
+
+</body>
+</html>
