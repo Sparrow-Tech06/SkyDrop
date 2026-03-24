@@ -1,3 +1,8 @@
+:root {
+    --backbtnBg: #eaeaea ;
+    --backbtnclr: #000 ;
+
+}
 /* ---------------- Universal ---------------- */
  * {
     margin: 0 ;
