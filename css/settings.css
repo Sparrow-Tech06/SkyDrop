@@ -1,7 +1,13 @@
 :root {
     --backbtnBg: #eaeaea ;
     --backbtnclr: #000 ;
-
+}
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark){
+:root{
+    --backbtnBg: #000 ;
+    --backbtnclr: #fff ;
+  }
 }
 /* ---------------- Universal ---------------- */
  * {
@@ -39,12 +45,16 @@ transition:box-shadow .25s ease;
   border-bottom: 1px solid #eee ;
 }
 .back-btn{
-border:none;
-background:#e3e3e3;
-width:38px;
-height:38px;
-border-radius:50%;
-font-size:18px;
+  width:36px;
+  height:36px;
+  background: var(--backbtnBg);
+  color: var(--backbtnclr);
+  border: none;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
 }
 .topbar img{
 width:34px;
