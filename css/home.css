@@ -21,32 +21,16 @@
 }
 /* ---------------- Universal ---------------- */
  * {
-    margin: 0 ;
-    padding: 0 ;
-    box-sizing: border-box ;
-    user-select: none ;
+    margin: 0 ; padding: 0 ; box-sizing: border-box ; user-select: none ;
   }
 /* ---------------- BODY ---------------- */
 
 body{
-background:var(--bg);
+background:var(--bg); color:var(--text-dark);
 font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-color:var(--text-dark);
 }
 
 /* ---------------- HEADER ---------------- */
-
-header{
-position:sticky;
-top:0;
-z-index:1000;
-background:var(--bg);
-border-bottom:1px solid var(--border);
-padding:10px 16px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
 
 .brand{
 font-weight:650;
