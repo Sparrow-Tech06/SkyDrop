@@ -2,11 +2,6 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
-
---bg:#ffffff;
---border:#eeeeee;
---icon-bg:#fff ;
---text-dark:#222;
 --brand:#000 ; /* 1e88ff; */
 
 --wallet-color:#ffb300;
