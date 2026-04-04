@@ -14,3 +14,8 @@
     }
 }
 /*****************************************************/
+header{
+  position:sticky; top:0; z-index:1000; background:var(--bg);
+  border-bottom:1px solid var(--border); padding:10px 16px;
+  display:flex; align-items:center; justify-content:space-between;
+  }
