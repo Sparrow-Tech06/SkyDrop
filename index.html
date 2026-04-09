@@ -21,22 +21,24 @@
 </head>
 <body>
 
-<header class="header">
+<header class="d-flex justify-content-between align-items-center px-3 py-2 bg-white shadow-sm">
 
-  <h1 class="brand">SkyDrop</h1>
+  <!-- Left: Brand -->
+  <h1 class="brand m-0 fs-5 fw-semibold">SkyDrop</h1>
 
-  <nav class="header-icons">
-    
-    <a href="coins/wallet.html" class="icon-btn coin-box" aria-label="Wallet">
-      <i class="bi bi-coin"></i> 
-      <span id="coinBtn">0</span>
+  <!-- Right: Icons -->
+  <nav class="d-flex align-items-center gap-3">
+
+    <a href="coins/wallet.html" class="d-flex align-items-center text-dark text-decoration-none bg-light px-2 py-1 rounded-pill">
+      <i class="bi bi-coin"></i>
+      <span id="coinBtn" class="ms-1">0</span>
     </a>
 
-    <a href="notifications/notifications.html" class="icon-btn" aria-label="Notifications">
+    <a href="notifications/notifications.html" class="text-dark fs-5">
       <i class="bi bi-chat-right-dots"></i>
     </a>
 
-    <a href="pages/settings.html" class="icon-btn" aria-label="Settings">
+    <a href="pages/settings.html" class="text-dark fs-5">
       <i class="bi bi-gear"></i>
     </a>
 
