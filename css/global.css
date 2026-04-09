@@ -57,7 +57,6 @@ header {
   height: 58px ;
   max-height: 58px ;
   animation: none !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 .back-btn{
   width:38px;
