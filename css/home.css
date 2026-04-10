@@ -2,9 +2,10 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
---wallet-color:#ffb300;
+--wallet-color:linear-gradient(135deg, #fff7ed, #ffedd5);
 --chat-color:#00bcd4;
 --settings-color:#6c757d;
+--icon-btn: #f1f5f9 ;
     
 /* darker pastel colors */
 
@@ -37,7 +38,7 @@ color:var(--brand);
 
 /* Coin Button (Highlight) */
 .coin-btn {
-  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  background: var(--wallet-color);
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 14px;
@@ -52,7 +53,7 @@ color:var(--brand);
 .icon-circle {
   width: 38px;
   height: 38px;
-  background: #f1f5f9;
+  background: var(--icon-btn);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -62,54 +63,6 @@ color:var(--brand);
   text-decoration: none;
   transition: all 0.25s ease;
 }
-
-/* Hover Effect */
-.icon-circle:hover {
-  background: #e2e8f0;
-  transform: scale(0.98);
-}
-
-/* Notification Dot */
-.notif-dot {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 8px;
-  height: 8px;
-  background: #ef4444;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-/* ---------------- HEADER ICONS ---------------- */
-
-.header-icons{
-display:flex;
-gap:10px;
-}
-
-.icon-btn{
-width:45px;
-height:36px;
-border:1px solid var(--border); 
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:var(--icon-bg);
-text-decoration:none;
-font-size: 18px;
-transition:.25s;
-}
-.icon-btn:active { transform: scale(0.96); }
-
-/* 1st icon (Wallet) */
-.header-icons .icon-btn:nth-child(1) i { color:var(--wallet-color); }
-/* 2nd icon (Chat) */
-.header-icons .icon-btn:nth-child(2) i { color:var(--chat-color); }
-/* 3rd icon (Settings) */
-.header-icons .icon-btn:nth-child(3) i{ color:var(--settings-color); }
-#coinBalance { font-size: 12px ; }
 
 /* ---------------- QUIZ CARD ---------------- */
 
