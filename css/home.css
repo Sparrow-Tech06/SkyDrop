@@ -2,9 +2,6 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
---wallet-color:linear-gradient(135deg, #fff7ed, #ffedd5);
---chat-color:#00bcd4;
---settings-color:#6c757d;
 --icon-btn: #f1f5f9 ;
     
 /* darker pastel colors */
@@ -16,8 +13,8 @@
 --card5:#ead6ff;
 --card6:#d6f6ff;
 
---sky: #91D06C;
---drop: #FF9760 ;
+/* --sky: #91D06C;
+--drop: #FF9760 ;  */
 
 }
 
