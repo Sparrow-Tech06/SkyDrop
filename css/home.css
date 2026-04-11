@@ -2,9 +2,6 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
---icon-btn: #f1f5f9 ;
-    
-/* darker pastel colors */
 
 --card1:#ffd4d4;
 --card2:#d6e2ff;
@@ -35,7 +32,7 @@ color:var(--brand);
 
 /* Coin Button (Highlight) */
 .coin-btn {
-  background: var(--wallet-color);
+  background: var(--icon-bg);
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 14px;
@@ -50,7 +47,7 @@ color:var(--brand);
 .icon-circle {
   width: 38px;
   height: 38px;
-  background: var(--icon-btn);
+  background: var(--icon-bg);
   border-radius: 50%;
   display: flex;
   align-items: center;
