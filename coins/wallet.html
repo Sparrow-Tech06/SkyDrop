@@ -19,7 +19,7 @@
   --success:#16a34a;
   --text:#111827;
   --muted:#6b7280;
-} /* ✅ FIXED */
+} /* ✅ FIXED missing bracket */
 
 /******************* Right coin ***************/
 .header-coins{
@@ -54,7 +54,7 @@ section{
 .history-item{
   display:flex;
   align-items:center;
-  justify-content:space-between; /* ✅ right align support */
+  justify-content:space-between; /* ✅ RIGHT ALIGN FIX */
   gap:12px;
   padding:12px;
   border-radius:12px;
@@ -85,12 +85,10 @@ section{
   flex:1;
 }
 
-/* Amount RIGHT SIDE */
 .amount{
   font-weight:600;
   color:var(--success);
-  white-space:nowrap;
-  font-size:14px;
+  white-space:nowrap; /* ✅ prevent break */
 }
 
 .date{
@@ -146,7 +144,7 @@ let history = JSON.parse(localStorage.getItem("coinHistory")) || [];
 /* Set Coins */
 document.getElementById("coinBalance").innerText = coins;
 
-/* ✅ FIX: safe check */
+/* ✅ SAFE CHECK (FIXED CRASH) */
 let top = document.getElementById("coinBalanceTop");
 if(top){
   top.innerText = coins;
@@ -165,12 +163,13 @@ if(history.length === 0){
   `;
 }else{
 
-  /* ✅ SAFE reverse */
+  /* ✅ SAFE REVERSE (no mutation) */
   history.slice().reverse().forEach((h)=>{
 
     let item = document.createElement("div");
     item.className = "history-item";
 
+    /* ✅ UPDATED UI (amount RIGHT SIDE) */
     item.innerHTML = `
       <div class="icon-box">
         <i class="bi bi-coin"></i>
@@ -181,14 +180,14 @@ if(history.length === 0){
         <div class="date">${h.date}</div>
       </div>
 
-      <div class="amount">+${h.reward} coins</div>
+      <div class="amount">+${h.reward}</div>
     `;
 
     list.appendChild(item);
   });
 }
 
-/* Small history message */
+/* Subtle feature */
 if(history.length > 0 && history.length < 3){
   let msg = document.createElement("div");
   msg.className = "empty";
