@@ -28,6 +28,7 @@ color:var(--brand);
   display: flex;
   align-items: center;
   gap: 15px;
+  color: var(--text) ;
 }
 
 /* Coin Button (Highlight) */
@@ -37,7 +38,6 @@ color:var(--brand);
   border-radius: 50px;
   font-size: 14px;
   font-weight: 600;
-  color: #ea580c;
   gap: 6px;
   text-decoration: none;
   box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
@@ -52,7 +52,6 @@ color:var(--brand);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #334155;
   font-size: 16px;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -80,7 +79,7 @@ height:60px;
 object-fit:contain;
 margin:auto;
 margin-bottom:8px;
-background:#ffffffcc;
+background:#ffffff;
 padding:10px;
 border-radius:10px;
 }
