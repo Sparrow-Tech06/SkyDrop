@@ -5,12 +5,12 @@
   --bg:#ffffff;
   --header: #F08D39 ;
   --border:#eeeeee;
-  --icon-bg:#fff ;
+  --icon-bg:rgba(255,255,255,0.4) ;
   --text: #212529 ;
 
   --brand: #F08D39;
 
-  --backbtnBg: /* #f1f5f9 */ #F08D39;
+  --backbtnBg: /* #f1f5f9  #F08D39 */ rgba(255,255,255,0.4) ;
   --backbtnclr: #000 ;
 }
 
