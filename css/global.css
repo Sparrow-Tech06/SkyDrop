@@ -41,7 +41,7 @@
 body {
   font-family: var(--font-main);
   color: var(--text);
-  animation: pageOpen 0.4s ease-out;
+  animation: scaleFade 0.5s ease forwards
   background: var(--body-bg) ;
 }
 a { text-decoration:none; color:#fff; }
@@ -76,5 +76,9 @@ button, a {
   touch-action: manipulation;
 }
 
+/********** Keyframes *********"/
 
-
+@keyframes scaleFade {
+  0% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
