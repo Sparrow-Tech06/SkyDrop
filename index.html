@@ -72,48 +72,51 @@
   const COIN_KEY = "coins";
   const el = document.getElementById("coinBtn");
 
+  let rafId = null;
+
   // Safe getter
   function getCoins() {
     const val = parseInt(localStorage.getItem(COIN_KEY), 10);
     return isNaN(val) ? 0 : val;
   }
 
-  // Clamp (negative avoid)
+  // Prevent invalid values
   function sanitizeCoins(value) {
     return Math.max(0, parseInt(value, 10) || 0);
   }
 
-  // Format (future-proof for big numbers)
+  // Format numbers (1,000 style)
   function formatCoins(value) {
     return value.toLocaleString("en-IN");
   }
-
-  // Animation (optimized with cancel support)
-  let rafId = null;
 
   function animateCoins(targetValue) {
     if (!el) return;
 
     targetValue = sanitizeCoins(targetValue);
 
-    // cancel previous animation (important)
+    // cancel previous animation
     if (rafId) cancelAnimationFrame(rafId);
 
     let startValue = parseInt(el.textContent.replace(/,/g, ""), 10) || 0;
 
-    // अगर same value है → no animation
+    // no animation if same
     if (startValue === targetValue) {
       el.textContent = formatCoins(targetValue);
       return;
     }
 
-    const duration = 700;
+    const diff = Math.abs(targetValue - startValue);
+
+    // 🔥 Dynamic duration (optimized)
+    const duration = Math.min(1200, 300 + Math.sqrt(diff) * 50);
+
     const startTime = performance.now();
 
     function update(currentTime) {
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
-      // easeOutCubic
+      // smooth ease-out
       const ease = 1 - Math.pow(1 - progress, 3);
 
       const value = Math.floor(startValue + (targetValue - startValue) * ease);
@@ -129,12 +132,11 @@
     rafId = requestAnimationFrame(update);
   }
 
-  // Load coins (same API as yours)
   function loadCoins() {
     animateCoins(getCoins());
   }
 
-  // Public update function (reward system ke liye)
+  // Public function (reward system)
   window.updateCoins = function (newCoins) {
     const safeValue = sanitizeCoins(newCoins);
     localStorage.setItem(COIN_KEY, safeValue);
@@ -147,5 +149,6 @@
 
 })();
 </script>
+  
 </body>
   </html>
