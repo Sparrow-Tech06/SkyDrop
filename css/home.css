@@ -28,12 +28,13 @@ color:var(--brand);
   display: flex;
   align-items: center;
   gap: 15px;
-  color: var(--text) ;
+  color: #fff ;
 }
 
 /* Coin Button (Highlight) */
 .coin-btn {
   background: var(--icon-bg);
+  color: #fff ;
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 14px;
