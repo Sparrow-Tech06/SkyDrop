@@ -1,62 +1,21 @@
 :root {
-    --backbtnBg: #eaeaea ;
-    --backbtnclr: #000 ;
+    
 }
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark){
 :root{
-    --backbtnBg: #000 ;
-    --backbtnclr: #fff ;
+    
   }
 }
-/* ---------------- Universal ---------------- */
- * {
-    margin: 0 ;
-    padding: 0 ;
-    box-sizing: border-box ;
-    user-select: none ;
-  }
-body{
-background:#fff;
-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
+/* ---------------- Container ---------------- */
+ 
 .app-container{
 max-width:660px;
 margin:auto;
 }
 
 /* ---------- Sticky Topbar ---------- */
-
-.topbar{
-position:sticky;
-top:0;
-display:flex;
-align-items:center;
-gap:12px;
-padding:10px 16px;
-background:#fff;
-z-index:20;
-transition:box-shadow .25s ease;
-}
-
-.topbar.active{
-/* box-shadow:0 2px 10px rgba(0,0,0,0.08);  */
-  border-bottom: 1px solid #eee ;
-}
-.back-btn{
-  width:36px;
-  height:36px;
-  background: var(--backbtnBg);
-  color: var(--backbtnclr);
-  border: none;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-}
-.topbar img{
+img{
 width:34px;
 height:34px;
 border-radius:50%;
