@@ -1,5 +1,6 @@
 :root {
-    
+    --icon-box: #FFE0C2 ;
+    --icon-color: #F08D39 ;
 }
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark){
@@ -103,7 +104,8 @@ gap:14px;
 width:42px;
 height:42px;
 border-radius:50%;
-background:#fafafa ;
+background: var(--icon-box) ;
+color: var(--icon-color) ;
 display:flex;
 align-items:center;
 justify-content:center;
