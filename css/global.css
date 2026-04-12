@@ -1,6 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   /* --font-main: system-ui, -apple-system, Roboto, Arial, sans-serif; */  /*  THIS IS FOR SYSTEM FONTS */
-  --font-main:'Orbitron', sans-serif;
+  --font-main:"Saira", sans-serif;
   
   --bg:#ffffff;
   --header: #F08D39 ;
