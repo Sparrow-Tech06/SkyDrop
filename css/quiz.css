@@ -8,6 +8,9 @@
   --correct-border: #28a745;
   --wrong-bg: #fdeaea ;  
   --wrong-border: #dc3545;
+
+  --result-card: #fff ;
+  
 }
 @media (prefers-color-scheme: dark) {
  :root {
@@ -20,6 +23,8 @@
   --correct-border: #00ff88;
   --wrong-bg: #5a1a1a ;  
   --wrong-border: #ff3b3b;
+
+  --result-card: #2c2c2e ;
  }
 }
 /************************************/
@@ -71,7 +76,7 @@ b {
 /****************** Result Page ***********************/
 
 .result-card{
-        background:#2c2c2e;
+        background: var(--result-card) ;
         padding:25px;
         border-radius:16px;
         border:2px solid #ff6a00;
