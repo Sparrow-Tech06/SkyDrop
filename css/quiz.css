@@ -29,11 +29,11 @@
   background:var(--card);
   padding:20px;
   border-radius:14px;
-  border:2px solid var(--accent);
+  border:1.4px solid var(--accent);
   box-shadow:0 2px 8px rgba(0,0,0,0.04);
 }
 .question {
-  border:1.5px solid var(--accent);
+  border:1px solid var(--accent);
   padding: 35px 20px ;  text-align: center;
   border-radius:14px; margin-bottom: 26px ;
   background:var(--primary-soft);
