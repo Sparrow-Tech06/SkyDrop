@@ -57,14 +57,14 @@ section{
 
 /* Icon */
 .icon-box{
-  width:40px;
-  height:40px;
+  width:34px;
+  height:34px;
   border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
   color:#fff;
-  font-size:16px;
+  font-size:15px;
 }
 
 /* Colors */
