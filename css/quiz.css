@@ -35,7 +35,7 @@
 .question {
   border:1.5px solid var(--accent);
   padding: 35px 20px ;  text-align: center;
-  border-radius:14px;
+  border-radius:14px; margin-bottom: 26px ;
   background:var(--primary-soft);
 }
 
