@@ -81,12 +81,12 @@ b {
         border-radius:16px;
         border:1px solid #ff6a00;
         text-align:center;
-        width:100%;
+        width:100%; box-shadow:0 4px 10px rgba(0,0,0,0.05);
         max-width:400px;
       }
 .trophy {
-   height: ;
-   width: ;
+   height: 120px ;
+   width: 120px ;
    border-radius: 50% ;
 }
       .score{
