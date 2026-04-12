@@ -20,13 +20,13 @@ const ResultPage = {
 
           ${
             rewardEligible
-            ? `<div class="reward success">🎉 Coins Earned!</div>`
-            : `<div class="reward fail">⚠️ Minimum 50% required to earn coins</div>`
+            ? `<div class="reward success"> Coins Earned! </div>`
+            : `<div class="reward fail"> Minimum 50% required to earn coins</div>`
           }
 
           <div class="btns">
-            <button id="playAgain">🔁 Play Again</button>
-            <button id="goBack">🔙 Back</button>
+            <button id="playAgain"> Play Again </button>
+            <button id="goBack"> Home </button>
           </div>
 
         </div>
