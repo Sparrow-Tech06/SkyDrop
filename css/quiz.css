@@ -1,5 +1,9 @@
 :root {
-  
+  --bg:#1c1c1e;
+  --card:#2c2c2e;
+  --accent:#ff6a00;
+  --text:#fff;
+  --soft:#3a3a3c;
 }
 @media (prefers-color-scheme: dark) {
  :root {
