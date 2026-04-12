@@ -16,11 +16,15 @@
 
 <div id="app" class="container py-4">
 
-  <header class="header-section" mb-3">
+  <!-- HEADER -->
+  <header class="header-section mb-3">
+    <button class="back-btn" role="button" aria-label="Go back" onclick="window.history.back();">
+      <i class="bi bi-arrow-left"></i>
+   </button>
     <h5>{{ quizTitle }}</h5>
     <a href="coin/prize.html" class="btn btn-warning btn-sm"> Badges </a>
   </header>
-
+  
   <div class="d-flex justify-content-between mb-1">
     <small>{{ displayIndex }} / {{ questions.length }}</small>
   </div>
