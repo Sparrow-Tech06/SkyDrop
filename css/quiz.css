@@ -1,4 +1,5 @@
 :root {
+  --card: #fff ;
   --primary-soft:#fff2e7;
   --accent:#ff6a00;
   --soft:#3a3a3c;
@@ -23,10 +24,11 @@
   padding:20px;
   border-radius:14px;
   border:2px solid var(--accent);
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
 }
 .question {
-  border:2px solid var(--accent);
-  padding: 25px 20px ;
+  border:1.5px solid var(--accent);
+  padding: 35px 20px ;  text-align: center;
   border-radius:14px;
   background:var(--primary-soft);
 }
