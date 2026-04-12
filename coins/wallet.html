@@ -19,16 +19,23 @@
   --success:#16a34a;
   --text:#111827;
   --muted:#6b7280;
+  --coin-card: #f8f9fa ;
+  --card: #fff ;
 }
 /************* Balance Card *************/
-.balance-card{
-  margin:15px; position:sticky ; top: 60px ;
-  padding:20px;
-  border-radius:16px;
-  background:#fff;
+.balance-wrapper {
+  position:sticky;
+  top:58px;
+  z-index:999;
+  background:var(--coin-card);
+  padding:10px 15px;
   text-align:center;
 }
-
+.balance-card{
+  background:var(--card);
+  border-radius:16px;
+  padding:18px;
+}
 .balance-card h3{
   font-size:28px;
   font-weight:700;
