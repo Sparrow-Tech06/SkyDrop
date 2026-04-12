@@ -12,6 +12,8 @@ const ResultPage = {
 
           <h3>${message}</h3>
 
+          <img src="assets/trophy.gif" class="trophy img-fluid" drawable="false" loading="lazy">
+
           <div class="score">${score} / ${total}</div>
 
           <div class="accuracy">
