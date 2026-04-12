@@ -84,7 +84,11 @@ b {
         width:100%;
         max-width:400px;
       }
-
+.trophy {
+   height: ;
+   width: ;
+   border-radius: 50% ;
+}
       .score{
         font-size:40px;
         font-weight:bold;
