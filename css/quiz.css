@@ -79,7 +79,7 @@ b {
         background: var(--result-card) ;
         padding:25px;
         border-radius:16px;
-        border:2px solid #ff6a00;
+        border:1px solid #ff6a00;
         text-align:center;
         width:100%;
         max-width:400px;
