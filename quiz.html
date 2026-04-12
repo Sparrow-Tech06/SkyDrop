@@ -43,7 +43,7 @@
     <transition name="slide" mode="out-in">
       <div :key="current" class="card-box">
 
-        <h5>{{ currentQ.question }}</h5>
+        <h5 class="question"> {{ currentQ.question }}</h5>
 
         <div v-for="(opt,i) in currentQ.options"
              :key="i"
