@@ -34,7 +34,7 @@
 </section>
 
 <section>
-  <div class="section-title">Transaction History</div>
+  <div class="section-title"> Score Activity </div>
   <div id="historyList"></div>
 </section>
 
@@ -67,8 +67,8 @@ if(history.length === 0){
   list.innerHTML = `
     <div class="empty">
       <i class="bi bi-wallet2"></i>
-      No transactions yet<br>
-      <small>Play quiz to earn coins</small>
+      No activity yet<br>
+      <small> Keep playing to gain points </small>
     </div>
   `;
 }else{
@@ -101,7 +101,7 @@ if(history.length === 0){
 if(history.length > 0 && history.length < 3){
   let msg = document.createElement("div");
   msg.className = "empty";
-  msg.innerHTML = "Keep playing to earn more rewards 🚀";
+  msg.innerHTML = "Keep playing to gain points";
   list.appendChild(msg);
 }
 
