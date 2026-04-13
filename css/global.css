@@ -50,6 +50,10 @@ body {
 }
 a { text-decoration:none; color: var(--text) ; }
 
+#newFeature {
+    display: none;
+}
+
 /*****************************************************/
 /*******************************************/
 header {
