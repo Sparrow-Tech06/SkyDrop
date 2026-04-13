@@ -10,7 +10,8 @@
 --card6:#d6f6ff;
 }
 
-:root {
+@media (prefers-color-scheme: dark) {
+ :root {
   --card1:#3a1f24;
   --card2:#1f2a3a;
   --card3:#1f3a2b;
