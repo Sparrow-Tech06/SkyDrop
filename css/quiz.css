@@ -85,9 +85,10 @@ b {
         max-width:400px;
       }
 .trophy {
-   height: 120px ;
-   width: 120px ;
+   height: 130px ;
+   width: 130px ;
    border-radius: 50% ;
+   background: transparent;
 }
       .score{
         font-size:40px;
