@@ -68,7 +68,15 @@
 <script src="js/home.js" defer> </script>
 <script src="control_center/version-check.js" defer> </script>
   
+<script>
+ function loadCoins(){
+    let coins = parseInt(localStorage.getItem("coins")) || 0;
+    document.getElementById("coinBtn").innerText = coins;  /* innerText = "Coins: " + coins;  */
+}
 
+loadCoins();
+window.addEventListener("focus", loadCoins);
+</script>
   
 </body>
   </html>
