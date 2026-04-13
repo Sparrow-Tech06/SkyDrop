@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // 🔹 Feature version config (manual control)
+    // 🔹 Feature version config
     const FEATURES = {
         newFeature: "2.1"
     };
@@ -12,19 +12,21 @@ document.addEventListener("DOMContentLoaded", function () {
         uiVersion = Android.getUiVersion();
     }
 
-    // 🔹 Normalize version (safe compare)
+    // 🔹 Normalize version
     function normalizeVersion(v) {
         return v.split('.').map(Number).join('.');
     }
 
-    // 🔹 Apply feature visibility (STRICT MATCH ONLY)
-    const el = document.getElementById("newFeature");
+    // 🔹 Get all elements with class
+    const elements = document.querySelectorAll(".newFeature");
 
+    // 🔹 Apply strict match
     if (
-        el &&
         normalizeVersion(uiVersion) === normalizeVersion(FEATURES.newFeature)
     ) {
-        el.style.display = "block";
+        elements.forEach(el => {
+            el.style.display = "block";
+        });
     }
 
 });
