@@ -57,12 +57,12 @@
   cursor:pointer;
   color: #000 ;
 }
-b {
+span {
   width:32px;
   height:32px;
   border-radius:50%;
   background:var(--primary-soft);
-  display: inline-block ;
+  display: flex; justify-content: center; align-items: center;
   margin-right:12px;
   font-weight:700;
 }
