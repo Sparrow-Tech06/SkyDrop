@@ -48,7 +48,7 @@ color:var(--brand);
 
 /* Circular Icon Buttons */
 .icon-circle {
-  width: 38px;
+  width: 38px; color: #000 ;
   height: 38px;
   background: var(--icon-bg);
   border-radius: 50%;
