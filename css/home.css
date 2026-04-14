@@ -68,7 +68,7 @@ color:var(--brand);
    text-align:center;
    cursor:pointer;
    transition:0.15s;
-   border:2px solid transparent;
+   border: 1.6px solid transparent;
 }
 
 .quiz-card:active{
