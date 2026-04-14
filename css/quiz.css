@@ -4,10 +4,10 @@
   --accent:#ff6a00;
   --soft:#fff ;
 
-  --correct-bg: #eaf7ee ;  
-  --correct-border: #28a745;
-  --wrong-bg: #fdeaea ;  
-  --wrong-border: #dc3545;
+  --correct-bg: rgba(16,185,129,0.15) ;  
+  --correct-border: #10B981 !important ;
+  --wrong-bg: rgba(239,68,68,0.15) ;  
+  --wrong-border: #EF4444 !important;
 
   --result-card: #fff ;
   
