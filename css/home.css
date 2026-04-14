@@ -63,11 +63,12 @@ color:var(--brand);
 /* ---------------- QUIZ CARD ---------------- */
 
 .quiz-card{
-border-radius:18px;
-padding: 20px;
-text-align:center;
-cursor:pointer;
-transition:0.15s;
+   border-radius:18px;
+   padding: 20px;
+   text-align:center;
+   cursor:pointer;
+   transition:0.15s;
+   border:2px solid transparent;
 }
 
 .quiz-card:active{
@@ -82,7 +83,7 @@ height:60px;
 object-fit:contain;
 margin:auto;
 margin-bottom:8px;
-background:#ffffff;
+background:rgba(255,255,255,0.6);
 padding:10px;
 border-radius:10px;
 }
