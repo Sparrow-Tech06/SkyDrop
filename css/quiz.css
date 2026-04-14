@@ -55,7 +55,7 @@
   border-radius:10px;
   margin-top:10px;
   cursor:pointer;
-  color: #000 ;
+  color: transparent ;
 }
 span {
   width:32px;
@@ -66,13 +66,13 @@ span {
   justify-content:center;
   align-items:center;
   margin-right:8px;
-  font-weight:700;
+  font-weight:650;
   vertical-align:middle; /* important */
 }
 
 .option-text {
   display:inline;        /* ensure inline flow */ 
-  background: none ;
+  background: none ; font-weight:500;
 }
 .option.correct{ background: var(--correct-bg) !important; border: 1px solid var(--correct-border); color: var(--correct-border) ; }
 .option.wrong{ background: var(--wrong-bg) !important; border: 1px solid var(--wrong-border); color: var(--wrong-border); }
