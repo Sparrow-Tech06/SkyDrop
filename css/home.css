@@ -102,12 +102,12 @@ opacity:.7;
 
 /* ---------------- CARD COLORS ---------------- */
 
-#quizContainer article:nth-child(6n+1) .quiz-card{background:var(--card1)}
-#quizContainer article:nth-child(6n+2) .quiz-card{background:var(--card2)}
-#quizContainer article:nth-child(6n+3) .quiz-card{background:var(--card3)}
-#quizContainer article:nth-child(6n+4) .quiz-card{background:var(--card4)}
-#quizContainer article:nth-child(6n+5) .quiz-card{background:var(--card5)}
-#quizContainer article:nth-child(6n+6) .quiz-card{background:var(--card6)}
+#quizContainer article:nth-child(6n+1) .quiz-card{background:var(--card1); border-color:#f59e0b;}
+#quizContainer article:nth-child(6n+2) .quiz-card{background:var(--card2); border-color:#6366f1;}
+#quizContainer article:nth-child(6n+3) .quiz-card{background:var(--card3); border-color:#06b6d4;}
+#quizContainer article:nth-child(6n+4) .quiz-card{background:var(--card4); border-color:#22c55e;}
+#quizContainer article:nth-child(6n+5) .quiz-card{background:var(--card5); border-color:#ec4899;}
+#quizContainer article:nth-child(6n+6) .quiz-card{background:var(--card6); border-color:#8b5cf6;}
 
 /* ---------------- SKELETON ---------------- */
 
