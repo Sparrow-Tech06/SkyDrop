@@ -9,7 +9,7 @@
   --wrong-bg: rgba(239,68,68,0.15) ;  
   --wrong-border: #EF4444 !important;
 
-  --result-card: #fff ;
+  --result-card: linear-gradient(135deg,#fff7ed,#fef3c7) ;
   
 }
 @media (prefers-color-scheme: dark) {
