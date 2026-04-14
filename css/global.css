@@ -15,6 +15,7 @@
 
   --backbtnBg: /* #f1f5f9  #F08D39  rgba(255,255,255,0.4) */ #FFE0C2 ;
   --backbtnclr: #000 ;
+  --backbtnbdr: #F08D39 ;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +73,7 @@ header {
   height:38px;
   background: var(--backbtnBg);
   color: var(--backbtnclr);
+  border: 2px solid var(--backbtnbdr) ;
   border: none;
   border-radius:10px;
   display:flex;
