@@ -2,12 +2,12 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
---card1:#ffd4d4;
---card2:#d6e2ff;
---card3:#d6ffe0;
---card4:#ffe9c9;
---card5:#ead6ff;
---card6:#d6f6ff;
+--card1:linear-gradient(135deg,#fff7ed,#fef3c7);
+--card2:linear-gradient(135deg,#eff6ff,#e0e7ff);
+--card3:linear-gradient(135deg,#ecfeff,#cffafe);
+--card4:linear-gradient(135deg,#f0fdf4,#dcfce7);
+--card5:linear-gradient(135deg,#fdf2f8,#fce7f3);
+--card6:linear-gradient(135deg,#eef2ff,#e0e7ff);
 }
 
 @media (prefers-color-scheme: dark) {
