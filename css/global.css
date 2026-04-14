@@ -71,7 +71,7 @@ header {
 .back-btn{
   width:38px;
   height:38px;
-  background: var(--backbtnBg);
+  bakground: var(--backbtnBg);
   color: var(--backbtnclr);
   border: 2px solid var(--backbtnbdr) ;
   border: none;
