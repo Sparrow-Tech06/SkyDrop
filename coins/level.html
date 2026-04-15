@@ -5,15 +5,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Level</title>
+<title>Rewards - Level</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-.level-box{
-  padding:20px;
-  text-align:center;
+body{background:#f5f5f5;}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 15px;
+  background:#fff;
+  border-bottom:1px solid #ddd;
 }
+
+.level-container{padding:15px;}
+
 .level-card{
   background:#fff;
   padding:15px;
@@ -26,24 +35,34 @@
 
 <body>
 
-<div class="container mt-3">
+<header>
+<button class="btn btn-light" onclick="history.back()">←</button>
+<div class="fw-bold">Levels</div>
+<div></div>
+</header>
 
-<h4 class="text-center mb-3">Your Level</h4>
+<div class="level-container" id="levelContainer"></div>
 
-<div id="levelContainer"></div>
-
-</div>
-
+<!-- ✅ GLOBAL POPUP -->
 <script src="../js/reward-popup.js"></script>
 
 <script>
 
+// ===== COINS =====
 let coin = parseInt(localStorage.getItem("coins")) || 0;
 
-// ✅ Track unlocked levels
-let unlockedLevels = JSON.parse(localStorage.getItem("unlockedLevels")) || [];
+// ===== STORAGE =====
+function getStorage(key){
+  try{return JSON.parse(localStorage.getItem(key)) || [];}
+  catch{return [];}
+}
+function setStorage(key,val){
+  localStorage.setItem(key, JSON.stringify(val));
+}
 
-// ✅ LEVEL DATA (EASILY SCALABLE)
+let unlockedLevels = getStorage("unlockedLevels");
+
+// ===== LEVEL DATA (EDIT HERE) =====
 const levels = [
 {level:1, required:0, name:"Beginner"},
 {level:2, required:100, name:"Rookie"},
@@ -54,29 +73,40 @@ const levels = [
 {level:7, required:2500, name:"Legend"}
 ];
 
+// ===== RENDER =====
 function generateLevels(){
 
 const container = document.getElementById("levelContainer");
 container.innerHTML = "";
 
-levels.forEach(lvl=>{
+levels.forEach((lvl,i)=>{
 
 const unlocked = coin >= lvl.required;
 
-// ✅ Popup trigger
-if(unlocked && !unlockedLevels.includes(lvl.level)){
-  unlockedLevels.push(lvl.level);
-  localStorage.setItem("unlockedLevels", JSON.stringify(unlockedLevels));
+// ✅ PROGRESS FIX
+let percent = 100;
+let next = levels[i+1];
 
-  window.onRewardUnlocked({
-    type:"level",
-    title:`Level ${lvl.level}`,
-    subtitle:`${lvl.name} Unlocked 🔥`,
-    icon:"../assets/levels/level.png"
-  });
+if(next){
+  let range = next.required - lvl.required;
+  let progress = coin - lvl.required;
+  percent = Math.min((progress / range) * 100, 100);
 }
 
-const percent = Math.min((coin / lvl.required) * 100,100);
+// ✅ UNLOCK TRIGGER
+if(unlocked && !unlockedLevels.includes(lvl.level)){
+  unlockedLevels.push(lvl.level);
+  setStorage("unlockedLevels", unlockedLevels);
+
+  setTimeout(()=>{
+    window.onRewardUnlocked({
+      type:"level",
+      title:`Level ${lvl.level}`,
+      subtitle:`${lvl.name} Unlocked 🔥`,
+      icon:"../assets/levels/level.png"
+    });
+  },100);
+}
 
 const div = document.createElement("div");
 div.className = "level-card";
