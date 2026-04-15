@@ -27,8 +27,8 @@
     style.innerHTML = `
       #rewardOverlay {
         position: fixed; inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
         display: flex; justify-content: center; align-items: center;
         z-index: 99999;
         opacity: 0; visibility: hidden;
@@ -37,13 +37,13 @@
       #rewardOverlay.active { opacity: 1; visibility: visible; }
 
       .reward-box {
-        background: #1a1a1a;
+        background: #fff ;
         padding: 30px 24px;
         border-radius: 20px;
         text-align: center;
         color: #ffffff;
-        width: 85%;
-        max-width: 300px;
+        width: 95%;
+        max-width: 360px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         transform: scale(0.8);
