@@ -42,7 +42,7 @@ style.innerHTML = `
  padding:25px;
  border-radius:16px;
  text-align:center;
- color:#fff;
+ color:#fff;  z-index: 999 ;
  width:90%; max-width:320px;
  position:relative;
 }
