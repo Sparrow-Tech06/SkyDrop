@@ -1,10 +1,13 @@
+// ===== GLOBAL REWARD SYSTEM =====
 (function(){
 
-if(window.rewardPopupInitialized) return;
-window.rewardPopupInitialized = true;
+if(window.__rewardSystemLoaded) return;
+window.__rewardSystemLoaded = true;
 
 let queue = [];
 let isShowing = false;
+
+function init(){
 
 const overlay = document.createElement("div");
 overlay.id = "rewardOverlay";
@@ -24,6 +27,7 @@ overlay.innerHTML = `
 
 document.body.appendChild(overlay);
 
+// STYLE
 const style = document.createElement("style");
 style.innerHTML = `
 #rewardOverlay{
@@ -34,40 +38,49 @@ style.innerHTML = `
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:9999;
-  visibility:hidden;
+  z-index:99999;
   opacity:0;
-  transition:0.3s;
+  visibility:hidden;
+  transition:0.25s;
 }
-#rewardOverlay.active{visibility:visible;opacity:1;}
+#rewardOverlay.active{
+  opacity:1;
+  visibility:visible;
+}
 
 .reward-box{
-  background:#121212; z-index: 999 ;
+  background:#0f0f0f;
   border-radius:16px;
   padding:25px;
   text-align:center;
-  width:85%;
+  width:90%;
   max-width:320px;
   color:#fff;
   position:relative;
 }
 
 .reward-glow{
-  position:absolute; z-index: 990 ;
+  position:absolute;
   width:200%;
   height:200%;
-  background:radial-gradient(circle, rgba(255,200,0,0.3), transparent);
+  background:radial-gradient(circle, rgba(255,200,0,0.25), transparent);
   top:-50%;left:-50%;
-  animation:spin 4s linear infinite;
+  animation:spin 5s linear infinite;
 }
 @keyframes spin{
   from{transform:rotate(0deg);}
   to{transform:rotate(360deg);}
 }
 
-.reward-icon{width:80px;margin-bottom:10px;}
+.reward-icon{
+  width:80px;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
+}
+
 #rewardTitle{font-weight:700;}
-#rewardSubtitle{font-size:14px;opacity:0.8;}
+#rewardSubtitle{font-size:14px;opacity:0.85;}
 
 #rewardClose{
   margin-top:15px;
@@ -81,6 +94,7 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
+// Close button
 document.getElementById("rewardClose").onclick = ()=>{
   overlay.classList.remove("active");
   isShowing = false;
@@ -92,18 +106,30 @@ function showNext(){
 
   const data = queue.shift();
 
-  document.getElementById("rewardIcon").src = data.icon;
-  document.getElementById("rewardTitle").innerText = data.title;
-  document.getElementById("rewardSubtitle").innerText = data.subtitle;
+  document.getElementById("rewardIcon").src = data.icon || "";
+  document.getElementById("rewardTitle").innerText = data.title || "";
+  document.getElementById("rewardSubtitle").innerText = data.subtitle || "";
 
   overlay.classList.add("active");
   isShowing = true;
 }
 
-// ✅ GLOBAL CALLBACK
+// GLOBAL CALLBACK
 window.onRewardUnlocked = function(data){
+  if(!data) return;
   queue.push(data);
   if(!isShowing) showNext();
 };
 
+}
+
+// DOM ready fix
+if(document.readyState === "loading"){
+  document.addEventListener("DOMContentLoaded", init);
+}else{
+  init();
+}
+
 })();
+
+
