@@ -4,7 +4,7 @@
   --success:#16a34a;
   --muted:#6b7280;
   --coin-card: #fff ;
-  --card: #f8f9fa ;
+  --card: linear-gradient(135deg,#fff7ed,#fef3c7) ;
 }
 /************* Balance Card *************/
 .balance-wrapper {
@@ -19,6 +19,7 @@
   background:var(--card);
   border-radius:16px;
   padding:18px;
+  border: 1px solid #f59e0b ;
 }
 .balance-card h3{
   font-size:28px;
