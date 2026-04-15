@@ -102,12 +102,12 @@ OK
 
 // ✅ Load coins from localStorage
 let coin = parseInt(localStorage.getItem("coins")) || 0;
-
 document.getElementById("coinDisplay").innerText = coin;
 
-// ✅ Badge system
-const badges = [
+// ✅ Track unlocked badges
+let unlockedBadges = JSON.parse(localStorage.getItem("unlockedBadges")) || [];
 
+const badges = [
 {name:"Rookie Drop",required:50,img:"../assets/badges/rookie-drop.png"},
 {name:"Loot Hunter",required:100,img:"../assets/badges/Loot Hunter.png"},
 {name:"Battle Scout",required:200,img:"../assets/badges/Puzzle Solver.png"},
@@ -118,10 +118,8 @@ const badges = [
 {name:"Diamond Raider",required:1500,img:"../assets/badges/Math Strategist.png"},
 {name:"Legend Striker",required:1800,img:"../assets/badges/Number Legend.png"},
 {name:"SkyDrop Pro",required:2200,img:"../assets/badges/QMath Master.png"}
-
 ];
 
-// ✅ Generate badges
 function generateBadges(){
 
 const container = document.getElementById("badgeContainer");
@@ -131,6 +129,19 @@ badges.forEach(badge=>{
 
 const unlocked = coin >= badge.required;
 const percent = Math.min((coin / badge.required) * 100, 100);
+
+// ✅ Trigger popup once
+if(unlocked && !unlockedBadges.includes(badge.name)){
+  unlockedBadges.push(badge.name);
+  localStorage.setItem("unlockedBadges", JSON.stringify(unlockedBadges));
+
+  window.onRewardUnlocked({
+    type:"badge",
+    title:badge.name,
+    subtitle:"Badge Unlocked 🎉",
+    icon:badge.img
+  });
+}
 
 const card = document.createElement("div");
 card.className = "badge-card " + (unlocked ? "" : "locked");
@@ -142,8 +153,6 @@ card.innerHTML = `
 <div class="progress-bar" style="width:${percent}%"></div>
 </div>
 `;
-
-card.onclick = () => openModal(badge, unlocked, percent);
 
 container.appendChild(card);
 
