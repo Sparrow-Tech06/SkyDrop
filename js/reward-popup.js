@@ -42,7 +42,7 @@ style.innerHTML = `
 #rewardOverlay.active{visibility:visible;opacity:1;}
 
 .reward-box{
-  background:#121212;
+  background:#121212; z-index: 999 ;
   border-radius:16px;
   padding:25px;
   text-align:center;
@@ -53,7 +53,7 @@ style.innerHTML = `
 }
 
 .reward-glow{
-  position:absolute;
+  position:absolute; z-index: 990 ;
   width:200%;
   height:200%;
   background:radial-gradient(circle, rgba(255,200,0,0.3), transparent);
