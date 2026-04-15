@@ -19,10 +19,10 @@ const BADGES = [
 ];
 
 const LEVELS = [
-{level:1, required:0, name:"Beginner"},
-{level:2, required:100, name:"Rookie"},
-{level:3, required:300, name:"Fighter"},
-{level:4, required:700, name:"Warrior"}
+{level:1, required:0, name:""},
+{level:2, required:100, name:""},
+{level:3, required:300, name:""},
+{level:4, required:700, name:""}
 ];
 
 // ===== GLOBAL CHECK =====
