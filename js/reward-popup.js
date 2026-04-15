@@ -14,7 +14,7 @@
         <div class="reward-content">
           <img id="rIcon" class="r-icon" src="" alt="reward">
           <h3 id="rTitle"></h3>
-         <!-- <p id="rSub"></p> -->
+          <p id="rSub"></p> 
           <button id="rClose">Done</button>
         </div>
       </div>
