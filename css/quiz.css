@@ -51,7 +51,7 @@
 
 .option{
   background:var(--soft);
-  padding:14px; border:1px solid #eee;
+  padding:14px; border:1.6px solid #eee;
   border-radius:10px;
   margin-top:10px;
   cursor:pointer;
