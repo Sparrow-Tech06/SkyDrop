@@ -124,32 +124,7 @@
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 5px;
         }
-
-        /* Bottom Nav Bar */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(9, 9, 11, 0.8);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
-            z-index: 1000;
-        }
-
-        .nav-link-custom {
-            color: var(--text-muted);
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.7rem;
-            gap: 4px;
-        }
-        .nav-link-custom.active {
-            color: var(--accent-blue);
-        }
+        
     </style>
 </head>
 <body>
@@ -210,24 +185,6 @@
     </div>
 </div>
 
-<nav class="bottom-nav">
-    <a href="#" class="nav-link-custom active">
-        <i data-lucide="layout-grid" size="20"></i>
-        <span>Home</span>
-    </a>
-    <a href="explore.html" class="nav-link-custom">
-        <i data-lucide="search" size="20"></i>
-        <span>Explore</span>
-    </a>
-    <a href="history.html" class="nav-link-custom">
-        <i data-lucide="credit-card" size="20"></i>
-        <span>History</span>
-    </a>
-    <a href="profile.html" class="nav-link-custom">
-        <i data-lucide="user" size="20"></i>
-        <span>Profile</span>
-    </a>
-</nav>
 
 <script>
     // Lucide icons initialize
