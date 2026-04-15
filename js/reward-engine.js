@@ -12,10 +12,10 @@ function setS(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
 // ===== MASTER DATA =====
 const BADGES = [
-{name:"Rookie Drop",required:50,img:"../assets/badges/rookie-drop.png"},
-{name:"Loot Hunter",required:100,img:"../assets/badges/Loot Hunter.png"},
-{name:"Battle Scout",required:200,img:"../assets/badges/Puzzle Solver.png"},
-{name:"Survivor Rank",required:400,img:"../assets/badges/Brain Booster.png"}
+{name:"Rookie Drop",required:50,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/rookie-drop.png"},
+{name:"Loot Hunter",required:100,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Loot Hunter.png"},
+{name:"Battle Scout",required:200,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Puzzle Solver.png"},
+{name:"Survivor Rank",required:400,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Brain Booster.png"}
 ];
 
 const LEVELS = [
