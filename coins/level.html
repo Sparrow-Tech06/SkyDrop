@@ -3,50 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Levels</title>
+<title>Pro Level Dashboard</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 <style>
-body{background:#f5f5f5;}
-.box{padding:15px;}
-.card{background:#fff;padding:15px;border-radius:12px;margin-bottom:10px;}
+:root {
+    --primary: #6366f1;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text-muted: #94a3b8;
+}
+
+body {
+    background: var(--bg);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 50px;
+}
+
+.main-container { max-width: 500px; margin: 0 auto; padding: 20px; }
+
+/* Status Card */
+.status-card {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+}
+
+.progress-container {
+    background: rgba(255,255,255,0.2);
+    height: 8px;
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: #fff;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+/* Section Styling */
+.section-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; color: var(--text-muted); }
+
+.grid-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+
+.nav-item {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-item i { font-size: 1.5rem; margin-bottom: 8px; color: var(--primary); }
+
+/* List Item Styling */
+.history-item {
+    background: var(--card-bg);
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge-locked { filter: grayscale(1) opacity(0.5); }
 </style>
 </head>
 
 <body>
 
-<div id="lvlBox" class="box"></div>
+<div class="main-container">
+    <div class="status-card">
+        <p class="mb-1 opacity-75">Current Standing</p>
+        <h2 id="currRank" class="fw-bold">--</h2>
+        
+        <div class="progress-container">
+            <div id="progBar" class="progress-fill" style="width: 0%"></div>
+        </div>
+        
+        <div class="d-flex justify-content-between small">
+            <span id="nextLevelTxt">Next: --</span>
+            <span id="distTxt">-- coins left</span>
+        </div>
+    </div>
+
+    <div class="section-title">Explore</div>
+    <div class="grid-nav">
+        <div class="nav-item" onclick="showPage('badges')">
+            <i class="fas fa-award"></i>
+            <div>Badges</div>
+        </div>
+        <div class="nav-item" onclick="showPage('history')">
+            <i class="fas fa-history"></i>
+            <div>History</div>
+        </div>
+    </div>
+
+    <div id="dynamicContent">
+        <div class="section-title" id="contentTitle">Coin History</div>
+        <div id="contentBox">
+            </div>
+    </div>
+</div>
 
 <script src="../js/reward-popup.js"></script>
 <script src="../js/reward-engine.js"></script>
 
 <script>
-
-let coin=parseInt(localStorage.getItem("coins"))||0;
-
-const LEVELS=[
-{level:1, required:0, name:"Beginner"},
-{level:2, required:100, name:"Rookie"},
-{level:3, required:300, name:"Fighter"},
-{level:4, required:700, name:"Warrior"}
+const LEVELS = [
+    {level: 1, required: 0, name: "Beginner"},
+    {level: 2, required: 100, name: "Rookie"},
+    {level: 3, required: 300, name: "Fighter"},
+    {level: 4, required: 700, name: "Warrior"},
+    {level: 5, required: 1500, name: "Elite"}
 ];
 
-const box=document.getElementById("lvlBox");
+// Mock data for demo (Replace with your actual localStorage logic)
+let coin = parseInt(localStorage.getItem("coins")) || 250;
+let history = JSON.parse(localStorage.getItem("coin_history")) || [
+    {desc: "Daily Check-in", amt: "+50", date: "Today"},
+    {desc: "Video Ad Reward", amt: "+20", date: "Yesterday"}
+];
 
-LEVELS.forEach(l=>{
- let unlocked=coin>=l.required;
+function updateDashboard() {
+    let currentLvl = LEVELS[0];
+    let nextLvl = LEVELS[1];
 
- let div=document.createElement("div");
- div.className="card";
+    for (let i = 0; i < LEVELS.length; i++) {
+        if (coin >= LEVELS[i].required) {
+            currentLvl = LEVELS[i];
+            nextLvl = LEVELS[i + 1] || null;
+        }
+    }
 
- div.innerHTML=`
- <b>Level ${l.level}</b> - ${l.name}
- `;
+    document.getElementById("currRank").innerText = currentLvl.name;
 
- box.appendChild(div);
-});
+    if (nextLvl) {
+        const diff = nextLvl.required - currentLvl.required;
+        const progress = ((coin - currentLvl.required) / diff) * 100;
+        const left = nextLvl.required - coin;
 
+        document.getElementById("progBar").style.width = `${progress}%`;
+        document.getElementById("nextLevelTxt").innerText = `Next: ${nextLvl.name}`;
+        document.getElementById("distTxt").innerText = `${left} coins left`;
+    } else {
+        document.getElementById("progBar").style.width = `100%`;
+        document.getElementById("nextLevelTxt").innerText = `Max Level Reached!`;
+        document.getElementById("distTxt").innerText = `King Status`;
+    }
+}
+
+function showPage(type) {
+    const box = document.getElementById("contentBox");
+    const title = document.getElementById("contentTitle");
+    box.innerHTML = "";
+
+    if (type === 'badges') {
+        title.innerText = "Available Badges";
+        LEVELS.forEach(l => {
+            const isUnlocked = coin >= l.required;
+            box.innerHTML += `
+                <div class="history-item ${isUnlocked ? '' : 'badge-locked'}">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3 fs-3">${isUnlocked ? '🏆' : '🔒'}</div>
+                        <div>
+                            <div class="fw-bold">${l.name}</div>
+                            <div class="small text-muted">${l.required} coins required</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    } else {
+        title.innerText = "Coin History";
+        history.forEach(h => {
+            box.innerHTML += `
+                <div class="history-item">
+                    <div>
+                        <div class="fw-bold">${h.desc}</div>
+                        <div class="small text-muted">${h.date}</div>
+                    </div>
+                    <div class="text-success fw-bold">${h.amt}</div>
+                </div>
+            `;
+        });
+    }
+}
+
+// Initialize
+updateDashboard();
+showPage('history'); // Default view
 </script>
 
 </body>
