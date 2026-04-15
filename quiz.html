@@ -68,6 +68,7 @@
 <script src="js/mycoins.js"></script>
 <script src="js/resultPage.js"></script>
 <script src="js/reward-popup.js"></script>
+<script src="js/reward-engine.js"></script> <!-- ✅ ADD THIS -->
 
 <script>
 const { createApp } = Vue;
@@ -138,10 +139,19 @@ methods:{
       const accuracy = (this.score / this.questions.length) * 100;
 
       if(accuracy >= 50){
-        if(typeof mycoin === "function"){
+
+      if(typeof mycoin === "function"){
           mycoin(this.quizId, this.quizTitle);
         }
-      }
+
+  // ✅ GLOBAL REWARD CHECK (KEY LINE)
+  setTimeout(()=>{
+    if(typeof checkRewards === "function"){
+      checkRewards();
+    }
+  }, 200);
+
+       }
 
       setTimeout(()=>{
         ResultPage.show({
