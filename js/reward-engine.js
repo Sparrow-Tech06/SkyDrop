@@ -58,7 +58,7 @@ LEVELS.forEach(l=>{
     type:"level",
     title:`Level ${l.level}`,
     subtitle:`${l.name} Unlocked 🔥`,
-    icon:"../assets/levels/level.png"
+  //  icon:"../assets/levels/level.png"
   });
  }
 });
