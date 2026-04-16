@@ -37,13 +37,13 @@
       #rewardOverlay.active { opacity: 1; visibility: visible; }
 
       .reward-box {
-        background: #fff ;
+        background: #212121 ;
         padding: 30px 24px;
         border-radius: 20px;
         text-align: center;
-        color: var(--text);
+        color: #fff ;
         width: 98%;
-        max-width: 360px;
+        max-width: 420px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         transform: scale(0.8);
