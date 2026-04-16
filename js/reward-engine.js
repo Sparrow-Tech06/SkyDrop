@@ -58,7 +58,7 @@ LEVELS.forEach(l=>{
     type:"level",
     title:`Level ${l.level}`,
     subtitle:`${l.name} Unlocked`,
-    icon:"../assets/levels/level.png"
+    icon:"https://sparrow-tech06.github.io/SkyDrop/assets/levels/level.png"
   });
  }
 });
