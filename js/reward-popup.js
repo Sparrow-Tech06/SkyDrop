@@ -15,7 +15,7 @@
           <img id="rIcon" class="r-icon" src="" alt="reward">
           <h3 id="rTitle"></h3>
           <p id="rSub"></p> 
-          <button id="rClose">Done</button>
+          <button id="rClose"> Ok </button>
         </div>
       </div>
     `;
@@ -41,8 +41,8 @@
         padding: 30px 24px;
         border-radius: 20px;
         text-align: center;
-        color: #ffffff;
-        width: 95%;
+        color: var(--text);
+        width: 98%;
         max-width: 360px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -69,7 +69,7 @@
 
       #rClose {
         width: 100%;
-        background: #ffffff;
+        background: #F08D39;
         color: #000000;
         border: none;
         padding: 12px;
