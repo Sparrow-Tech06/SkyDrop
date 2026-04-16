@@ -28,7 +28,7 @@
       #rewardOverlay {
         position: fixed; inset: 0;
         background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(3px);
+        backdrop-filter: blur(0px);
         display: flex; justify-content: center; align-items: center;
         z-index: 99999;
         opacity: 0; visibility: hidden;
