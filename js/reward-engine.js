@@ -42,7 +42,7 @@ BADGES.forEach(b=>{
   window.onRewardUnlocked({
     type:"badge",
     title:b.name,
-    subtitle:"Badge Unlocked 🎉",
+    subtitle:"Badge Unlocked",
     icon:b.img
   });
  }
@@ -57,8 +57,8 @@ LEVELS.forEach(l=>{
   window.onRewardUnlocked({
     type:"level",
     title:`Level ${l.level}`,
-    subtitle:`${l.name} Unlocked 🔥`,
-  //  icon:"../assets/levels/level.png"
+    subtitle:`${l.name} Unlocked`,
+    icon:"../assets/levels/level.png"
   });
  }
 });
