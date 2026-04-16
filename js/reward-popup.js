@@ -52,9 +52,9 @@
       #rewardOverlay.active .reward-box { transform: scale(1); }
 
       .r-icon { 
-        width: 64px; height: 64px; 
+        width: 110px; height: 110px; 
         margin-bottom: 16px;
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        background: transparent;
       }
 
       #rTitle { 
