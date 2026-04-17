@@ -53,8 +53,8 @@
 
       .r-icon { 
         width: 110px; height: 110px; 
-        margin-bottom: 16px;
-        background: transparent;
+        margin-top: -50px;
+        background: #fff ; border-radius: 50% ;
       }
 
       #rTitle { 
