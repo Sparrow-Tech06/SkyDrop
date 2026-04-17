@@ -119,10 +119,12 @@ span {
 
       .reward.success{
         background:#28a745;
+        color: #fff ; font-weight: 400 ;
       }
 
       .reward.fail{
         background:#dc3545;
+        color: #fff ;  font-weight: 400 ;
       }
 
       .btns button{
