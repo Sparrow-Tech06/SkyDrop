@@ -52,8 +52,8 @@
       #rewardOverlay.active .reward-box { transform: scale(1); }
 
       .r-icon { 
-        width: 110px; height: 110px; 
-        margin-top: -50px;
+        width: 130px; height: 130px; 
+        margin-top: -80px;
         background: #fff ; border-radius: 50% ;
       }
 
