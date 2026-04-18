@@ -26,7 +26,7 @@
     {
       "id": "hero-skills",
       "title": "Hero Skills",
-      "icon": "https://cdn-icons-png.flaticon.com/512/8002/8002150.png",
+      "icon": "assets/hero.png",
       "questions": [
         {
           "question": "What is DJ Alok's ability name?",
