@@ -23,7 +23,7 @@ const ResultPage = {
           ${
             rewardEligible
             ? `<div class="reward success"> FirePoints Added </div>`
-            : `<div class="reward fail"> Keep going! Reach minimum 50% to get rewards </div>`
+            : `<div class="reward fail"> Almost there! Reach 50% to unlock Firepoint </div>`
           }
 
           <div class="btns">
