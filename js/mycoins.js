@@ -23,4 +23,10 @@ function mycoin(quizId, quizName){
     localStorage.setItem("coinHistory", JSON.stringify(history));
 
     console.log("10 coins added for quiz:", quizName);
+    
+    // 👉 only notify Android
+    if (window.Android && typeof Android.onCoinAdded === "function") {
+        Android.onCoinAdded();  // only msg
+     // Android.onCoinAdded(amount); // msg + coin
+    }
 }
