@@ -22,8 +22,8 @@ const ResultPage = {
 
           ${
             rewardEligible
-            ? `<div class="reward success"> Coins Earned! </div>`
-            : `<div class="reward fail"> Minimum 50% required to earn coins</div>`
+            ? `<div class="reward success"> FirePoints Added </div>`
+            : `<div class="reward fail"> Keep going! Reach minimum 50% to get rewards </div>`
           }
 
           <div class="btns">
