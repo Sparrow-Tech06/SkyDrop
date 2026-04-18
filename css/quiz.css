@@ -46,7 +46,7 @@
   border:1px solid var(--accent);
   padding: 35px 20px ;  text-align: center;
   border-radius:14px; margin-bottom: 26px ;
-  background:var(--primary-soft);
+  background:var(--primary-soft); color: #000 ;
 }
 
 .option{
@@ -57,8 +57,7 @@
   cursor:pointer;
 }
 span {
-  width:32px;
-  height:32px;
+  width:32px; height:32px; color: #000 ;
   border-radius:50%;
   background:var(--primary-soft);
   display:inline-flex;   /* change */
