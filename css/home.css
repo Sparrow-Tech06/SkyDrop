@@ -70,7 +70,7 @@ color:var(--brand);
 /* ---------------- QUIZ CARD ---------------- */
 
 .quiz-card{
-   border-radius:18px;
+   border-radius:18px; aspect-ratio: 1/1 ;
    padding: 20px;
    text-align:center;
    cursor:pointer;
