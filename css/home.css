@@ -85,11 +85,11 @@ transform:scale(.96);
 /* ---------------- IMAGE ---------------- */
 
 .quiz-img{
-width: 120px;
-height: 120px; aspect-ratio: 2/1.75 ;
-object-fit: ;
+width: 100px;
+height: 100px; aspect-ratio: 2/1.70 ;
+object-fit: fill;
 margin:auto;
-margin-bottom:4px;
+margin-bottom:6px;
 background: transparent;
 padding:0px;
 border-radius:10px;
