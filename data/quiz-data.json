@@ -13,7 +13,7 @@
     {
       "id": "map-iq",
       "title": "Map IQ",
-      "icon": "https://cdn-icons-png.flaticon.com/512/854/854878.png",
+      "icon": "assets/map-iq.png",
       "questions": [
         {
           "question": "Which is the most popular map in Free Fire?",
