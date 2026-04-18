@@ -85,8 +85,8 @@ transform:scale(.96);
 /* ---------------- IMAGE ---------------- */
 
 .quiz-img{
-width:80px;
-height:80px; aspect-ratio: 1/1 ;
+width: 120px;
+height: 120px; aspect-ratio: 1/1 ;
 object-fit:contain;
 margin:auto;
 margin-bottom:8px;
