@@ -76,63 +76,19 @@
             { "question": "Find the odd one (Movement Speed Boost)", "options": ["Kelly", "Joseph", "Alok", "Andrew"], "answer": 3 },
             { "question": "Find the odd one (Sniper Category)", "options": ["AWM", "Kar98k", "M82B", "Groza"], "answer": 3 },
             { "question": "Find the odd one (Grenade Type Utilities)", "options": ["Flashbang", "Smoke Grenade", "Frag Grenade", "Gloo Wall"], "answer": 3 },
-  {
-    "question": "Find the odd one (Damage Boost Skills)",
-    "options": ["Hayato", "Shirou", "Wolfrahh", "Ford"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Vehicle Type)",
-    "options": ["Jeep", "Monster Truck", "Motorbike", "Parachute"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Shotgun Family)",
-    "options": ["M1887", "M1014", "MAG-7", "UMP"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (High Accuracy Weapons)",
-    "options": ["Woodpecker", "AC80", "SVD", "M1887"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Character Ability Type: Shield/Defense)",
-    "options": ["Chrono", "Steffie", "Skyler", "Andrew"],
-    "answer": 2
-  },
-  {
-    "question": "Find the odd one (Pet Skills - Healing Support)",
-    "options": ["Detective Panda", "Ottero", "Spirit Fox", "Falco"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (AR Weapons)",
-    "options": ["AK47", "SCAR", "FAMAS", "MP5"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Rush Gameplay Style)",
-    "options": ["Jota", "Alok", "Skyler", "Rafael"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Stealth Mechanics)",
-    "options": ["Wukong", "Rafael", "Moco", "Clu"],
-    "answer": 2
-  },
-  {
-    "question": "Find the odd one (Long Range Dominance)",
-    "options": ["AWM", "SVD", "M82B", "MP40"],
-    "answer": 3
-  },
-  {
-    "question": "Find the odd one (Loot/Survival Advantage)",
-    "options": ["Moco", "K", "Olivia", "Ford"],
-    "answer": 3
-  }
-]
-    },
+            { "question": "Find the odd one (Damage Boost Skills)", "options": ["Hayato", "Shirou", "Wolfrahh", "Ford"], "answer": 3 },
+            { "question": "Find the odd one (Vehicle Type)", "options": ["Jeep", "Monster Truck", "Motorbike", "Parachute"], "answer": 3 },
+            { "question": "Find the odd one (Shotgun Family)", "options": ["M1887", "M1014", "MAG-7", "UMP"], "answer": 3 },
+            { "question": "Find the odd one (High Accuracy Weapons)", "options": ["Woodpecker", "AC80", "SVD", "M1887"], "answer": 3 },
+            { "question": "Find the odd one (Character Ability Type: Shield/Defense)", "options": ["Chrono", "Steffie", "Skyler", "Andrew"], "answer": 2 },
+            { "question": "Find the odd one (Pet Skills - Healing Support)", "options": ["Detective Panda", "Ottero", "Spirit Fox", "Falco"], "answer": 3 },
+            { "question": "Find the odd one (AR Weapons)", "options": ["AK47", "SCAR", "FAMAS", "MP5"], "answer": 3 },
+            { "question": "Find the odd one (Rush Gameplay Style)", "options": ["Jota", "Alok", "Skyler", "Rafael"], "answer": 3 },
+            { "question": "Find the odd one (Stealth Mechanics)", "options": ["Wukong", "Rafael", "Moco", "Clu"], "answer": 2 },
+            { "question": "Find the odd one (Long Range Dominance)", "options": ["AWM", "SVD", "M82B", "MP40"], "answer": 3 },
+            { "question": "Find the odd one (Loot/Survival Advantage)", "options": ["Moco", "K", "Olivia", "Ford"], "answer": 3 }
+         ]
+     },
 
     {
       "id": "ff-events",
