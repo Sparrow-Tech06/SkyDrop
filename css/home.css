@@ -20,12 +20,11 @@
   --card6:#1f353a; */
   /* DARK THEME CARDS (optimized for #fff text) */
 
---card1: linear-gradient(135deg, #1f2937, #374151);   /* slate dark */
---card2: linear-gradient(135deg, #1e3a8a, #3730a3);   /* deep blue */
---card3: linear-gradient(135deg, #0f766e, #134e4a);   /* teal dark */
---card4: linear-gradient(135deg, #166534, #14532d);   /* green dark */
---card5: linear-gradient(135deg, #9d174d, #4c0519);   /* pink/red dark */
---card6: linear-gradient(135deg, #312e81, #1e1b4b);   /* indigo dark */
+--card1: linear-gradient(135deg, #ea580c, #7c2d12);   /* Orange */
+--card2: linear-gradient(135deg, #9333ea, #4c1d95);   /* Purple */
+--card3: linear-gradient(135deg, #7c3aed, #2e1065);   /* Violet */
+--card4: linear-gradient(135deg, #ca8a04, #713f12);   /* Yellow (darkened for contrast) */
+--card5: linear-gradient(135deg, #16a34a, #052e16);   /* Green */
   }
 }
 
