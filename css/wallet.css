@@ -16,7 +16,7 @@
   position:sticky;
   top: 60px;
   z-index:999;
-  background:var(--coin-card);
+  background:var(--body-bg);
   padding:10px 15px;
   text-align:center;
 }
