@@ -71,7 +71,7 @@ color:var(--brand);
 
 .quiz-card{
    border-radius:18px; aspect-ratio: 1/1 ;
-   padding: 20px;
+   padding: 12px 20px;
    text-align:center;
    cursor:pointer;
    transition:0.15s;
@@ -86,10 +86,10 @@ transform:scale(.96);
 
 .quiz-img{
 width: 120px;
-height: 120px; aspect-ratio: 1/1 ;
+height: 120px; aspect-ratio: 2/1.75 ;
 object-fit: ;
 margin:auto;
-margin-bottom:2px;
+margin-bottom:4px;
 background: transparent;
 padding:0px;
 border-radius:10px;
