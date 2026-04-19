@@ -111,7 +111,7 @@
     {
       "id": "ff-events",
       "title": "FF Events",
-      "icon": "https://cdn-icons-png.flaticon.com/512/3652/3652191.png",
+      "icon": "assets/ff-event.png",
       "questions": [
         {
           "question": "Which event usually gives free skins?",
