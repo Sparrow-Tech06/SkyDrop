@@ -1,11 +1,14 @@
 :root {
     --icon-box: #FFE0C2 ;
     --icon-color: #F08D39 ;
+    --menu-hover-bg: #fafafa ;
+    --menu-hover-color: #000 ;
 }
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark){
 :root{
-    
+    --menu-hover-bg: #fafafa ;
+    --menu-hover-color: #fff ;
   }
 }
 /* ---------------- Container ---------------- */
@@ -91,7 +94,8 @@ font-size: 14px ;
 }
 
 .menu-item:hover{
-background:#fafafa;
+background: var(--menu-hover-bg) ;
+color: var(--menu-hover-color);
 }
 
 .menu-left{
