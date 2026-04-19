@@ -20,11 +20,12 @@
   --card6:#1f353a; */
   /* DARK THEME CARDS (optimized for #fff text) */
 
---card1: linear-gradient(135deg, #ea580c, #7c2d12);   /* Orange */
---card2: linear-gradient(135deg, #9333ea, #4c1d95);   /* Purple */
---card3: linear-gradient(135deg, #7c3aed, #2e1065);   /* Violet */
---card4: linear-gradient(135deg, #ca8a04, #713f12);   /* Yellow (darkened for contrast) */
---card5: linear-gradient(135deg, #16a34a, #052e16);   /* Green */
+--card1: linear-gradient(135deg, #c2410c, #7c2d12);   /* Soft Orange */
+--card2: linear-gradient(135deg, #7e22ce, #4c1d95);   /* Balanced Purple */
+--card3: linear-gradient(135deg, #2563eb, #1e3a8a);   /* Indigo/Blue (Violet replace) */
+--card4: linear-gradient(135deg, #a16207, #713f12);   /* Muted Yellow */
+--card5: linear-gradient(135deg, #15803d, #14532d);   /* Deep Green */
+--card6: linear-gradient(135deg, #0f766e, #042f2e);   /* Teal (NEW - premium feel) */
   }
 }
 
