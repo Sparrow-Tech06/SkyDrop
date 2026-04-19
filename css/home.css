@@ -79,16 +79,8 @@ color:var(--brand);
    border: 1.6px solid transparent;
 }
 
-.quiz-card:active{
-transform:scale(.96);
-}
-.quiz-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.15);
-  border-radius: inherit;
-}
+.quiz-card:active{ transform:scale(.96); }
+
 /* ---------------- IMAGE ---------------- */
 
 .quiz-img{
