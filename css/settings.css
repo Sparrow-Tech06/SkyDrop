@@ -7,7 +7,7 @@
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark){
 :root{
-    --menu-hover-bg: #fafafa ;
+    --menu-hover-bg: #22252b ;
     --menu-hover-color: #fff ;
   }
 }
