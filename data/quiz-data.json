@@ -5,8 +5,26 @@
       "title": "Gun IQ",
       "icon": "assets/gun-iq.png",
       "questions": [
-        { "question": "Which gun has the highest damage in Free Fire?", "options": ["MP40", "AWM", "M1887", "SCAR"], "answer": 1 },              
-        { "question": "Which SMG has the highest fire rate?", "options": ["UMP", "MP40", "P90", "Thompson"], "answer": 1 }
+        {"question":"Which gun uses 7.62mm ammo?","options":["SCAR","AK47","FAMAS","XM8"],"answer":1},
+        {"question":"Which gun uses Sniper Ammo?","options":["AWM","M1014","MP40","UMP"],"answer":0},
+        {"question":"Which gun uses SG Ammo?","options":["M1887","MP5","P90","Groza"],"answer":0},
+        {"question":"Which SMG uses AR ammo?","options":["UMP","MP40","Vector","Thompson"],"answer":0},
+        {"question":"Which gun has highest damage per shot?","options":["M1887","AWM","Desert Eagle","AK47"],"answer":1},
+        {"question":"Which gun has burst fire mode?","options":["FAMAS","MP40","M1014","M82B"],"answer":0},
+        {"question":"Which gun has fastest fire rate?","options":["MP40","AK47","AWM","M14"],"answer":0},
+        {"question":"Which gun uses 5.56mm ammo?","options":["SCAR","AK47","Woodpecker","Kar98k"],"answer":0},
+        {"question":"Which sniper breaks Gloo Wall?","options":["Kar98k","AWM","M82B","SVD"],"answer":2},
+        {"question":"Which gun has built-in suppressor?","options":["VSS","MP40","M1887","Groza"],"answer":0},
+        {"question":"Which AR has burst fire?","options":["FAMAS","SCAR","AK47","Groza"],"answer":0},
+        {"question":"Which weapon uses sniper ammo but not a sniper?","options":["SVD","AWM","Kar98k","M82B"],"answer":0},
+        {"question":"Which gun has highest armor penetration?","options":["M82B","MP40","M1014","UMP"],"answer":0},
+        {"question":"Which pistol uses AR ammo?","options":["Desert Eagle","M500","G18","USP"],"answer":1},
+        {"question":"Which gun is best for mid-range accuracy?","options":["Woodpecker","MP40","M1887","Vector"],"answer":0},
+        {"question":"Which gun uses SMG ammo?","options":["MP40","AK47","M1014","AWM"],"answer":0},
+        {"question":"Which gun has slowest fire rate but high precision?","options":["AWM","MP40","Vector","UMP"],"answer":0},
+        {"question":"Which gun has lowest recoil?","options":["UMP","AK47","M1887","AWM"],"answer":0},
+        {"question":"Which ammo type does AWM use?","options":["7.62mm","5.56mm","Sniper Ammo","SMG Ammo"],"answer":2},
+        {"question":"Find the odd one (Long Range)","options":["AWM","SVD","M82B","MP40"],"answer":3}
       ]
     },
 
