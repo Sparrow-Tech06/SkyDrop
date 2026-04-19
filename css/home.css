@@ -82,7 +82,13 @@ color:var(--brand);
 .quiz-card:active{
 transform:scale(.96);
 }
-
+.quiz-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  border-radius: inherit;
+}
 /* ---------------- IMAGE ---------------- */
 
 .quiz-img{
