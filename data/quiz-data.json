@@ -57,7 +57,7 @@
     {
       "id": "pet-powers",
       "title": "Pet Powers",
-      "icon": "assets/petiq.png",
+      "icon": "assets/petIq.png",
       "questions": [
         {
           "question": "Which pet increases EP conversion?",
