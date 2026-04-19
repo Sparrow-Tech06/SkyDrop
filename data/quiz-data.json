@@ -57,7 +57,7 @@
     {
       "id": "pet-powers",
       "title": "Pet Powers",
-      "icon": "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+      "icon": "assets/petiq.png",
       "questions": [
         {
           "question": "Which pet increases EP conversion?",
@@ -70,7 +70,7 @@
     {
       "id": "battle-iq",
       "title": "Battle IQ",
-      "icon": "https://cdn-icons-png.flaticon.com/512/833/833314.png",
+      "icon": "assets/battleiq.png",
       "questions": [
         {
           "question": "Which item protects you from enemy fire?",
@@ -83,7 +83,7 @@
     {
       "id": "odd-hunter",
       "title": "Odd Hunter",
-      "icon": "https://cdn-icons-png.flaticon.com/512/854/854878.png",
+      "icon": "assets/odd.png",
       "questions": [
             { "question": "Find the odd one (Fire Rate Focus)", "options": ["MP40", "Vector", "Thompson", "M1014"],"answer": 3 },
             { "question": "Find the odd one (Active Skill Characters)","options": ["Alok", "Chrono", "Skyler", "Moco"],"answer": 3 },
