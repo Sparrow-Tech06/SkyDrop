@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modern Badges - Light Mode</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+
+        .container-title {
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 15px;  max-width: 500px;  margin: 0 auto;
+        }
+
+        .card {
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Unlocked Glow Effect */
+        .card.unlocked {
+            border: 2px solid #e0f2fe;
+        }
+
+        .card.unlocked:active {
+            transform: scale(0.95);
+        }
+
+        /* Lock logic */
+        .card.locked {
+            filter: grayscale(0.8);
+            background: #f8f9fa;
+        }
+
+        .lock-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.05);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .card.unlocked img { filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
+
+        .card.locked img { opacity: 0.4; }
+
+        .badge-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .badge-req {
+            font-size: 11px;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .status-pill {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-title">My Achievements</div>
+<div class="grid" id="box"></div>
+
+<script>
+// Coin balance fetch logic
+let coin = parseInt(localStorage.getItem("coins")) || 0;
+
+// ✅ Badge system
+const badges = [
+
+    {name:"Rookie Drop",required:50,img:"../assets/badges/rookie-drop.png"},
+    {name:"Loot Hunter",required:100,img:"../assets/badges/Loot Hunter.png"},
+    {name:"Battle Scout",required:200,img:"../assets/badges/Puzzle Solver.png"},
+    {name:"Survivor Rank",required:400,img:"../assets/badges/Brain Booster.png"},
+    {name:"Arena Fighter",required:600,img:"../assets/badges/Equation Explorer.png"},
+    {name:"Elite Dropper",required:900,img:"../assets/badges/Logic Warrior.png"},
+    {name:"Victory Seeker",required:1200,img:"../assets/badges/Mind Hacker.png"},
+    {name:"Diamond Raider",required:1500,img:"../assets/badges/Math Strategist.png"},
+    {name:"Legend Striker",required:1800,img:"../assets/badges/Number Legend.png"},
+    {name:"SkyDrop Pro",required:2200,img:"../assets/badges/QMath Master.png"}
+
+];
+
+const box = document.getElementById("box");
+
+BADGES.forEach(b => {
+    let unlocked = coin >= b.required;
+    let div = document.createElement("div");
+    
+    // Class setting
+    div.className = `card ${unlocked ? "unlocked" : "locked"}`;
+
+    div.innerHTML = `
+        <div class="lock-overlay">
+            <i class="fas ${unlocked ? 'fa-check-circle text-success' : 'fa-lock'}"></i>
+        </div>
+        <img src="${b.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1175/1175571.png'">
+        <div class="badge-name">${b.name}</div>
+        <div class="badge-req">${unlocked ? 'Achievement Unlocked' : b.required + ' Coins Needed'}</div>
+        <div class="status-pill ${unlocked ? 'bg-success-subtle text-success' : 'bg-secondary-subtle text-secondary'}">
+            ${unlocked ? 'UNLOCKED' : 'LOCKED'}
+        </div>
+    `;
+
+    box.appendChild(div);
+});
+</script>
+
+</body>
+</html>
