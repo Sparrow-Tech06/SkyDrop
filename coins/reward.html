@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Achievements - App Style</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            /* Background gradient from the image */
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding-top: 20px;
+            padding-bottom: 80px; /* Space for the bottom nav */
+        }
+
+        .container-title {
+            font-weight: 300; /* Lighter font weight like the title */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .grid {
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;  
+            max-width: 500px;  
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .achievement-card {
+            background: transparent;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Circular progress frame */
+        .badge-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.2); /* Incomplete part of circle */
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(255,255,255,0.05); /* subtle background inside circle */
+        }
+
+        /* Logic for locked/unlocked circle color */
+        .achievement-card.unlocked .badge-circle {
+            border-color: #22c55e; /* Green for unlocked progress */
+        }
+
+        /* Lock icon logic */
+        .lock-icon {
+            position: absolute;
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            pointer-events: none; /* so click can go through if needed */
+        }
+
+        .achievement-card.locked .badge-img {
+            opacity: 0.5; /* more opaque for locked image */
+        }
+
+        .achievement-card.unlocked .lock-icon {
+            display: none; /* hide lock when unlocked */
+        }
+
+        .achievement-card.locked .claim-btn {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+        }
+
+        .badge-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .completion-text {
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .points-text {
+            color: #f97316; /* Orange color for points */
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .claim-btn {
+            background-color: #22c55e; /* Green for claim button */
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+
+        /* Bottom Navigation Bar style from the image */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .nav-item.active {
+            color: #f97316; /* Orange color for active nav */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-title">Achievements</div>
+<div class="grid" id="box"></div>
+
+<div class="bottom-nav">
+    <a href="#" class="nav-item">
+        <i class="fas fa-map-marker-alt"></i>
+        Missions
+    </a>
+    <a href="#" class="nav-item active">
+        <i class="fas fa-trophy"></i>
+        Achievements
+    </a>
+    <a href="#" class="nav-item">
+        <i class="fas fa-gift"></i>
+        Rewards
+    </a>
+    <a href="#" class="nav-item">
+        <i class="fas fa-dollar-sign"></i>
+        Invite
+    </a>
+</div>
+
+<script>
+// Mock coin and completion balance fetch logic
+// You can adjust these values to test different states
+let coin = parseInt(localStorage.getItem("coins")) || 750;
+const completions = {
+    'Rookie Drop': 1,
+    'Loot Hunter': 0,
+    'Battle Scout': 0,
+    'Survivor Rank': 0,
+    'Arena Fighter': 0,
+    'Elite Dropper': 0,
+    'Victory Seeker': 0,
+    'Diamond Raider': 0,
+    'Legend Striker': 0,
+    'SkyDrop Pro': 0
+};
+
+const badges = [
+    {name:"Rookie Drop",required_points:300,required_completions:3,img:"../assets/badges/rookie-drop.png"},
+    {name:"Loot Hunter",required_points:500,required_completions:5,img:"../assets/badges/Loot Hunter.png"},
+    {name:"Battle Scout",required_points:1000,required_completions:10,img:"../assets/badges/Puzzle Solver.png"},
+    {name:"Survivor Rank",required_points:300,required_completions:1,img:"../assets/badges/Brain Booster.png"}
+    // You can add more badges if needed
+];
+
+const box = document.getElementById("box");
+
+badges.forEach(b => {
+    let current_completions = completions[b.name] || 0;
+    let unlocked = coin >= b.required_points && current_completions >= b.required_completions;
+    
+    let div = document.createElement("div");
+    
+    // Class setting based on locked/unlocked
+    div.className = `achievement-card ${unlocked ? "unlocked" : "locked"}`;
+
+    div.innerHTML = `
+        <div class="badge-circle">
+            <i class="fas fa-lock lock-icon"></i>
+            <img class="badge-img" src="${b.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1175/1175571.png'">
+        </div>
+        <div class="completion-text">${current_completions}/${b.required_completions} Completed</div>
+        <div class="points-text">${b.required_points} PTS</div>
+        <button class="claim-btn">${unlocked ? 'Claimed' : 'Claim'}</button>
+    `;
+
+    box.appendChild(div);
+});
+</script>
+
+</body>
+</html>
 
