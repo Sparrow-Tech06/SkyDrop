@@ -55,7 +55,7 @@ padding:20px;
 width:60px;
 height:60px;
 border-radius:50%;
-object-fit:cover;
+object-fit: fill; position:absolute;
 transition:transform .2s ease;
 border: 1px solid #eee ;
 padding:1px ;
