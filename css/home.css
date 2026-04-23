@@ -73,7 +73,7 @@ color:var(--brand);
 .quiz-card{
    border-radius:18px; aspect-ratio: 1/1 ;
    padding: 12px 20px;
-   text-align:center; display: flex; flex-direction: column; justify-content: center; align-items: center; place-items: center;
+   text-align:center;
    cursor:pointer;
    transition:0.15s;
    border: 1.6px solid transparent;
