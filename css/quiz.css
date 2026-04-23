@@ -41,6 +41,7 @@
   border-radius:14px;
   border:1.4px solid var(--accent);
   box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  max-width: 420px ;
 }
 .question {
   border:1px solid var(--accent);
