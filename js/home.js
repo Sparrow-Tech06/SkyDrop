@@ -23,12 +23,14 @@ class="quiz-img"
 loading="lazy"
 alt="${q.title} icon">
 
+<div class="caption">
 <div class="quiz-title">
 ${q.title}
 </div>
 
 <div class="quiz-sub">
 ${q.questions.length} Questions
+</div>
 </div>
 
 </div>
