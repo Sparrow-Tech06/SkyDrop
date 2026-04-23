@@ -20,7 +20,7 @@
 
 @media (prefers-color-scheme: dark) {
  :root {
-      --body-bg: #16181d ;
+      --body-bg: #000000 /* #16181d */ ;
       
       --header: #22252b ;
       --border:#2f3440;
