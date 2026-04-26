@@ -8,73 +8,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-<style>
-/* BG #fff aur clean typography */
-body { background: #ffffff; font-family: 'Segoe UI', sans-serif; color: #333; }
-
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-    padding: 20px; 
-    max-width: 500px; 
-    margin: 0 auto; 
-}
-
-/* Modern Card Style */
-.card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 25px 15px;
-    text-align: center;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    position: relative;
-    transition: transform 0.2s ease;
-}
-
-.card:active { transform: scale(0.96); }
-
-/* Unlocked Border */
-.unlocked-border { border: 1.5px solid #0d6efd !important; }
-
-/* Icon Style */
-.status-icon {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 16px;
-}
-
-img { 
-    width: 80px; 
-    height: 80px; 
-    object-fit: contain; 
-    margin-bottom: 12px;
-    transition: filter 0.3s ease;
-}
-
-/* Locked State logic */
-.locked img { filter: grayscale(1) opacity(0.3); }
-.locked .status-icon { color: #ccc; }
-.unlocked .status-icon { color: #0d6efd; }
-
-.name { font-weight: 600; font-size: 14px; margin-bottom: 4px; display: block; }
-.req { font-size: 11px; color: #999; font-weight: 500; }
-
-/* Simple Status Label */
-.status-label {
-    margin-top: 12px;
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 50px;
-    display: inline-block;
-}
-.unlocked .status-label { background: #e7f1ff; color: #0d6efd; }
-.locked .status-label { background: #f8f9fa; color: #adb5bd; }
-</style>
+<link rel="stylesheet" href="../css/reward.css">
+    
 </head>
 
 <body>
