@@ -1,164 +1,63 @@
-/* ---------------- Universal ---------------- */
- * {
-    margin: 0 ;
-    padding: 0 ;
-    box-sizing: border-box ;
-    user-select: none ;
-  }
-/* ---------------- BODY ---------------- */
-body{
-background:#fff;
-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-margin:0;
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    padding: 20px; 
+    max-width: 500px; 
+    margin: 0 auto; 
 }
 
-header{
-display:flex;
-align-items:center;
-padding:14px 16px;
-border-bottom:1px solid #eee;
-gap:10px;
-position:sticky;
-top:0;
-background:#fff;
-z-index:10;
+/* Modern Card Style */
+.card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px 15px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+    transition: transform 0.2s ease;
 }
 
-.back-btn{
-border:none;
-background:#e3e3e3;
-width:38px;
-height:38px;
-border-radius:50%;
-font-size:18px;
+.card:active { transform: scale(0.96); }
+
+/* Unlocked Border */
+.unlocked-border { border: 1.5px solid #0d6efd !important; }
+
+/* Icon Style */
+.status-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 16px;
 }
 
-.header-title{
-font-weight:600;
-font-size:16px;
+img { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: contain; 
+    margin-bottom: 12px;
+    transition: filter 0.3s ease;
 }
 
-.coin{
-margin-left:auto;
-font-size:14px;
-color:#666;
-display:flex;
-align-items:center;
-gap:5px;
+/* Locked State logic */
+.locked img { filter: grayscale(1) opacity(0.3); }
+.locked .status-icon { color: #ccc; }
+.unlocked .status-icon { color: #0d6efd; }
+
+.name { font-weight: 600; font-size: 14px; margin-bottom: 4px; display: block; }
+.req { font-size: 11px; color: #999; font-weight: 500; }
+
+/* Simple Status Label */
+.status-label {
+    margin-top: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-block;
 }
-
-main{
-padding:16px;
-}
-
-.badge-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:14px;
-}
-
-.badge-card{
-border:1px solid #eee;
-border-radius:14px;
-padding:14px;
-text-align:center;
-cursor:pointer;
-background:#fafafa;
-}
-
-.badge-img{
-width:70px;
-height:70px;
-object-fit:contain;
-margin-bottom:8px;
-}
-
-.locked .badge-img{
-filter:grayscale(100%);
-opacity:.4;
-}
-
-.badge-title{
-font-weight:600;
-font-size:14px;
-}
-
-.progress{
-height:6px;
-border-radius:20px;
-margin-top:8px;
-}
-
-.progress-bar{
-background:#0d6efd;
-}
-
-/* modal */
-
-.modal-status{
-color:#fff;
-padding:10px;
-font-weight:600;
-text-align:center;
-}
-
-.status-unlocked{
-background:#22c55e;
-}
-
-.status-locked{
-background:#6b7280;
-}
-
-.modal-badge{
-width:110px;
-display:block;
-margin:auto;
-}
-
-.modal-badge.locked{
-filter:blur(3px) grayscale(100%);
-opacity:.6;
-}
-/* Badge card different background colors */
-
-.badge-grid .badge-card:nth-child(1){
-background:#8fbfd6;
-}
-
-.badge-grid .badge-card:nth-child(2){
-background:#b89ee6;
-}
-
-.badge-grid .badge-card:nth-child(3){
-background:#9fd69a;
-}
-
-.badge-grid .badge-card:nth-child(4){
-background:#f5a8a8;
-}
-
-.badge-grid .badge-card:nth-child(5){
-background:#f3d27a;
-}
-
-.badge-grid .badge-card:nth-child(6){
-background:#9ecff0;
-}
-
-.badge-grid .badge-card:nth-child(7){
-background:#a8e5d3;
-}
-
-.badge-grid .badge-card:nth-child(8){
-background:#e89cc5;
-}
-
-.badge-grid .badge-card:nth-child(9){
-background:#c7b2f0;
-}
-
-.badge-grid .badge-card:nth-child(10){
-background:#e8c27a;
-}
-
+.unlocked .status-label { background: #e7f1ff; color: #0d6efd; }
+.locked .status-label { background: #f8f9fa; color: #adb5bd; }
+</style>
