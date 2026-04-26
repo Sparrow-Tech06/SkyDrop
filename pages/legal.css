@@ -1,0 +1,60 @@
+   :root {
+           --color-heading:#121212 ;
+           --subheading: #112b4f ;
+        }
+        
+          /* Dark Mode Colors */
+      @media (prefers-color-scheme: dark) {
+         :root {
+            --color-heading: #90caf9 ;
+            --subheading: #93c4fd ;
+          }
+       }    
+       
+    /********************************************************************************/   
+        
+         
+    /*****************************************************************************************/
+      
+      h1 {
+         font-size: 1.50rem;
+         margin-top: 30px;
+         color:var(--color-heading);
+      }
+      h2 {
+         font-size: 1.30rem;
+         margin-top: 30px;
+         color: var(--subheading) ;
+      }
+      h3 {
+         font-size: 20px ; 
+      }
+      h4 {
+         font-size:1.10rem ; 
+      }
+      p { 
+          font-size:1rem; 
+      }
+      
+      ul {
+         font-size:1.10rem; 
+      }
+      ul li {
+         font-size:1rem; 
+      }
+      strong {
+         font-size:1.10rem; 
+      }
+      
+    /***********************************************************/  
+        #header-heading { 
+            font-size: 20px; 
+            margin-left: 15px; 
+        }
+      /*************************************/  
+        .container {
+            max-width: 767px;
+            margin: 0 auto;
+        }
+        
+     /***************************************/   
