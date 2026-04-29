@@ -12,17 +12,17 @@ function setS(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
 // ===== MASTER DATA =====
 const BADGES = [
-{name:"Rookie Drop",required:50,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/rookie-drop.png"},
-{name:"Loot Hunter",required:100,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Loot Hunter.png"},
-{name:"Battle Scout",required:200,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Puzzle Solver.png"},
-{name:"Survivor Rank",required:400,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Brain Booster.png"}
+{name:"Rookie Drop1",required:50,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/rookie-drop.png"},
+{name:"Loot Hunter2",required:100,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Loot Hunter.png"},
+{name:"Battle Scout3",required:130,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Puzzle Solver.png"},
+{name:"Survivor Rank4",required:150,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Brain Booster.png"}
 ];
 
 const LEVELS = [
 {level:1, required:0, name:""},
-{level:2, required:100, name:""},
-{level:3, required:300, name:""},
-{level:4, required:700, name:""}
+{level:2, required:50, name:""},
+{level:3, required:90, name:""},
+{level:4, required:110, name:""}
 ];
 
 // ===== GLOBAL CHECK =====
