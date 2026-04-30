@@ -14,14 +14,14 @@
     gap: 20px; 
     padding: 20px; 
     max-width: 660px; 
-    margin: 0 auto; 
+    margin: 0 auto; text-align: center;
 }
 
 /* Modern Card Style */
 .card {
     background: #fff;
     border-radius: var(--card-radius);
-    padding: 20px;
+    padding: 20px; border: none ;
     box-shadow: var(--shadow-soft);
     transition: 0.3s ease;
     position: relative;
