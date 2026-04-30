@@ -81,6 +81,6 @@ img {
     padding: 8px;
     font-size: 13px;
 }
-.unlocked .status-label { background: red; color: ; }
-.locked .status-label { background: red; color: ; }
+.unlocked .status-label { background: var(--primary-light); color: var(--primary) ; }
+.locked .status-label { background: #f8f9fa; color: ; }
 
