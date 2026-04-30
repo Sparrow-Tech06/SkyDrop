@@ -21,8 +21,7 @@
 .card {
     background: #fff;
     border-radius: var(--card-radius);
-    padding: 20px; border: none ;
-    box-shadow: var(--shadow-soft);
+    padding: 10px 20px; border: none ;
     transition: 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -47,18 +46,10 @@
 
 /* Icon Style */
 .status-icon {
-    position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--primary);
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 14px;
+    position: absolute; top: 12px; right: 12px; background: var(--primary);
+    width: 26px;  height: 26px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; color: #fff;
+    font-size: 14px;
 }
 
 img { 
@@ -72,14 +63,14 @@ img {
 /* Locked State logic */
 .locked img { filter: grayscale(1) opacity(0.3); }
 .locked .status-icon { color: #ccc; }
-.unlocked .status-icon { color: #0d6efd; }
+.unlocked .status-icon { color: var(--primary); }
 
 .name { font-weight: 600; font-size: 14px; margin-bottom: 4px; display: block; }
 .req { font-size: 11px; color: #999; font-weight: 500; }
 
 /* Simple Status Label */
 .status-label {
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
@@ -90,6 +81,6 @@ img {
     padding: 8px;
     font-size: 13px;
 }
-.unlocked .status-label { background: #e7f1ff; color: #0d6efd; }
-.locked .status-label { background: #f8f9fa; color: #adb5bd; }
+.unlocked .status-label { background: red; color: ; }
+.locked .status-label { background: red; color: ; }
 
