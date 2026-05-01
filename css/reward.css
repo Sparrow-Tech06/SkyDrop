@@ -46,10 +46,10 @@
 
 /* Icon Style */
 .status-icon {
-    position: absolute; top: 12px; right: 12px; background: var(--primary-light);
+    position: absolute; top: 12px; right: 12px; background: var(--primary);
     width: 26px;  height: 26px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; color: #fff;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 img { 
