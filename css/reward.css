@@ -42,11 +42,11 @@
      }
 
 /* Unlocked Border */
-.unlocked-border { border: 1.5px solid #0d6efd !important; }
+.unlocked-border { border: 1.5px solid var(--primary) !important; }
 
 /* Icon Style */
 .status-icon {
-    position: absolute; top: 12px; right: 12px; background: var(--primary);
+    position: absolute; top: 12px; right: 12px; background: var(--primary-light);
     width: 26px;  height: 26px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; color: #fff;
     font-size: 14px;
@@ -62,8 +62,8 @@ img {
 
 /* Locked State logic */
 .locked img { filter: grayscale(1) opacity(0.3); }
-.locked .status-icon { color: #ccc; }
-.unlocked .status-icon { color: var(--primary); }
+.locked .status-icon { color: #fff; }
+.unlocked .status-icon { color: ; }
 
 .name { font-weight: 600; font-size: 14px; margin-bottom: 4px; display: block; }
 .req { font-size: 11px; color: #999; font-weight: 500; }
