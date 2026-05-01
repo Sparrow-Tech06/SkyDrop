@@ -113,19 +113,20 @@ img {
   padding:20px;
   border-radius:20px;
   text-align:center;
-  width: 90%;
+  width: 95%;
   max-width:360px;
   position:relative;
   animation:scaleUp 0.3s ease;
 }
 
 .popup-content img{
-  width:180px;
+  width: 210px;
+  height: 210px ;
   margin-bottom:10px;
 }
 
 .popup-content h4{
-  font-weight:600;
+  font-weight:600; color: #fff ;
 }
 
 .popup-content p{
