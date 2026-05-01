@@ -113,14 +113,14 @@ img {
   padding:20px;
   border-radius:20px;
   text-align:center;
-  width:85%;
-  max-width:320px;
+  width: 90%;
+  max-width:360px;
   position:relative;
   animation:scaleUp 0.3s ease;
 }
 
 .popup-content img{
-  width:120px;
+  width:180px;
   margin-bottom:10px;
 }
 
