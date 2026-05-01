@@ -24,6 +24,19 @@
 
 <div class="grid" id="box"></div>
 
+<!-- POPUP -->
+<div id="badgePopup" class="badge-popup">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closePopup()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <img id="popupImg" src="">
+    <h4 id="popupName"></h4>
+    <p id="popupStatus"></p>
+  </div>
+</div>
+
 <script src="../js/reward-popup.js"></script>
 <script src="../js/reward-engine.js"></script>
 
@@ -63,9 +76,34 @@ BADGES.forEach(b=>{
  <div class="status-label">${unlocked ? 'Unlocked' : 'Locked'}</div>
  `;
 
+ /* CLICK EVENT */
+div.onclick = () => openPopup(b, unlocked);
+    
  box.appendChild(div);
 });
 
+/* ---------- POPUP ---------- */
+function openPopup(badge, unlocked){
+  document.getElementById("popupImg").src = badge.img;
+  document.getElementById("popupName").innerText = badge.name;
+
+  document.getElementById("popupStatus").innerText =
+    unlocked
+      ? "🎉 You have unlocked this badge!"
+      : `${badge.required} coins required to unlock`;
+
+  document.getElementById("badgePopup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("badgePopup").classList.remove("active");
+}
+
+/* CLOSE ON OUTSIDE CLICK */
+document.getElementById("badgePopup").addEventListener("click",function(e){
+  if(e.target === this) closePopup();
+});
+    
 </script>
 
 </body>
