@@ -12,10 +12,16 @@ function setS(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
 // ===== MASTER DATA =====
 const BADGES = [
-{name:"Rookie Drop1",required:50,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/rookie-drop.png"},
-{name:"Loot Hunter2",required:100,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Loot Hunter.png"},
-{name:"Battle Scout3",required:130,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Puzzle Solver.png"},
-{name:"Survivor Rank4",required:150,img:"https://sparrow-tech06.github.io/SkyDrop/assets/badges/Brain Booster.png"}
+  { name: "Rookie Drop", required: 50, img: "../assets/badges/rookie-drop.png" },
+  { name: "Loot Dropper", required: 100, img: "../assets/badges/loot-dropper.png" },
+  { name: "Sky Scout", required: 130, img: "../assets/badges/sky-scout.png" },
+  { name: "Drop Survivor", required: 150, img: "../assets/badges/drop-survivor.png" },
+  { name: "Airdrop Raider", required: 180, img: "../assets/badges/airdrop-raider.png" },
+  { name: "Storm Diver", required: 220, img: "../assets/badges/storm-diver.png" },
+  { name: "Elite Dropper", required: 260, img: "../assets/badges/elite-dropper.png" },
+  { name: "Sky Dominator", required: 320, img: "../assets/badges/sky-dominator.png" },
+  { name: "Drop Legend", required: 400, img: "../assets/badges/drop-legend.png" },
+  { name: "SkyDrop Immortal", required: 500, img: "../assets/badges/skydrop-immortal.png" }
 ];
 
 const LEVELS = [
