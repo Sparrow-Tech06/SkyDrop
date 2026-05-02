@@ -12,16 +12,16 @@ function setS(k,v){localStorage.setItem(k,JSON.stringify(v));}
 
 // ===== MASTER DATA =====
 const BADGES = [
-  { name: "Rookie Drop", required: 50, img: "../assets/badges/rookie-drop.png" },
-  { name: "Loot Dropper", required: 100, img: "../assets/badges/loot-dropper.png" },
-  { name: "Sky Scout", required: 130, img: "../assets/badges/sky-scout.png" },
-  { name: "Drop Survivor", required: 150, img: "../assets/badges/drop-survivor.png" },
-  { name: "Airdrop Raider", required: 180, img: "../assets/badges/airdrop-raider.png" },
-  { name: "Storm Diver", required: 220, img: "../assets/badges/storm-diver.png" },
-  { name: "Elite Dropper", required: 260, img: "../assets/badges/elite-dropper.png" },
-  { name: "Sky Dominator", required: 320, img: "../assets/badges/sky-dominator.png" },
-  { name: "Drop Legend", required: 400, img: "../assets/badges/drop-legend.png" },
-  { name: "SkyDrop Immortal", required: 500, img: "../assets/badges/skydrop-immortal.png" }
+  { name: "Rookie Drop", required: 50, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/rookie-drop.png" },
+  { name: "Loot Dropper", required: 100, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/loot-dropper.png" },
+  { name: "Sky Scout", required: 130, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/sky-scout.png" },
+  { name: "Drop Survivor", required: 150, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/drop-survivor.png" },
+  { name: "Airdrop Raider", required: 180, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/airdrop-raider.png" },
+  { name: "Storm Diver", required: 220, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/storm-diver.png" },
+  { name: "Elite Dropper", required: 260, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/elite-dropper.png" },
+  { name: "Sky Dominator", required: 320, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/sky-dominator.png" },
+  { name: "Drop Legend", required: 400, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/drop-legend.png" },
+  { name: "SkyDrop Immortal", required: 500, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/skydrop-immortal.png" }
 ];
 
 const LEVELS = [
