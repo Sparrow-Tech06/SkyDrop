@@ -203,7 +203,7 @@ color:#888;
   width:60px;
   height:60px;
   border-radius:50%;
-  background:linear-gradient(135deg,var(--orange),#ff9d3d);
+  background:linear-gradient(135deg,#ff7a00,#ff9d3d);
   display:flex;
   align-items:center;
   justify-content:center;
