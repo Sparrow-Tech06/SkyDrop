@@ -94,6 +94,32 @@
 loadCoins();
 window.addEventListener("focus", loadCoins);
 </script>
+<script>  
+let lastScroll = 0;  
+const navbar = document.getElementById("bottomNav");  
+  
+window.addEventListener("scroll", () => {  
+  
+  let currentScroll = window.pageYOffset;  
+  
+  // SCROLL DOWN = Hide NAVBAR  
+  if(currentScroll > lastScroll){  
+    navbar.classList.add("hide-nav");  
+  }  
+  
+  // SCROLL UP = Show NAVBAR  
+  else{  
+    navbar.classList.remove("hide-nav");  
+  }  
+  
+  // TOP AREA = ALWAYS SHOW  
+  if(currentScroll < 20){  
+    navbar.classList.remove("hide-nav");  
+  }  
+  
+  lastScroll = currentScroll;  
+});  
+</script>
   
 </body>
   </html>
