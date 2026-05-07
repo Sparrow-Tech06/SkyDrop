@@ -2,6 +2,7 @@
 /* ---------------- ROOT ---------------- */
 
 :root{
+--orange:#ff7a00;
 --card1:linear-gradient(135deg,#fff7ed,#fef3c7);
 --card2:linear-gradient(135deg,#eff6ff,#e0e7ff);
 --card3:linear-gradient(135deg,#ecfeff,#cffafe);
