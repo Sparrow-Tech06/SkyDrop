@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkyDrop Battle Mode</title>
+  <link rel="stylesheet" href="battle.css" />
+</head>
+<body>
+
+<div class="battle-container">
+
+  <div class="top-bar">
+    <div class="player-card">
+      <h3>You</h3>
+      <p id="userScore">0</p>
+    </div>
+
+    <div class="vs-box">VS</div>
+
+    <div class="player-card ai-card">
+      <h3 id="aiName">AI Bot</h3>
+      <p id="aiScore">0</p>
+    </div>
+  </div>
+
+  <div class="timer-box">
+    <span id="timer">15</span>
+  </div>
+
+  <div class="question-box">
+    <h2 id="questionText">Loading...</h2>
+
+    <div id="optionsBox" class="options"></div>
+  </div>
+
+  <div class="battle-progress">
+    <div class="user-progress" id="userProgress"></div>
+    <div class="ai-progress" id="aiProgress"></div>
+  </div>
+
+</div>
+
+<script src="ai-engine.js"></script>
+<script src="battle.js"></script>
+</body>
+</html>
