@@ -66,49 +66,82 @@ try{
 /* Set Coins */
 document.getElementById("coinBalance").innerText = coins.toLocaleString();
 
-/* --- LEVEL SYSTEM LOGIC --- */
-const LEVELS = [
-    {level: 1, required: 0},
-    {level: 2, required: 50},
-    {level: 3, required: 90},
-    {level: 4, required: 110},
-    {level: 5, required: 150}
-];
+/* --- LEVEL SYSTEM LOGIC (JSON FILE BASED) --- */
 
-function updateLevelUI() {
-    let currentLvl = LEVELS[0];
-    let nextLvl = null;
+async function loadLevels(){
 
-    for (let i = 0; i < LEVELS.length; i++) {
-        if (coins >= LEVELS[i].required) {
-            currentLvl = LEVELS[i];
-            nextLvl = LEVELS[i + 1];
+    try{
+
+        const response = await fetch("../data/levels.json");
+        const data = await response.json();
+
+        const LEVELS = data.levels || [];
+
+        if(!LEVELS.length) return;
+
+        let currentLvl = LEVELS[0];
+        let nextLvl = null;
+
+        for(let i = 0; i < LEVELS.length; i++){
+
+            if(coins >= LEVELS[i].required){
+
+                currentLvl = LEVELS[i];
+                nextLvl = LEVELS[i + 1];
+
+            }
+
         }
+
+        const lvlLabel = document.getElementById("lvlLabel");
+        const nextLvlLabel = document.getElementById("nextLvlLabel");
+        const lvlProgress = document.getElementById("lvlProgress");
+        const lvlDist = document.getElementById("lvlDist");
+
+        lvlLabel.innerText = `Level ${currentLvl.level}`;
+
+        if(nextLvl){
+
+            let needed = nextLvl.required - coins;
+
+            let range = nextLvl.required - currentLvl.required;
+
+            let progressInLevel = coins - currentLvl.required;
+
+            let percent = (progressInLevel / range) * 100;
+
+            lvlProgress.style.width = percent + "%";
+
+            nextLvlLabel.innerText = `Next: Level ${nextLvl.level}`;
+
+            lvlDist.innerHTML = `
+                Need 
+                <span class="coin-highlight">
+                    ${needed}
+                </span> 
+                more points to level up
+            `;
+
+        }else{
+
+            nextLvlLabel.innerText = "Max Level";
+
+            lvlProgress.style.width = "100%";
+
+            lvlDist.innerText = "You are at the highest level! 🏆";
+
+        }
+
+    }catch(error){
+
+        console.error("Failed to load levels.json", error);
+
     }
 
-    const lvlLabel = document.getElementById("lvlLabel");
-    const nextLvlLabel = document.getElementById("nextLvlLabel");
-    const lvlProgress = document.getElementById("lvlProgress");
-    const lvlDist = document.getElementById("lvlDist");
-
-    lvlLabel.innerText = `Level ${currentLvl.level}`;
-
-    if (nextLvl) {
-        let needed = nextLvl.required - coins;
-        let range = nextLvl.required - currentLvl.required;
-        let progressInLevel = coins - currentLvl.required;
-        let percent = (progressInLevel / range) * 100;
-
-        nextLvlLabel.innerText = `Next: Level ${nextLvl.level}`;
-        lvlProgress.style.width = percent + "%";
-        lvlDist.innerHTML = `Need <span class="coin-highlight">${needed}</span> more points to level up`;
-    } else {
-        nextLvlLabel.innerText = `Max Level`;
-        lvlProgress.style.width = "100%";
-        lvlDist.innerText = "You are at the highest level! 🏆";
-    }
 }
-updateLevelUI();
+
+loadLevels();
+
 /* -------------------------- */
 
 /* Render History */
@@ -116,6 +149,7 @@ let list = document.getElementById("historyList");
 
 /* Empty state */
 if(history.length === 0){
+
   list.innerHTML = `
     <div class="empty">
       <i class="bi bi-wallet2"></i>
@@ -123,14 +157,18 @@ if(history.length === 0){
       <small> Keep playing to gain points </small>
     </div>
   `;
+
 }else{
 
   history.slice().reverse().forEach((h)=>{
+
     let item = document.createElement("div");
+
     item.className = "history-item";
 
     item.innerHTML = `
       <div class="history-left">
+
         <div class="icon-box">
           <i class="bi bi-coin"></i>
         </div>
@@ -139,20 +177,31 @@ if(history.length === 0){
           <div>${h.quiz || "Quiz Reward"}</div>
           <div class="date">${h.date || "Recently"}</div>
         </div>
+
       </div>
 
-      <div class="amount">+${h.reward || 0}</div>
+      <div class="amount">
+        +${h.reward || 0}
+      </div>
     `;
+
     list.appendChild(item);
+
   });
+
 }
 
 /* Motivation message */
 if(history.length > 0 && history.length < 3){
+
   let msg = document.createElement("div");
+
   msg.className = "empty";
+
   msg.innerHTML = "Keep playing to gain points";
+
   list.appendChild(msg);
+
 }
 
 </script>
