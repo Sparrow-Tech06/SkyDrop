@@ -1,0 +1,16 @@
+{
+  "levels":[
+
+    { "level":1, "required":0 },
+    { "level":2, "required":50 },
+    { "level":3, "required":100 },
+    { "level":4, "required":250 },
+    { "level":5, "required":400 },
+    { "level":6, "required":660 },
+    { "level":7, "required":800 },
+    { "level":8, "required":1000 },
+    { "level":9, "required":1250 },
+    { "level":10, "required":1400 },
+    { "level":11, "required":1600 },
+  ]
+}
