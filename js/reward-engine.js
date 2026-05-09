@@ -5,10 +5,16 @@ window.__rewardEngineLoaded = true;
 
 // SAFE STORAGE
 function getS(k){
- try{return JSON.parse(localStorage.getItem(k)) || [];}
- catch{return [];}
+ try{
+   return JSON.parse(localStorage.getItem(k)) || [];
+ }catch{
+   return [];
+ }
 }
-function setS(k,v){localStorage.setItem(k,JSON.stringify(v));}
+
+function setS(k,v){
+ localStorage.setItem(k,JSON.stringify(v));
+}
 
 // ===== MASTER DATA =====
 const BADGES = [
@@ -24,50 +30,77 @@ const BADGES = [
   { name: "SkyDrop Immortal", required: 500, img: "https://sparrow-tech06.github.io/SkyDrop/assets/badges/skydrop-immortal.png" }
 ];
 
-const LEVELS = [
-{level:1, required:0, name:""},
-{level:2, required:50, name:""},
-{level:3, required:90, name:""},
-{level:4, required:110, name:""}
-];
+// ===== LOAD LEVELS JSON =====
+async function loadLevels(){
+
+ try{
+
+   const response = await fetch("../data/levels.json");
+
+   const data = await response.json();
+
+   return data.levels || [];
+
+ }catch(error){
+
+   console.error("Failed to load levels.json", error);
+
+   return [];
+
+ }
+
+}
 
 // ===== GLOBAL CHECK =====
-window.checkRewards = function(){
+window.checkRewards = async function(){
 
-let coin = parseInt(localStorage.getItem("coins")) || 0;
+ let coin = parseInt(localStorage.getItem("coins")) || 0;
 
-let ub = getS("unlockedBadges");
-let ul = getS("unlockedLevels");
+ let ub = getS("unlockedBadges");
 
-// BADGES
-BADGES.forEach(b=>{
- if(coin >= b.required && !ub.includes(b.name)){
-  ub.push(b.name);
-  setS("unlockedBadges", ub);
+ let ul = getS("unlockedLevels");
 
-  window.onRewardUnlocked({
-    type:"badge",
-    title:b.name,
-    subtitle:"Badge Unlocked",
-    icon:b.img
-  });
- }
-});
+ // ===== BADGES =====
+ BADGES.forEach(b=>{
 
-// LEVELS
-LEVELS.forEach(l=>{
- if(coin >= l.required && !ul.includes(l.level)){
-  ul.push(l.level);
-  setS("unlockedLevels", ul);
+   if(coin >= b.required && !ub.includes(b.name)){
 
-  window.onRewardUnlocked({
-    type:"level",
-    title:`Level ${l.level}`,
-    subtitle:`${l.name} Unlocked`,
-    icon:"https://sparrow-tech06.github.io/SkyDrop/assets/levels/level.png"
-  });
- }
-});
+     ub.push(b.name);
+
+     setS("unlockedBadges", ub);
+
+     window.onRewardUnlocked({
+       type:"badge",
+       title:b.name,
+       subtitle:"Badge Unlocked",
+       icon:b.img
+     });
+
+   }
+
+ });
+
+ // ===== LEVELS =====
+ const LEVELS = await loadLevels();
+
+ LEVELS.forEach(l=>{
+
+   if(coin >= l.required && !ul.includes(l.level)){
+
+     ul.push(l.level);
+
+     setS("unlockedLevels", ul);
+
+     window.onRewardUnlocked({
+       type:"level",
+       title:`Level ${l.level}`,
+       subtitle:"Level Unlocked",
+       icon:"https://sparrow-tech06.github.io/SkyDrop/assets/levels/level.png"
+     });
+
+   }
+
+ });
 
 };
 
