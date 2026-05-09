@@ -1,6 +1,6 @@
 
 :root{
-  --card:#1a1f28;
+  --card: linear-gradient(135deg,#fff7ed,#fef3c7);
   --muted:#9aa4b2;
   --accent:#7c5cff;
   --accent2:#00d4ff;
@@ -17,7 +17,6 @@
 }
 
 .section-title p{
-  color:var(--muted);
   margin:0;
   font-size:14px;
 }
@@ -28,7 +27,7 @@
   padding:18px;
   position:relative;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.04);
+  border: 2px solid #f59e0b
   height:100%;
 }
 
