@@ -134,34 +134,78 @@ methods:{
     this.current++;
 
     if(this.current >= this.questions.length){
-      this.finished = true;
 
-      const accuracy = (this.score / this.questions.length) * 100;
+  this.finished = true;
 
-      if(accuracy >= 50){
+  const accuracy =
+  Math.round(
+  (this.score / this.questions.length) * 100
+  );
 
-      if(typeof mycoin === "function"){
-          mycoin(this.quizId, this.quizTitle);
-        }
+  const wrong =
+  this.questions.length - this.score;
 
-  // ✅ GLOBAL REWARD CHECK (KEY LINE)
+
+  // SAVE REAL STATS
+
+  if(typeof StatsManager !== "undefined"){
+
+    StatsManager.saveGame({
+
+      gameId: this.quizId,
+
+      gameName: this.quizTitle,
+
+      score: this.score,
+
+      total: this.questions.length,
+
+      wrong: wrong,
+
+      accuracy: accuracy
+
+    });
+
+  }
+
+
+  if(accuracy >= 50){
+
+    if(typeof mycoin === "function"){
+
+      mycoin(this.quizId, this.quizTitle);
+
+    }
+
+    setTimeout(()=>{
+
+      if(typeof checkRewards === "function"){
+
+        checkRewards();
+
+      }
+
+    },200);
+
+  }
+
   setTimeout(()=>{
-    if(typeof checkRewards === "function"){
-      checkRewards();
-    }
-  }, 200);
 
-       }
+    ResultPage.show({
 
-      setTimeout(()=>{
-        ResultPage.show({
-          score: this.score,
-          total: this.questions.length,
-          message: this.message,
-          accuracy: accuracy
-        });
-      },100);
-    }
+      score:this.score,
+
+      total:this.questions.length,
+
+      message:this.message,
+
+      accuracy:accuracy
+
+    });
+
+  },100);
+
+}
   }
 
 },
