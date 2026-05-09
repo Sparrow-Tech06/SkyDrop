@@ -19,6 +19,48 @@
   margin:0;
   font-size:14px;
 }
+/************************************/
+.level-card{
+  background:linear-gradient(135deg,#6f42ff,#00c6ff);
+  padding:22px;
+  border-radius:24px;
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+}
+
+.level-card::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  background:rgba(255,255,255,.08);
+  border-radius:50%;
+  top:-70px;
+  right:-70px;
+}
+
+.small-text{
+  font-size:14px;
+  opacity:.9;
+}
+
+.level-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:rgba(255,255,255,.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+}
+
+.coin-text{
+  font-size:15px;
+}
+
+/************************************/
 
 .stat-card{
   background:var(--card);
