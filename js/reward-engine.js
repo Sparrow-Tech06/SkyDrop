@@ -35,7 +35,7 @@ async function loadLevels(){
 
  try{
 
-   const response = await fetch("../data/levels.json");
+   const response = await fetch("https://sparrow-tech06.github.io/SkyDrop/data/levels.json");
 
    const data = await response.json();
 
