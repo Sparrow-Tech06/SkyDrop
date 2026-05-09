@@ -73,7 +73,7 @@
 }
 
 .rank-box{
-  background:#232a35;
+  background:linear-gradient(145deg,#fff0cf,#ffe0a1) ;
   border-radius:18px;
   padding:16px;
   margin-bottom:14px;
@@ -81,7 +81,7 @@
 
 .rank-title{
   font-size:14px;
-  color:var(--muted);
+  color: ;
 }
 
 .rank-game{
@@ -98,6 +98,6 @@
 .empty{
   text-align:center;
   padding:60px 20px;
-  color:var(--muted);
+  color: ;
 }
 
