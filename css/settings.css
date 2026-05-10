@@ -164,16 +164,15 @@ justify-content:center;
 text-decoration:none;
 font-size:20px;
 transition:.2s ease;
-background:#f6f3ff;
-color:#9b8cff;
-border:1px solid #ece7ff;
+background: var(--icon-box) ;
+color: var(--icon-color) ;
+border:1px solid var(--icon-color) ;
 }
 
 .social-btn:hover{
 transform:translateY(-3px) scale(1.04);
 background:#9b8cff;
 color:#fff;
-box-shadow:0 8px 18px rgba(155,140,255,.25);
 }
 
 
