@@ -133,4 +133,48 @@ padding:0;
 margin:0; font-size: 14px ;
 }
 
+/* ---------- Follow Us ---------- */
+
+.follow-wrap{
+text-align:center;
+padding:28px 0 10px;
+}
+
+.follow-title{
+font-size:15px;
+font-weight:600;
+margin-bottom:14px;
+color:#666;
+}
+
+.follow-social{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:14px;
+}
+
+.social-btn{
+width:48px;
+height:48px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:20px;
+transition:.2s ease;
+background:#f6f3ff;
+color:#9b8cff;
+border:1px solid #ece7ff;
+}
+
+.social-btn:hover{
+transform:translateY(-3px) scale(1.04);
+background:#9b8cff;
+color:#fff;
+box-shadow:0 8px 18px rgba(155,140,255,.25);
+}
+
+
 
