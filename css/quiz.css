@@ -4,9 +4,9 @@
   --accent:#ff6a00;
   --soft:#fff ;
 
-  --correct-bg: rgba(16,185,129,0.15) ;  
+  --correct-bg: #ecfdf5!important;
   --correct-border: #10B981 !important ;
-  --wrong-bg: rgba(239,68,68,0.15) ;  
+  --wrong-bg: #fef2f2!important;
   --wrong-border: #EF4444 !important;
 
   --result-card: linear-gradient(135deg,#fff7ed,#fef3c7) ;
