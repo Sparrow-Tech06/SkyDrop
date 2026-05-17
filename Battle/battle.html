@@ -1,1 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Live Quiz Light</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+
+body{
+    background:#f5f7fb;
+    font-family:Arial;
+    color:#111;
+    padding:15px;
+}
+
+/* APP */
+.app{
+    max-width:650px;
+    margin:auto;
+}
+
+/* TOP */
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.title{
+    font-size:22px;
+    font-weight:900;
+}
+
+/* LIVES */
+.lives{
+    display:flex;
+    gap:8px;
+}
+
+.life{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    font-size:18px;
+    transition:.3s;
+}
+
+/* ACTIVE LIFE */
+.life.active{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+/* USED LIFE (wrong answer effect) */
+.life.used{
+    background:#dbeafe;
+    color:#2563eb;
+    transform:scale(.9);
+    opacity:.8;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:25px;
+    padding:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+/* QUESTION */
+.q{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+/* OPTIONS */
+.opt{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    margin-bottom:12px;
+    background:#f3f4f6;
+    font-weight:700;
+    text-align:left;
+    transition:.2s;
+}
+
+.opt:hover{
+    background:#e5e7eb;
+}
+
+.opt.correct{
+    background:#16a34a;
+    color:#fff;
+}
+
+.opt.wrong{
+    background:#ef4444;
+    color:#fff;
+}
+
+/* BOTTOM */
+.bottom{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:12px;
+    box-shadow:0 -5px 20px rgba(0,0,0,.05);
+}
+
+.btn-next{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:15px;
+    background:#f97316;
+    color:#fff;
+    font-weight:800;
+}
+
+/* PROGRESS */
+.progress{
+    height:8px;
+    border-radius:20px;
+    margin-bottom:10px;
+}
+
+/* LOADER */
+.loader{
+    width:45px;
+    height:45px;
+    border:4px solid #ddd;
+    border-top:4px solid #f97316;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:auto;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+/* GAME OVER */
+.gameover{
+    text-align:center;
+    margin-top:80px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app" class="app">
+
+<!-- LOADING -->
+<div v-if="loading" class="text-center mt-5">
+    <div class="loader"></div>
+    <p class="mt-3 fw-bold">Loading Quiz...</p>
+</div>
+
+<!-- TOP -->
+<div v-if="!loading && !gameOver" class="top">
+
+    <div class="title">Live Quiz ⚡</div>
+
+    <div class="lives">
+
+        <div
+        v-for="i in 3"
+        :key="i"
+        class="life"
+        :class="lifeClass(i)"
+        >
+            ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<!-- GAME -->
+<div v-if="!loading && !gameOver" class="card">
+
+    <div class="progress">
+        <div class="progress-bar bg-warning"
+        :style="{width:progress+'%'}"></div>
+    </div>
+
+    <div class="q">
+        Q{{ index+1 }}. {{ current.question }}
+    </div>
+
+    <button
+    v-for="(o,i) in current.options"
+    :key="i"
+    class="opt"
+    :class="getClass(i)"
+    @click="select(i)"
+    :disabled="answered"
+    >
+        {{ o }}
+    </button>
+
+</div>
+
+<!-- GAME OVER -->
+<div v-if="gameOver" class="gameover">
+
+    <h2>Game Over 💥</h2>
+    <p>You lost all lives or finished quiz</p>
+
+    <button class="btn btn-warning w-100 mt-3"
+    onclick="location.reload()">
+        Restart
+    </button>
+
+</div>
+
+<!-- BOTTOM -->
+<div v-if="!loading && !gameOver" class="bottom">
+
+    <button class="btn-next"
+    :disabled="selected==null || answered"
+    @click="next">
+        {{ index==9 ? 'Finish' : 'Next' }}
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+const { createApp } = Vue;
+
+createApp({
+
+data(){
+
+return{
+
+    loading:true,
+
+    questions:[],
+
+    index:0,
+
+    selected:null,
+
+    answered:false,
+
+    lives:3,
+
+    usedLives:0,
+
+    gameOver:false
+
+}
+
+},
+
+computed:{
+
+current(){
+    return this.questions[this.index];
+},
+
+progress(){
+    return (this.index/10)*100;
+}
+
+},
+
+methods:{
+
+async load(){
+
+    const res = await fetch(
+        "https://sparrow-tech06.github.io/SkyDrop/data/quiz-data.json"
+    );
+
+    const data = await res.json();
+
+    let all = [];
+
+    data.quizzes.forEach(q=>{
+        q.questions.forEach(x=>{
+            all.push(x);
+        });
+    });
+
+    all = all.sort(()=>Math.random()-0.5);
+
+    this.questions = all.slice(0,10);
+
+    this.loading = false;
+
+},
+
+select(i){
+
+    if(this.answered) return;
+
+    this.selected = i;
+
+},
+
+lifeClass(i){
+
+    // i = 1,2,3
+
+    if(i <= this.lives - this.usedLives){
+        return "active";
+    }else{
+        return "used";
+    }
+
+},
+
+getClass(i){
+
+    if(!this.answered) return "";
+
+    if(i === this.current.answer){
+        return "correct";
+    }
+
+    if(i === this.selected && i !== this.current.answer){
+        return "wrong";
+    }
+
+    return "";
+
+},
+
+next(){
+
+    this.answered = true;
+
+    if(this.selected !== this.current.answer){
+        this.usedLives++;
+    }
+
+    setTimeout(()=>{
+
+        if(this.usedLives >= 3){
+            this.gameOver = true;
+            return;
+        }
+
+        this.index++;
+        this.selected = null;
+        this.answered = false;
+
+        if(this.index >= 10){
+            this.gameOver = true;
+        }
+
+    },700);
+
+}
+
+},
+
+mounted(){
+    this.load();
+}
+
+}).mount("#app");
+
+</script>
+
+</body>
+  </html>
