@@ -20,7 +20,7 @@
 /* LIVES */
 .lives{
     display:flex;
-    gap:8px;
+    gap:4px;
 }
 
 .life{
@@ -30,21 +30,21 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#fff;
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    background: transparent;
+  /*  box-shadow:0 3px 10px rgba(0,0,0,.08);  */
     font-size:18px;
     transition:.3s;
 }
 
 /* ACTIVE LIFE */
 .life.active{
-    background:#fff;
+    background: transparent;
     transform:scale(1.05);
 }
 
 /* USED LIFE (wrong answer effect) */
 .life.used{
-    background:#dbeafe;
+    background: transparent;
     color:#2563eb;
     transform:scale(.9);
     opacity:.8;
@@ -95,16 +95,16 @@
 /* BOTTOM */
 .bottom{
     position:fixed;
-    bottom:0;
+    bottom: 10%;
     left:0;
     right:0;
-    background:#fff;
+    background: ;
     padding:12px;
-    box-shadow:0 -5px 20px rgba(0,0,0,.05);
+  /*  box-shadow:0 -5px 20px rgba(0,0,0,.05); */
 }
 
 .btn-next{
-    width:100%;
+    width: 90%;
     padding:14px;
     border:none;
     border-radius:15px;
