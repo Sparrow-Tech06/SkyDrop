@@ -38,9 +38,7 @@ class="loading-screen"
 
     <div class="loader"></div>
 
-    <div class="loading-text">
-        Loading Daily Challenge...
-    </div>
+    <div class="loading-text"> Loading Daily Challenge... </div>
 
 </div>
 
@@ -55,41 +53,20 @@ class="daily-card"
 
     <div class="top-banner">
 
-        <div class="daily-badge">
-            🔥 DAILY CHALLENGE
-        </div>
+        <div class="daily-badge"> 🔥 DAILY CHALLENGE </div>
 
         <div class="quiz-header">
 
-            <img
-            :src="todayQuestion.icon"
-            class="quiz-icon"
-            >
-
+            <img :src="todayQuestion.icon" class="quiz-icon">
             <div>
-
-                <div class="quiz-title">
-                    {{ todayQuestion.title }}
-                </div>
-
-                <div class="quiz-sub">
-                    New Question Every Day
-                </div>
-
+                <div class="quiz-title"> {{ todayQuestion.title }} </div>
+                <div class="quiz-sub"> New Question Every Day </div>
             </div>
-
         </div>
 
         <div class="timer-box">
-
-            <div class="timer-label">
-                NEXT QUESTION IN
-            </div>
-
-            <div class="timer-value">
-                {{ countdown }}
-            </div>
-
+            <div class="timer-label"> NEXT QUESTION IN </div>
+            <div class="timer-value"> {{ countdown }} </div>
         </div>
 
     </div>
@@ -98,13 +75,9 @@ class="daily-card"
 
     <div class="content">
 
-        <div class="question-label">
-            TODAY QUESTION
-        </div>
+        <div class="question-label"> TODAY QUESTION </div>
 
-        <div class="question">
-            {{ todayQuestion.question }}
-        </div>
+        <div class="question"> {{ todayQuestion.question }} </div>
 
         <button
         v-for="(option,index) in todayQuestion.options"
