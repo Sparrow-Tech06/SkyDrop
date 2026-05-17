@@ -105,37 +105,25 @@ createApp({
 data(){
 
 return{
-
     loading:true,
-
     questions:[],
-
     index:0,
-
     selected:null,
-
     answered:false,
-
     lives:3,
-
     usedLives:0,
-
     gameOver:false
-
 }
 
 },
 
 computed:{
-
 current(){
     return this.questions[this.index];
 },
-
 progress(){
     return (this.index/10)*100;
 }
-
 },
 
 methods:{
@@ -145,9 +133,7 @@ async load(){
     const res = await fetch(
         "https://sparrow-tech06.github.io/SkyDrop/data/quiz-data.json"
     );
-
     const data = await res.json();
-
     let all = [];
 
     data.quizzes.forEach(q=>{
@@ -155,27 +141,20 @@ async load(){
             all.push(x);
         });
     });
-
     all = all.sort(()=>Math.random()-0.5);
-
     this.questions = all.slice(0,10);
-
     this.loading = false;
 
 },
 
 select(i){
-
     if(this.answered) return;
-
     this.selected = i;
-
 },
 
 lifeClass(i){
 
     // i = 1,2,3
-
     if(i <= this.lives - this.usedLives){
         return "active";
     }else{
@@ -187,34 +166,27 @@ lifeClass(i){
 getClass(i){
 
     if(!this.answered) return "";
-
     if(i === this.current.answer){
         return "correct";
     }
-
     if(i === this.selected && i !== this.current.answer){
         return "wrong";
     }
-
     return "";
-
 },
 
 next(){
 
     this.answered = true;
-
     if(this.selected !== this.current.answer){
         this.usedLives++;
     }
 
     setTimeout(()=>{
-
         if(this.usedLives >= 3){
             this.gameOver = true;
             return;
         }
-
         this.index++;
         this.selected = null;
         this.answered = false;
@@ -222,17 +194,13 @@ next(){
         if(this.index >= 10){
             this.gameOver = true;
         }
-
     },700);
-
 }
 
 },
-
 mounted(){
     this.load();
 }
-
 }).mount("#app");
 
 </script>
