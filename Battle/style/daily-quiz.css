@@ -2,20 +2,6 @@
 :root{
     --primary:#ff7a00;
     --soft:#fff4e8;
-    --dark:#111827;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#f3f5f9;
-    font-family:Arial,sans-serif;
-    padding:16px 14px 100px;
-    color:var(--dark);
 }
 
 .daily-card{
