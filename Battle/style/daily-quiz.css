@@ -89,5 +89,54 @@ body{
     font-size:14px;
 }
 
+.question{
+    font-size:24px;
+    line-height:1.5;
+    font-weight:800;
+    margin-bottom:26px;
+}
 
+.option{
+    width:100%;
+    border:none;
+    background:#f5f6fa;
+    margin-bottom:14px;
+    border-radius:18px;
+    padding:16px;
+    text-align:left;
+    font-size:16px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.option:hover{
+    transform:translateY(-2px);
+    background:#ffe1c1;
+}
+
+.option.active{
+    background:var(--primary);
+    color:#fff;
+}
+
+.bottom-area{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#fff;
+    padding:14px;
+    box-shadow:0 -5px 20px rgba(0,0,0,.08);
+}
+
+.play-btn{
+    width:100%;
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    border-radius:18px;
+    padding:16px;
+    font-size:17px;
+    font-weight:800;
+}
 
