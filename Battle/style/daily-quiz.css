@@ -57,3 +57,37 @@ body{
     gap:15px;
     margin-top:18px;
 }
+
+.quiz-icon{
+    width:80px;
+    height:80px;
+    border-radius:22px;
+    object-fit:cover;
+    background:#fff;
+    padding:5px;
+}
+
+.quiz-title{
+    font-size:28px;
+    font-weight:900;
+    margin-bottom:4px;
+}
+
+.quiz-sub{
+    opacity:.9;
+    font-size:14px;
+}
+
+.content{
+    padding:24px 18px;
+}
+
+.question-label{
+    color:var(--primary);
+    font-weight:800;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+
+
