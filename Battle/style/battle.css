@@ -1,1 +1,26 @@
+:root{
+    --yellow:#ffcc00;
+    --orange:#ff7a00;
+    --blue:#1e90ff;
+}
+/******************************/
 
+/* MAIN */
+.main{
+    padding:20px 14px 110px;
+    max-width:700px;
+    margin:auto;
+}
+
+/* PLAYER */
+
+.vs-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.player{
+    width:38%;
+    text-align:center;
+}
