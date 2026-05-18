@@ -155,7 +155,7 @@
 .option{
     background: ;
     border:none;
-    color:#fff;
+    color: var(--orange);
     min-height:120px;
     border-radius:20px;
     padding:14px;
@@ -165,7 +165,7 @@
 }
 
 .option:hover{
-    transform:translateY(-2px);
+    transform:scale(0.98);
 }
 
 .option.correct{
