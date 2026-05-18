@@ -1,1 +1,782 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>SkyDrop Battle Quiz</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+
+:root{
+    --yellow:#ffcc00;
+    --dark:#050505;
+    --card:#111111;
+    --orange:#ff7a00;
+    --blue:#1e90ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    padding-bottom:100px;
+}
+
+/* TOP */
+
+.top-bar{
+    background:var(--yellow);
+    padding:14px;
+    color:#000;
+    font-weight:900;
+    font-size:20px;
+    text-align:center;
+}
+
+/* MATCH */
+
+.match-box{
+    padding:25px 18px;
+    text-align:center;
+}
+
+.vs-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.player{
+    width:40%;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #222;
+}
+
+.name{
+    margin-top:10px;
+    font-size:22px;
+    font-weight:900;
+}
+
+.score{
+    color:#aaa;
+    font-weight:700;
+}
+
+.vs{
+    font-size:40px;
+    font-weight:900;
+    color:var(--yellow);
+}
+
+/* BATTLE BAR */
+
+.battle-bar{
+    display:flex;
+    align-items:center;
+    margin-top:28px;
+    margin-bottom:22px;
+}
+
+.you-bar{
+    height:6px;
+    background:var(--orange);
+    width:50%;
+    border-radius:20px;
+}
+
+.bot-bar{
+    height:6px;
+    background:var(--blue);
+    width:50%;
+    border-radius:20px;
+}
+
+.cross{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#111;
+    border:3px solid var(--orange);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 10px;
+    font-size:18px;
+}
+
+/* TIMER */
+
+.timer-area{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.timer{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:900;
+    border:3px solid #222;
+}
+
+/* QUESTION CARD */
+
+.quiz-card{
+    background:linear-gradient(
+    180deg,
+    #181818,
+    #111
+    );
+
+    border-radius:28px;
+    padding:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,.4);
+}
+
+.q-count{
+    color:#aaa;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.question{
+    font-size:28px;
+    line-height:1.4;
+    font-weight:900;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* OPTIONS */
+
+.options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.option{
+    background:#0a0a0a;
+    border:none;
+    min-height:120px;
+    border-radius:18px;
+    color:#fff;
+    padding:14px;
+    font-size:20px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.option:hover{
+    transform:translateY(-2px);
+}
+
+.option.correct{
+    background:#16a34a;
+}
+
+.option.wrong{
+    background:#dc2626;
+}
+
+/* RESULT */
+
+.result-screen{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:20px;
+    text-align:center;
+}
+
+.result-title{
+    font-size:42px;
+    font-weight:900;
+}
+
+.final-score{
+    margin-top:18px;
+    font-size:24px;
+    color:#bbb;
+}
+
+/* LOADER */
+
+.loader-screen{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.loader{
+    width:55px;
+    height:55px;
+    border:5px solid #333;
+    border-top:5px solid var(--yellow);
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* START */
+
+.start-screen{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.countdown{
+    font-size:90px;
+    font-weight:900;
+    color:var(--yellow);
+    text-shadow:0 0 30px rgba(255,204,0,.5);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- LOADING -->
+
+<div
+v-if="loading"
+class="loader-screen"
+>
+
+    <div class="loader"></div>
+
+    <h4 class="mt-4">
+        Finding Opponent...
+    </h4>
+
+</div>
+
+<!-- START -->
+
+<div
+v-if="starting"
+class="start-screen"
+>
+
+    <h2 class="mb-4 text-light">
+        Starting In
+    </h2>
+
+    <div class="countdown">
+        {{ startCount }}
+    </div>
+
+    <div class="vs-row mt-5 w-100">
+
+        <div class="player">
+
+            <img
+            src="https://i.pravatar.cc/150?img=12"
+            class="avatar"
+            >
+
+            <div class="name">
+                You
+            </div>
+
+        </div>
+
+        <div class="vs">
+            VS
+        </div>
+
+        <div class="player">
+
+            <img
+            src="https://i.pravatar.cc/150?img=15"
+            class="avatar"
+            >
+
+            <div class="name">
+                TitanVortex
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- GAME -->
+
+<div
+v-if="!loading && !starting && !finished"
+>
+
+    <div class="top-bar">
+        Battle Quiz ⚔️
+    </div>
+
+    <div class="match-box">
+
+        <!-- PLAYERS -->
+
+        <div class="vs-row">
+
+            <div class="player">
+
+                <img
+                src="https://i.pravatar.cc/150?img=12"
+                class="avatar"
+                >
+
+                <div class="name">
+                    YOU
+                </div>
+
+                <div class="score">
+                    Score: {{ userScore }}
+                </div>
+
+            </div>
+
+            <div class="player">
+
+                <img
+                src="https://i.pravatar.cc/150?img=15"
+                class="avatar"
+                >
+
+                <div class="name">
+                    TITANVORTEX
+                </div>
+
+                <div class="score">
+                    Score: {{ botScore }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BAR -->
+
+        <div class="battle-bar">
+
+            <div
+            class="you-bar"
+            :style="{width:userBar+'%'}"
+            ></div>
+
+            <div class="cross">
+                ⚔️
+            </div>
+
+            <div
+            class="bot-bar"
+            :style="{width:botBar+'%'}"
+            ></div>
+
+        </div>
+
+        <!-- TIMER -->
+
+        <div class="timer-area">
+
+            <div class="timer">
+                {{ timer }}
+            </div>
+
+            <div>
+                🔊
+            </div>
+
+        </div>
+
+        <!-- QUIZ -->
+
+        <div class="quiz-card">
+
+            <div class="q-count">
+                {{ currentIndex+1 }} / 5
+            </div>
+
+            <div class="question">
+                {{ current.question }}
+            </div>
+
+            <div class="options">
+
+                <button
+
+                v-for="(option,index) in current.options"
+
+                :key="index"
+
+                class="option"
+
+                :class="optionClass(index)"
+
+                @click="selectAnswer(index)"
+
+                :disabled="answered"
+
+                >
+
+                    {{ option }}
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RESULT -->
+
+<div
+v-if="finished"
+class="result-screen"
+>
+
+    <div class="result-title">
+
+        {{
+            userScore > botScore
+            ?
+            '🏆 YOU WIN'
+            :
+            userScore < botScore
+            ?
+            '😢 YOU LOSE'
+            :
+            '🤝 DRAW'
+        }}
+
+    </div>
+
+    <div class="final-score">
+
+        You: {{ userScore }}
+        -
+        Bot: {{ botScore }}
+
+    </div>
+
+    <button
+    class="btn btn-warning btn-lg mt-4 px-5 fw-bold"
+    onclick="location.reload()"
+    >
+        Play Again
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+const { createApp } = Vue;
+
+createApp({
+
+data(){
+
+return{
+
+    loading:true,
+
+    starting:false,
+
+    startCount:3,
+
+    finished:false,
+
+    questions:[],
+
+    currentIndex:0,
+
+    timer:5,
+
+    timerInterval:null,
+
+    selected:null,
+
+    answered:false,
+
+    userScore:0,
+
+    botScore:0
+
+}
+
+},
+
+computed:{
+
+current(){
+
+    return this.questions[this.currentIndex] || {};
+
+},
+
+userBar(){
+
+    return 50 + (this.userScore * 10);
+
+},
+
+botBar(){
+
+    return 50 + (this.botScore * 10);
+
+}
+
+},
+
+methods:{
+
+async loadGame(){
+
+    const res = await fetch(
+    "https://sparrow-tech06.github.io/SkyDrop/data/quiz-data.json"
+    );
+
+    const data = await res.json();
+
+    let allQuestions = [];
+
+    data.quizzes.forEach(quiz=>{
+
+        quiz.questions.forEach(q=>{
+
+            allQuestions.push(q);
+
+        });
+
+    });
+
+    // RANDOM 5 QUESTIONS
+
+    allQuestions =
+    allQuestions.sort(()=>Math.random()-0.5);
+
+    this.questions =
+    allQuestions.slice(0,5);
+
+    // LOADING DONE
+
+    setTimeout(()=>{
+
+        this.loading = false;
+
+        this.starting = true;
+
+        this.startCountdown();
+
+    },2000);
+
+},
+
+startCountdown(){
+
+    const interval = setInterval(()=>{
+
+        this.startCount--;
+
+        if(this.startCount <= 0){
+
+            clearInterval(interval);
+
+            this.starting = false;
+
+            this.startTimer();
+
+        }
+
+    },1000);
+
+},
+
+startTimer(){
+
+    this.timer = 5;
+
+    this.timerInterval = setInterval(()=>{
+
+        this.timer--;
+
+        if(this.timer <= 0){
+
+            this.autoNext();
+
+        }
+
+    },1000);
+
+},
+
+selectAnswer(index){
+
+    if(this.answered) return;
+
+    this.selected = index;
+
+    this.answered = true;
+
+    clearInterval(this.timerInterval);
+
+    // USER SCORE
+
+    if(index === this.current.answer){
+
+        this.userScore++;
+
+    }
+
+    // BOT LOGIC
+
+    const botCorrect =
+    Math.random() > 0.4;
+
+    if(botCorrect){
+
+        this.botScore++;
+
+    }
+
+    setTimeout(()=>{
+
+        this.nextQuestion();
+
+    },1000);
+
+},
+
+autoNext(){
+
+    clearInterval(this.timerInterval);
+
+    this.answered = true;
+
+    // BOT RANDOM
+
+    const botCorrect =
+    Math.random() > 0.4;
+
+    if(botCorrect){
+
+        this.botScore++;
+
+    }
+
+    setTimeout(()=>{
+
+        this.nextQuestion();
+
+    },1000);
+
+},
+
+nextQuestion(){
+
+    this.currentIndex++;
+
+    this.selected = null;
+
+    this.answered = false;
+
+    if(this.currentIndex >= 5){
+
+        this.finished = true;
+
+        return;
+
+    }
+
+    this.startTimer();
+
+},
+
+optionClass(index){
+
+    if(!this.answered) return "";
+
+    if(index === this.current.answer){
+
+        return "correct";
+
+    }
+
+    if(index === this.selected &&
+       index !== this.current.answer){
+
+        return "wrong";
+
+    }
+
+    return "";
+
+}
+
+},
+
+mounted(){
+
+    this.loadGame();
+
+}
+
+}).mount("#app");
+
+</script>
+
+</body>
+</html>
+
