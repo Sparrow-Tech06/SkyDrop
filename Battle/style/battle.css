@@ -85,3 +85,57 @@
     font-size:18px;
 }
 
+/* TIMER */
+
+.timer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.timer{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:900;
+    border:3px solid #222;
+}
+
+.sound-btn{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+/* QUIZ CARD */
+
+.quiz-card{
+    background:linear-gradient(
+    180deg,
+    #181818,
+    #101010
+    );
+
+    border-radius:28px;
+    padding:22px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.q-count{
+    color:#aaa;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+
