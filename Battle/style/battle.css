@@ -24,3 +24,64 @@
     width:38%;
     text-align:center;
 }
+.avatar{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #222;
+}
+
+.name{
+    margin-top:10px;
+    font-size:22px;
+    font-weight:900;
+}
+
+.score{
+    color:#aaa;
+    font-weight:700;
+}
+
+.vs{
+    font-size:40px;
+    font-weight:900;
+    color:var(--yellow);
+}
+
+/* BATTLE BAR */
+
+.battle-bar{
+    display:flex;
+    align-items:center;
+    margin-top:25px;
+    margin-bottom:24px;
+}
+
+.you-bar{
+    height:6px;
+    background:var(--orange);
+    width:50%;
+    border-radius:30px;
+}
+
+.bot-bar{
+    height:6px;
+    background:var(--blue);
+    width:50%;
+    border-radius:30px;
+}
+
+.cross{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#111;
+    border:3px solid var(--orange);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 10px;
+    font-size:18px;
+}
+
