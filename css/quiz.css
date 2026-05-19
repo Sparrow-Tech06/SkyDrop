@@ -1,7 +1,7 @@
 :root {
   --card: #fff ;
   --primary-soft:#fff2e7;
-  --accent:#ff6a00;
+  --accent:#000; linear
   --soft:#fff ;
 
   --correct-bg: #ecfdf5!important;
@@ -14,10 +14,10 @@
 }
 @media (prefers-color-scheme: dark) {
  :root {
-  --card: #22252b ;
+  --card: /* #22252b */ #1e1e1e ;
   --primary-soft:#fff2e7;
   --accent:#ff6a00;
-  --soft:#3a3a3c;
+  --soft:/* #3a3a3c */ #2a2a2a ;
 
   --correct-bg: #0f5132 ;  
   --correct-border: #00ff88;
