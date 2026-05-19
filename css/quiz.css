@@ -1,7 +1,7 @@
 :root {
   --card: #fff ;
   --primary-soft:#fff2e7;
-  --accent:#000; linear
+  --accent: linear-gradient(90deg,#ff9800,#ff5722) ;
   --soft:#fff ;
 
   --correct-bg: #ecfdf5!important;
