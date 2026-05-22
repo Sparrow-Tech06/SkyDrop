@@ -26,7 +26,7 @@ function mycoin(quizId, quizName){
     
     // 👉 only notify Android
     if (window.Android && typeof Android.onCoinAdded === "function") {
-        Android.onCoinAdded(1);  // only msg
+        Android.onCoinAdded(2);  // only msg
      // Android.onCoinAdded(amount); // msg + coin
     }
 }
