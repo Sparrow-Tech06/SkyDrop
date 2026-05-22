@@ -170,9 +170,9 @@ border:1px solid var(--icon-color) ;
 }
 
 .social-btn:hover{
-transform:translateY(-3px) scale(1.04);
-background:#9b8cff;
-color:#fff;
+transform: scale(0.98);
+background: var(--icon-color) ;
+color: #fff;
 }
 
 
