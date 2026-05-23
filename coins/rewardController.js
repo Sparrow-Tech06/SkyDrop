@@ -227,33 +227,62 @@ function initRewardButton(btnId) {
     });
 
     // ======================
-    // ANDROID CALLBACK
-    // ======================
+// ANDROID CALLBACK
+// ======================
 
-    window.adCompleteCallback = function(success) {
+window.adCompleteCallback = function(success) {
 
-        watching = false;
+    watching = false;
 
-        if (success) {
+    if (success) {
 
-            const today = getTodayData();
+        const today = getTodayData();
 
-            today.count += 1;
+        today.count += 1;
 
-            today.lastTime = Date.now();
+        today.lastTime = Date.now();
 
-            updateTodayData(today);
+        updateTodayData(today);
 
-            // ADD COINS
+        // ======================
+        // ADD 50 COINS DIRECTLY
+        // ======================
 
-            if (typeof getCoin === "function") {
+        let coins = parseInt(
+            localStorage.getItem("myCoins")
+        ) || 0;
 
-                getCoin();
-            }
-        }
+        coins += 50;
 
-        updateUI();
-    };
+        localStorage.setItem(
+            "myCoins",
+            coins
+        );
+
+        // ======================
+        // SAVE HISTORY
+        // ======================
+
+        let history = JSON.parse(
+            localStorage.getItem("coinHistory")
+        ) || [];
+
+        history.unshift({
+            amount: 50,
+            source: "Reward Bonus",
+            date: new Date().toLocaleString()
+        });
+
+        localStorage.setItem(
+            "coinHistory",
+            JSON.stringify(history)
+        );
+
+        console.log("50 Reward Bonus Added");
+    }
+
+    updateUI();
+};
 
     // ======================
     // INITIAL UI
