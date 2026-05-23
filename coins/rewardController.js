@@ -226,7 +226,7 @@ function initRewardButton(btnId) {
         }
     });
 
-    // ======================
+// ======================
 // ANDROID CALLBACK
 // ======================
 
@@ -245,31 +245,31 @@ window.adCompleteCallback = function(success) {
         updateTodayData(today);
 
         // ======================
-        // ADD 50 COINS DIRECTLY
+        // ADD 50 BONUS COINS
         // ======================
 
+        // get existing coins
         let coins = parseInt(
-            localStorage.getItem("myCoins")
+            localStorage.getItem("coins")
         ) || 0;
 
+        // add 50 coins
         coins += 50;
 
+        // save coins
         localStorage.setItem(
-            "myCoins",
+            "coins",
             coins
         );
 
-        // ======================
-        // SAVE HISTORY
-        // ======================
-
+        // save history
         let history = JSON.parse(
             localStorage.getItem("coinHistory")
         ) || [];
 
-        history.unshift({
-            amount: 50,
-            source: "Reward Bonus",
+        history.push({
+            quiz: "Reward Bonus",
+            reward: 50,
             date: new Date().toLocaleString()
         });
 
@@ -278,12 +278,11 @@ window.adCompleteCallback = function(success) {
             JSON.stringify(history)
         );
 
-        console.log("50 Reward Bonus Added");
+        console.log("50 bonus coins added");
     }
 
     updateUI();
 };
-
     // ======================
     // INITIAL UI
     // ======================
