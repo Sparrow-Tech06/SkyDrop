@@ -1,125 +1,236 @@
 // rewardController.js
 
 const MAX_DAILY = 10;
-const COOLDOWN = 300; // 5 min in seconds
+const COOLDOWN = 300; // 5 min
 
 let watching = false;
+let cooldownTimer = null;
 
-// Load saved data
-function getTodayKey(){
-  return new Date().toISOString().split('T')[0];
+// ======================
+// STORAGE
+// ======================
+
+function getTodayKey() {
+    return new Date().toISOString().split("T")[0];
 }
 
-function getData(){
-  return JSON.parse(localStorage.getItem("rewardData")) || {};
+function getData() {
+    try {
+        return JSON.parse(localStorage.getItem("rewardData")) || {};
+    } catch (e) {
+        return {};
+    }
 }
 
-function saveData(data){
-  localStorage.setItem("rewardData", JSON.stringify(data));
+function saveData(data) {
+    localStorage.setItem("rewardData", JSON.stringify(data));
 }
 
-function getTodayData(){
-  const data = getData();
-  const today = getTodayKey();
+function getTodayData() {
 
-  if(!data[today]){
-    data[today] = { count:0, lastTime:0 };
+    const data = getData();
+    const today = getTodayKey();
+
+    if (!data[today]) {
+
+        data[today] = {
+            count: 0,
+            lastTime: 0
+        };
+
+        saveData(data);
+    }
+
+    return data[today];
+}
+
+function updateTodayData(todayData) {
+
+    const data = getData();
+
+    data[getTodayKey()] = todayData;
+
     saveData(data);
-  }
-
-  return data[today];
 }
 
-function updateTodayData(newData){
-  const data = getData();
-  data[getTodayKey()] = newData;
-  saveData(data);
+// ======================
+// TIME FORMAT
+// ======================
+
+function formatTime(seconds) {
+
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+
+    return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-// Format time
-function formatTime(sec){
-  let m = Math.floor(sec/60);
-  let s = sec % 60;
-  return `${m}:${s.toString().padStart(2,'0')}`;
-}
+// ======================
+// MAIN
+// ======================
 
-// MAIN INIT
-function initRewardButton(btnId){
+function initRewardButton(btnId) {
 
-  const btn = document.getElementById(btnId);
-  if(!btn) return;
+    const btn = document.getElementById(btnId);
 
-  function updateUI(){
-    const today = getTodayData();
-    const now = Date.now();
+    if (!btn) return;
 
-    let remainCooldown = Math.floor((today.lastTime + COOLDOWN*1000 - now)/1000);
+    // ======================
+    // UI UPDATE
+    // ======================
 
-    // daily limit
-    if(today.count >= MAX_DAILY){
-      btn.innerText = `Limit reached (10/10)`;
-      btn.disabled = true;
-      return;
+    function updateUI() {
+
+        const today = getTodayData();
+
+        const now = Date.now();
+
+        const remainCooldown = Math.floor(
+            (today.lastTime + COOLDOWN * 1000 - now) / 1000
+        );
+
+        // DAILY LIMIT
+
+        if (today.count >= MAX_DAILY) {
+
+            btn.disabled = true;
+
+            btn.innerText = `Daily Limit Reached (10/10)`;
+
+            return;
+        }
+
+        // COOLDOWN
+
+        if (remainCooldown > 0) {
+
+            btn.disabled = true;
+
+            btn.innerText =
+                `Wait ${formatTime(remainCooldown)} (${today.count}/10)`;
+
+            clearTimeout(cooldownTimer);
+
+            cooldownTimer = setTimeout(updateUI, 1000);
+
+            return;
+        }
+
+        // READY
+
+        btn.disabled = watching;
+
+        btn.innerText =
+            watching
+                ? "Loading Ad..."
+                : `Get 50 Points (${today.count}/10)`;
     }
 
-    // cooldown
-    if(remainCooldown > 0){
-      btn.disabled = true;
-      btn.innerText = `Wait ${formatTime(remainCooldown)} (${today.count}/10)`;
-      setTimeout(updateUI,1000);
-      return;
-    }
+    // ======================
+    // BUTTON CLICK
+    // ======================
 
-    btn.disabled = false;
-    btn.innerText = `Get 50 Points (Ad ${today.count}/10)`;
-  }
+    btn.addEventListener("click", () => {
 
-  // click
-  btn.addEventListener("click", ()=>{
-    if(watching) return;
+        if (watching) return;
 
-    const today = getTodayData();
+        const today = getTodayData();
 
-    if(today.count >= MAX_DAILY) return;
+        // LIMIT CHECK
 
-    const now = Date.now();
-    if(now < today.lastTime + COOLDOWN*1000) return;
+        if (today.count >= MAX_DAILY) {
 
-    watching = true;
+            alert("Daily reward limit reached");
 
-    // 👉 CALL ANDROID AD
-    if(window.Android && typeof Android.showRewardAd === "function"){
-      Android.showRewardedAd();
-    } else {
-      alert("Android Ad not available");
-      watching = false;
-    }
-  });
+            return;
+        }
 
-  // CALLBACK from Android
-  window.onAdRewardSuccess = function(){
+        // COOLDOWN CHECK
 
-    const today = getTodayData();
+        const now = Date.now();
 
-    today.count += 1;
-    today.lastTime = Date.now();
+        if (now < today.lastTime + COOLDOWN * 1000) {
 
-    updateTodayData(today);
+            updateUI();
 
-    // 👉 CALL YOUR EXISTING FUNCTION
-    if(typeof getCoin === "function"){
-      getCoin(50, "Reward Ad");
-    }
+            return;
+        }
 
-    watching = false;
+        watching = true;
+
+        updateUI();
+
+        // ======================
+        // CALL ANDROID
+        // ======================
+
+        try {
+
+            if (
+                window.Android &&
+                typeof Android.showRewardedAd === "function"
+            ) {
+
+                Android.showRewardedAd();
+
+            } else {
+
+                alert("Reward ad not available");
+
+                watching = false;
+
+                updateUI();
+            }
+
+        } catch (e) {
+
+            console.error(e);
+
+            watching = false;
+
+            updateUI();
+        }
+    });
+
+    // ======================
+    // ANDROID CALLBACK
+    // ======================
+
+    window.adCompleteCallback = function(success) {
+
+        watching = false;
+
+        if (success) {
+
+            const today = getTodayData();
+
+            today.count += 1;
+
+            today.lastTime = Date.now();
+
+            updateTodayData(today);
+
+            // YOUR EXISTING COIN FUNCTION
+
+            if (typeof getCoin === "function") {
+
+                getCoin(50, "Reward Ad");
+            }
+
+            // OPTIONAL SUCCESS MESSAGE
+
+            console.log("Reward Granted");
+
+        } else {
+
+            console.log("Ad Failed / Closed");
+        }
+
+        updateUI();
+    };
+
+    // INITIAL UI
+
     updateUI();
-  };
-
-  // optional fail callback
-  window.onAdRewardFail = function(){
-    watching = false;
-    updateUI();
-  };
-
-  updateUI();
 }
+
