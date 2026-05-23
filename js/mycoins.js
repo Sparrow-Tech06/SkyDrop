@@ -2,7 +2,7 @@
 // QUIZ / GAME COINS
 // ======================
 
-function myCoin(amount = 0, source = "Unknown") {
+function mycoin(amount = 0, source = "Unknown") {
 
     // TOTAL COINS
 
