@@ -1,36 +1,26 @@
-// js/mycoins.js
-
 // ======================
-// QUIZ COINS
+// QUIZ / GAME COINS
 // ======================
 
-function mycoin(quizId, quizName) {
+function myCoin(amount = 0, source = "Unknown") {
 
-    // GET CURRENT COINS
+    // TOTAL COINS
 
-    let coins = parseInt(
-        localStorage.getItem("coins")
-    ) || 0;
+    let coins = parseInt(localStorage.getItem("myCoins")) || 0;
 
-    // ADD 10 COINS
+    coins += amount;
 
-    coins += 10;
+    localStorage.setItem("myCoins", coins);
 
-    // SAVE TOTAL COINS
-
-    localStorage.setItem("coins", coins);
-
-    // ======================
-    // SAVE HISTORY
-    // ======================
+    // HISTORY
 
     let history = JSON.parse(
         localStorage.getItem("coinHistory")
     ) || [];
 
-    history.push({
-        quiz: quizName,
-        reward: 10,
+    history.unshift({
+        amount: amount,
+        source: source,
         date: new Date().toLocaleString()
     });
 
@@ -39,50 +29,40 @@ function mycoin(quizId, quizName) {
         JSON.stringify(history)
     );
 
-    // ======================
-    // NOTIFY ANDROID
-    // ======================
+    // ONLY FOR QUIZ/GAME
 
     if (
         window.Android &&
         typeof Android.onCoinAdded === "function"
     ) {
 
-        Android.onCoinAdded(1);
+        Android.onCoinAdded();
     }
 }
 
 // ======================
-// REWARDED AD COINS
+// REWARD BONUS COINS
 // ======================
 
-function getCoin(amount, source) {
+function getCoin(amount = 0, source = "Reward Bonus") {
 
-    // GET CURRENT COINS
+    // TOTAL COINS
 
-    let coins = parseInt(
-        localStorage.getItem("coins")
-    ) || 0;
+    let coins = parseInt(localStorage.getItem("myCoins")) || 0;
 
-    // ADD BONUS COINS
+    coins += amount;
 
-    coins += 50;
+    localStorage.setItem("myCoins", coins);
 
-    // SAVE TOTAL COINS
-
-    localStorage.setItem("coins", coins);
-
-    // ======================
-    // SAVE HISTORY
-    // ======================
+    // HISTORY
 
     let history = JSON.parse(
         localStorage.getItem("coinHistory")
     ) || [];
 
-    history.push({
-        quiz: "Bonus",
-        reward: 50,
+    history.unshift({
+        amount: amount,
+        source: source,
         date: new Date().toLocaleString()
     });
 
@@ -91,15 +71,5 @@ function getCoin(amount, source) {
         JSON.stringify(history)
     );
 
-    // ======================
-    // NOTIFY ANDROID
-    // ======================
-
-    if (
-        window.Android &&
-        typeof Android.onCoinAdded === "function"
-    ) {
-
-        Android.onCoinAdded(1);
-    }
+    // NO ANDROID CALLBACK HERE
 }
