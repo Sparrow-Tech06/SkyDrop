@@ -1,7 +1,8 @@
+```js
 // rewardController.js
 
 const MAX_DAILY = 10;
-const COOLDOWN = 300; // 5 min
+const COOLDOWN = 300; // 5 minutes
 
 let watching = false;
 let cooldownTimer = null;
@@ -15,20 +16,31 @@ function getTodayKey() {
 }
 
 function getData() {
+
     try {
-        return JSON.parse(localStorage.getItem("rewardData")) || {};
+
+        return JSON.parse(
+            localStorage.getItem("rewardData")
+        ) || {};
+
     } catch (e) {
+
         return {};
     }
 }
 
 function saveData(data) {
-    localStorage.setItem("rewardData", JSON.stringify(data));
+
+    localStorage.setItem(
+        "rewardData",
+        JSON.stringify(data)
+    );
 }
 
 function getTodayData() {
 
     const data = getData();
+
     const today = getTodayKey();
 
     if (!data[today]) {
@@ -60,13 +72,14 @@ function updateTodayData(todayData) {
 function formatTime(seconds) {
 
     const m = Math.floor(seconds / 60);
+
     const s = seconds % 60;
 
     return `${m}:${String(s).padStart(2, "0")}`;
 }
 
 // ======================
-// MAIN
+// MAIN FUNCTION
 // ======================
 
 function initRewardButton(btnId) {
@@ -76,7 +89,7 @@ function initRewardButton(btnId) {
     if (!btn) return;
 
     // ======================
-    // UI UPDATE
+    // UPDATE UI
     // ======================
 
     function updateUI() {
@@ -95,7 +108,8 @@ function initRewardButton(btnId) {
 
             btn.disabled = true;
 
-            btn.innerText = `Daily Limit Reached (10/10)`;
+            btn.innerText =
+                `Daily Limit Reached (${MAX_DAILY}/${MAX_DAILY})`;
 
             return;
         }
@@ -107,7 +121,7 @@ function initRewardButton(btnId) {
             btn.disabled = true;
 
             btn.innerText =
-                `Wait ${formatTime(remainCooldown)} (${today.count}/10)`;
+                `Wait ${formatTime(remainCooldown)} (${today.count}/${MAX_DAILY})`;
 
             clearTimeout(cooldownTimer);
 
@@ -120,10 +134,9 @@ function initRewardButton(btnId) {
 
         btn.disabled = watching;
 
-        btn.innerText =
-            watching
-                ? "Loading Ad..."
-                : `Get 50 Points (${today.count}/10)`;
+        btn.innerText = watching
+            ? "Loading Ad..."
+            : `Get 50 Points (${today.count}/${MAX_DAILY})`;
     }
 
     // ======================
@@ -136,11 +149,16 @@ function initRewardButton(btnId) {
 
         const today = getTodayData();
 
-        // LIMIT CHECK
+        // DAILY LIMIT CHECK
 
         if (today.count >= MAX_DAILY) {
 
-            alert("Daily reward limit reached");
+            // CUSTOM FUNCTION
+
+            if (typeof oncoinadded === "function") {
+
+                oncoinadded();
+            }
 
             return;
         }
@@ -175,16 +193,12 @@ function initRewardButton(btnId) {
 
             } else {
 
-                alert("Reward ad not available in Web");
-
                 watching = false;
 
                 updateUI();
             }
 
         } catch (e) {
-
-            console.error(e);
 
             watching = false;
 
@@ -210,27 +224,22 @@ function initRewardButton(btnId) {
 
             updateTodayData(today);
 
-            // YOUR EXISTING COIN FUNCTION
+            // ADD COINS
 
             if (typeof getCoin === "function") {
 
                 getCoin(50, "Reward Ad");
             }
-
-            // OPTIONAL SUCCESS MESSAGE
-
-            console.log("Reward Granted");
-
-        } else {
-
-            console.log("Ad Failed / Closed");
         }
 
         updateUI();
     };
 
+    // ======================
     // INITIAL UI
+    // ======================
 
     updateUI();
 }
+
 
