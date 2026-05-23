@@ -1,12 +1,13 @@
+```js id="g8m2xp"
 // js/mycoins.js
 
 // ======================
-// NORMAL QUIZ COINS
+// QUIZ COINS
 // ======================
 
 function mycoin(quizId, quizName) {
 
-    // GET EXISTING COINS
+    // GET CURRENT COINS
 
     let coins = parseInt(
         localStorage.getItem("coins")
@@ -16,19 +17,19 @@ function mycoin(quizId, quizName) {
 
     coins += 10;
 
-    // SAVE COINS
+    // SAVE TOTAL COINS
 
     localStorage.setItem("coins", coins);
 
-    // HISTORY
+    // ======================
+    // SAVE HISTORY
+    // ======================
 
     let history = JSON.parse(
         localStorage.getItem("coinHistory")
     ) || [];
 
     history.push({
-        type: "quiz",
-        quizId: quizId,
         quiz: quizName,
         reward: 10,
         date: new Date().toLocaleString()
@@ -39,9 +40,9 @@ function mycoin(quizId, quizName) {
         JSON.stringify(history)
     );
 
-    console.log("10 coins added for quiz:", quizName);
-
-    // ANDROID NOTIFY
+    // ======================
+    // NOTIFY ANDROID
+    // ======================
 
     if (
         window.Android &&
@@ -56,33 +57,33 @@ function mycoin(quizId, quizName) {
 // REWARDED AD COINS
 // ======================
 
-function getCoin(amount = 50, source = "Reward Ad") {
+function getCoin(amount, source) {
 
-    // GET EXISTING COINS
+    // GET CURRENT COINS
 
     let coins = parseInt(
         localStorage.getItem("coins")
     ) || 0;
 
-    // ADD REWARD COINS
+    // ADD BONUS COINS
 
-    coins += amount;
+    coins += 50;
 
-    // SAVE COINS
+    // SAVE TOTAL COINS
 
     localStorage.setItem("coins", coins);
 
-    // HISTORY
+    // ======================
+    // SAVE HISTORY
+    // ======================
 
     let history = JSON.parse(
         localStorage.getItem("coinHistory")
     ) || [];
 
     history.push({
-        type: "reward_ad",
-        quizId: null,
-        quiz: source,
-        reward: amount,
+        quiz: "Bonus",
+        reward: 50,
         date: new Date().toLocaleString()
     });
 
@@ -91,6 +92,15 @@ function getCoin(amount = 50, source = "Reward Ad") {
         JSON.stringify(history)
     );
 
-    console.log(amount + " coins added from:", source);
+    // ======================
+    // NOTIFY ANDROID
+    // ======================
 
+    if (
+        window.Android &&
+        typeof Android.onCoinAdded === "function"
+    ) {
+
+        Android.onCoinAdded(1);
+    }
 }
