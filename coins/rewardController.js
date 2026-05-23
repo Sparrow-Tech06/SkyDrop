@@ -89,7 +89,7 @@ function initRewardButton(btnId){
 
     // 👉 CALL ANDROID AD
     if(window.Android && typeof Android.showRewardAd === "function"){
-      Android.showRewardAd();
+      Android.showRewardedAd();
     } else {
       alert("Android Ad not available");
       watching = false;
