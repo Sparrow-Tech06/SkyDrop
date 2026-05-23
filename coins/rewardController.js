@@ -175,7 +175,7 @@ function initRewardButton(btnId) {
 
             } else {
 
-                alert("Reward ad not available");
+                alert("Reward ad not available in Web");
 
                 watching = false;
 
