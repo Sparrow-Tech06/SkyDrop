@@ -78,43 +78,6 @@ function formatTime(seconds) {
 }
 
 // ======================
-// SWEET ALERT HELPER
-// ======================
-
-function showRewardPopup(title, text, icon = "info") {
-
-    // SWEETALERT2
-
-    if (typeof Swal !== "undefined") {
-
-        Swal.fire({
-            title: title,
-            text: text,
-            icon: icon,
-            confirmButtonText: "OK"
-        });
-
-        return;
-    }
-
-    // ANDROID BRIDGE OPTIONAL
-
-    if (
-        window.Android &&
-        typeof Android.showToast === "function"
-    ) {
-
-        Android.showToast(text);
-
-        return;
-    }
-
-    // FALLBACK
-
-    alert(text);
-}
-
-// ======================
 // MAIN FUNCTION
 // ======================
 
@@ -189,16 +152,7 @@ function initRewardButton(btnId) {
 
         if (today.count >= MAX_DAILY) {
 
-            showRewardPopup(
-                "Limit Reached",
-                "You already reached today's reward limit.",
-                "warning"
-            );
-
-            if (typeof oncoinadded === "function") {
-
-                oncoinadded();
-            }
+            updateUI();
 
             return;
         }
@@ -212,12 +166,6 @@ function initRewardButton(btnId) {
         );
 
         if (remainCooldown > 0) {
-
-            showRewardPopup(
-                "Please Wait",
-                `Next reward available in ${formatTime(remainCooldown)}`,
-                "info"
-            );
 
             updateUI();
 
@@ -268,12 +216,6 @@ function initRewardButton(btnId) {
                 watching = false;
 
                 updateUI();
-
-                showRewardPopup(
-                    "Unavailable",
-                    "Reward ad is not available right now.",
-                    "error"
-                );
             }
 
         } catch (e) {
@@ -281,12 +223,6 @@ function initRewardButton(btnId) {
             watching = false;
 
             updateUI();
-
-            showRewardPopup(
-                "Error",
-                "Something went wrong while opening ad.",
-                "error"
-            );
         }
     });
 
@@ -314,22 +250,6 @@ function initRewardButton(btnId) {
 
                 getCoin(50, "Reward Ad");
             }
-
-            // SUCCESS POPUP
-
-            showRewardPopup(
-                "Reward Added",
-                "50 points added successfully!",
-                "success"
-            );
-
-        } else {
-
-            showRewardPopup(
-                "Ad Failed",
-                "Ad was not completed.",
-                "error"
-            );
         }
 
         updateUI();
@@ -341,3 +261,4 @@ function initRewardButton(btnId) {
 
     updateUI();
 }
+
