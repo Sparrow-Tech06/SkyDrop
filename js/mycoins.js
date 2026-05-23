@@ -1,75 +1,32 @@
-// ======================
-// QUIZ / GAME COINS
-// ======================
+// js/mycoins.js
 
-function mycoin(amount = 0, source = "Unknown") {
+function mycoin(quizId, quizName){
 
-    // TOTAL COINS
+    // get existing coins
+    let coins = parseInt(localStorage.getItem("coins")) || 0;
 
-    let coins = parseInt(localStorage.getItem("myCoins")) || 0;
+    // add 10 coins every time
+    coins += 10;
 
-    coins += amount;
+    // save coins
+    localStorage.setItem("coins", coins);
 
-    localStorage.setItem("myCoins", coins);
+    // save history
+    let history = JSON.parse(localStorage.getItem("coinHistory")) || [];
 
-    // HISTORY
-
-    let history = JSON.parse(
-        localStorage.getItem("coinHistory")
-    ) || [];
-
-    history.unshift({
-        amount: amount,
-        source: source,
+    history.push({
+        quiz: quizName,
+        reward: 10,
         date: new Date().toLocaleString()
     });
 
-    localStorage.setItem(
-        "coinHistory",
-        JSON.stringify(history)
-    );
+    localStorage.setItem("coinHistory", JSON.stringify(history));
 
-    // ONLY FOR QUIZ/GAME
-
-    if (
-        window.Android &&
-        typeof Android.onCoinAdded === "function"
-    ) {
-
-        Android.onCoinAdded();
+    console.log("10 coins added for quiz:", quizName);
+    
+    // 👉 only notify Android
+    if (window.Android && typeof Android.onCoinAdded === "function") {
+        Android.onCoinAdded(1);  // only msg
+     // Android.onCoinAdded(amount); // msg + coin
     }
-}
-
-// ======================
-// REWARD BONUS COINS
-// ======================
-
-function getCoin(amount = 0, source = "Reward Bonus") {
-
-    // TOTAL COINS
-
-    let coins = parseInt(localStorage.getItem("myCoins")) || 0;
-
-    coins += amount;
-
-    localStorage.setItem("myCoins", coins);
-
-    // HISTORY
-
-    let history = JSON.parse(
-        localStorage.getItem("coinHistory")
-    ) || [];
-
-    history.unshift({
-        amount: amount,
-        source: source,
-        date: new Date().toLocaleString()
-    });
-
-    localStorage.setItem(
-        "coinHistory",
-        JSON.stringify(history)
-    );
-
-    // NO ANDROID CALLBACK HERE
 }
