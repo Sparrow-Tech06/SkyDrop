@@ -248,7 +248,7 @@ function initRewardButton(btnId) {
 
             if (typeof getCoin === "function") {
 
-                getCoin(50, "Reward Ad");
+                getCoin();
             }
         }
 
