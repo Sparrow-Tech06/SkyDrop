@@ -1,4 +1,3 @@
-```js
 // rewardController.js
 
 const MAX_DAILY = 10;
