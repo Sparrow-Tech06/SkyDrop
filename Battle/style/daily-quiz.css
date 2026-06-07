@@ -9,12 +9,12 @@
      --tob-banner:  ;
   }
 }
-
+/*****************************************/
 .daily-card{
     max-width:650px;
     margin:auto;
-    background:#fff;
-    border-radius:30px;
+    background: var(--header);
+    border-radius: 16px;
     overflow:hidden;
     box-shadow:0 4px 10px rgba(0,0,0,.08);
 }
@@ -41,7 +41,7 @@
 
 .quiz-sub{ opacity:.9; font-size:14px; }
 .content{ padding:24px 18px; }
-
+/**************************************/
 .question-label{
     color:var(--primary);
     font-weight:800;
