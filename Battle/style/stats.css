@@ -1,6 +1,6 @@
 
 :root{
-  --card: #000 ;
+  --card: #fff ;
   --orange-dark:#ff7b00;
   --accent2:#fff7ed;
   --card-border: #f59e0b ;
@@ -28,7 +28,7 @@
 /************************************/
 .level-card{
   background: var(--card);
-  padding:22px; border: 1px solid var(--card-border) ;
+  padding:22px; border: 0.7px solid var(--card-border) ;
   border-radius:24px;
   margin-bottom:24px;
   position:relative;
@@ -74,7 +74,7 @@
   padding:18px;
   position:relative;
   overflow:hidden;
-  border: 1px solid var(--card-border) ;
+  border: 0.7px solid var(--card-border) ;
   height:100%;
 }
 
@@ -117,7 +117,7 @@
   background:var(--card);
   border-radius:22px;
   padding:20px;
-  border:1px solid rgba(255,255,255,.04);
+  border: 0.7px solid var(--card-border) ;
 }
 
 .rank-box{
