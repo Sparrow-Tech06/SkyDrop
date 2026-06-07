@@ -15,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
  :root {
-   --orange: rgba(255,255,255,.08) ;
+   --orange: #2f333b ;
 /*  --card1:#F2676A;
   --card2:#1f2a3a;
   --card3:#6BCB77;
