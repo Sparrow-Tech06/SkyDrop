@@ -5,13 +5,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Live Quiz Light</title>
+<title>Live Quiz Light - Auto Next</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <link rel="stylesheet" href="../css/global.css">
 <link rel="stylesheet" href="style/heart.css">
+
+<style>
+/* Additional override to ensure bottom button is completely hidden/removed */
+.bottom {
+    display: none !important;
+}
+.btn-next {
+    display: none !important;
+}
+</style>
 
 </head>
 
@@ -62,7 +72,7 @@
     :key="i"
     class="opt"
     :class="getClass(i)"
-    @click="select(i)"
+    @click="selectAndAutoNext(i)"
     :disabled="answered"
     >
         {{ o }}
@@ -76,23 +86,16 @@
     <h2>Game Over 💥</h2>
     <p>You lost all lives or finished quiz</p>
 
-    <button class="btn btn-warning w-100 mt-3"
-    onclick="location.reload()">
+    <button class="btn btn-warning w-100 mt-3" @click="restartQuiz">
         Restart
     </button>
 
 </div>
 
-<!-- BOTTOM -->
-<div v-if="!loading && !gameOver" class="bottom">
-
-    <button class="btn-next"
-    :disabled="selected==null || answered"
-    @click="next">
-        {{ index==9 ? 'Finish' : 'Next' }}
-    </button>
-
-</div>
+<!-- BOTTOM - REMOVED NEXT BUTTON COMPLETELY -->
+<!-- <div v-if="!loading && !gameOver" class="bottom">
+    <button class="btn-next" ... ></button>
+</div> -->
 
 </div>
 
@@ -112,7 +115,8 @@ return{
     answered:false,
     lives:3,
     usedLives:0,
-    gameOver:false
+    gameOver:false,
+    autoTimer: null  // for cleanup
 }
 
 },
@@ -147,24 +151,62 @@ async load(){
 
 },
 
+selectAndAutoNext(i){
+    // If already answered or game over, do nothing
+    if(this.answered || this.gameOver) return;
+    
+    // Select the answer
+    this.selected = i;
+    this.answered = true;
+    
+    // Check if answer is wrong
+    if(i !== this.current.answer){
+        this.usedLives++;
+    }
+    
+    // Clear any existing timer
+    if(this.autoTimer) clearTimeout(this.autoTimer);
+    
+    // Auto move to next question after delay (700ms for visual feedback)
+    this.autoTimer = setTimeout(() => {
+        // Check if game over due to lives
+        if(this.usedLives >= 3){
+            this.gameOver = true;
+            this.autoTimer = null;
+            return;
+        }
+        
+        // Move to next question
+        this.index++;
+        this.selected = null;
+        this.answered = false;
+        
+        // Check if quiz completed
+        if(this.index >= 10){
+            this.gameOver = true;
+        }
+        
+        this.autoTimer = null;
+    }, 700);
+},
+
+// Keep original select method for any reference but not used
 select(i){
+    // This method is kept for compatibility but not used
     if(this.answered) return;
     this.selected = i;
 },
 
 lifeClass(i){
-
     // i = 1,2,3
     if(i <= this.lives - this.usedLives){
         return "active";
     }else{
         return "used";
     }
-
 },
 
 getClass(i){
-
     if(!this.answered) return "";
     if(i === this.current.answer){
         return "correct";
@@ -175,35 +217,27 @@ getClass(i){
     return "";
 },
 
-next(){
+// Removed next() method completely as it's no longer needed
 
-    this.answered = true;
-    if(this.selected !== this.current.answer){
-        this.usedLives++;
-    }
-
-    setTimeout(()=>{
-        if(this.usedLives >= 3){
-            this.gameOver = true;
-            return;
-        }
-        this.index++;
-        this.selected = null;
-        this.answered = false;
-
-        if(this.index >= 10){
-            this.gameOver = true;
-        }
-    },700);
+// Add restart method for game over button
+restartQuiz(){
+    if(this.autoTimer) clearTimeout(this.autoTimer);
+    location.reload();
 }
 
 },
+
 mounted(){
     this.load();
+},
+
+beforeUnmount(){
+    if(this.autoTimer) clearTimeout(this.autoTimer);
 }
+
 }).mount("#app");
 
 </script>
 
 </body>
-  </html>
+</html>
