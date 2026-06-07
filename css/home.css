@@ -23,12 +23,12 @@
   --card6:#1f353a; */
   /* DARK THEME CARDS (optimized for #fff text) */
 
---card1: linear-gradient(135deg, #c2410c, #7c2d12);   /* Soft Orange */
---card2: linear-gradient(135deg, #7e22ce, #4c1d95);   /* Balanced Purple */
---card3: linear-gradient(135deg, #2563eb, #1e3a8a);   /* Indigo/Blue (Violet replace) */
---card4: linear-gradient(135deg, #a16207, #713f12);   /* Muted Yellow */
---card5: linear-gradient(135deg, #15803d, #14532d);   /* Deep Green */
---card6: linear-gradient(135deg, #0f766e, #042f2e);   /* Teal (NEW - premium feel) */
+ --card1: #22252b ; /* Soft Orange */
+ --card2: #22252b ;   /* Balanced Purple */
+ --card3: #22252b ; /*  Indigo/Blue (Violet replace) */
+ --card4: #22252b ; /*  Muted Yellow */
+ --card5: #22252b ;  /*  Deep Green */
+ --card6: #22252b ;  /* Teal (NEW - premium feel) */
 
  --nav-item: #fff ;
   }
@@ -81,7 +81,7 @@ color:var(--brand);
    text-align:center;
    cursor:pointer;
    transition:0.15s;
-   border: 1.6px solid transparent;
+   border: 0.6px solid transparent;
 }
 
 .quiz-card:active{ transform:scale(.96); }
