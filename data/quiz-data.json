@@ -173,106 +173,26 @@
   "title": "FF Events",
   "icon": "assets/ff-event.png",
   "questions": [
-    {
-      "question": "Which event usually gives free skins?",
-      "options": ["Booyah Day", "Diamond Royale", "Lucky Wheel", "Top Up"],
-      "answer": 0
-    },
-    {
-      "question": "Which annual Free Fire event celebrates the game's community?",
-      "options": ["Booyah Day", "Rank Push", "Weapon Royale", "Clash Squad Cup"],
-      "answer": 0
-    },
-    {
-      "question": "What is usually required to participate in Top Up events?",
-      "options": ["Gold Coins", "Level 10 Account", "Diamond Purchase", "Guild Membership"],
-      "answer": 2
-    },
-    {
-      "question": "Which event type often offers exclusive emotes as rewards?",
-      "options": ["Web Events", "Training Mode", "Custom Rooms", "Spectator Mode"],
-      "answer": 0
-    },
-    {
-      "question": "What currency is commonly used in Luck Royale events?",
-      "options": ["Gold", "Diamonds", "Guild Tokens", "Rank Tokens"],
-      "answer": 1
-    },
-    {
-      "question": "Which event is most likely to feature limited-time bundles?",
-      "options": ["Special Collaboration Event", "Practice Match", "Custom Room", "Guild Chat"],
-      "answer": 0
-    },
-    {
-      "question": "What do players often collect during token events?",
-      "options": ["Pets", "Characters", "Event Tokens", "Guild Names"],
-      "answer": 2
-    },
-    {
-      "question": "Which event reward is usually considered the rarest?",
-      "options": ["Gold", "Exclusive Bundle", "EXP Card", "Supply Crate"],
-      "answer": 1
-    },
-    {
-      "question": "What is the main purpose of anniversary events?",
-      "options": ["Server Maintenance", "Celebrating Free Fire's Milestones", "Removing Maps", "Resetting Accounts"],
-      "answer": 1
-    },
-    {
-      "question": "Which event category often includes daily login rewards?",
-      "options": ["Login Event", "Rank Event", "Guild War", "Training Event"],
-      "answer": 0
-    },
-    {
-      "question": "What do collaboration events usually introduce?",
-      "options": ["New Maps Only", "Crossovers with Brands or Franchises", "Server Resets", "Rank Deletion"],
-      "answer": 1
-    },
-    {
-      "question": "Which event type encourages players to complete missions?",
-      "options": ["Mission Event", "Spectator Event", "Voice Chat Event", "Custom Match Event"],
-      "answer": 0
-    },
-    {
-      "question": "What can players often earn from exchange events?",
-      "options": ["Event Rewards", "Rank Points Only", "Extra Servers", "Unlimited Diamonds"],
-      "answer": 0
-    },
-    {
-      "question": "Which event is most likely to feature discounted items?",
-      "options": ["Special Sale Event", "Training Mode", "Guild Room", "Custom Match"],
-      "answer": 0
-    },
-    {
-      "question": "What is commonly rewarded during weekend events?",
-      "options": ["Bonus Items", "Account Reset", "Map Removal", "Character Deletion"],
-      "answer": 0
-    },
-    {
-      "question": "Which event often allows players to spin for prizes?",
-      "options": ["Luck Royale", "Rank Match", "Training Ground", "Guild Lobby"],
-      "answer": 0
-    },
-    {
-      "question": "What is the main attraction of special event calendars?",
-      "options": ["Daily Rewards and Missions", "Account Ban Appeals", "Server Switching", "Voice Settings"],
-      "answer": 0
-    },
-    {
-      "question": "Which event reward is most attractive to collectors?",
-      "options": ["Exclusive Skins", "Gold Coins", "EXP Cards", "Basic Crates"],
-      "answer": 0
-    },
-    {
-      "question": "What should players do regularly during major events?",
-      "options": ["Check Event Tab", "Delete Inventory", "Change Server", "Leave Guild"],
-      "answer": 0
-    },
-    {
-      "question": "Why are limited-time events popular in Free Fire?",
-      "options": ["They Offer Unique Rewards", "They Remove Characters", "They Reduce Levels", "They Disable Matches"],
-      "answer": 0
-    }
+    {"question": "Which event usually gives free skins?","options": ["Booyah Day", "Diamond Royale", "Lucky Wheel", "Top Up"],"answer": 0},
+    {"question": "Which annual Free Fire event celebrates the game's community?","options": ["Booyah Day", "Rank Push", "Weapon Royale", "Clash Squad Cup"],"answer": 0},
+    {"question": "What is usually required to participate in Top Up events?","options": ["Gold Coins", "Level 10 Account", "Diamond Purchase", "Guild Membership"],"answer": 2},
+    {"question": "Which event type often offers exclusive emotes as rewards?","options": ["Web Events", "Training Mode", "Custom Rooms", "Spectator Mode"],"answer": 0},
+    {"question": "What currency is commonly used in Luck Royale events?","options": ["Gold", "Diamonds", "Guild Tokens", "Rank Tokens"],"answer": 1},
+    {"question": "Which event is most likely to feature limited-time bundles?","options": ["Special Collaboration Event", "Practice Match", "Custom Room", "Guild Chat"],"answer": 0},
+    {"question": "What do players often collect during token events?","options": ["Pets", "Characters", "Event Tokens", "Guild Names"],"answer": 2},
+    {"question": "Which event reward is usually considered the rarest?","options": ["Gold", "Exclusive Bundle", "EXP Card", "Supply Crate"],"answer": 1},
+    {"question": "What is the main purpose of anniversary events?","options": ["Server Maintenance", "Celebrating Free Fire's Milestones", "Removing Maps", "Resetting Accounts"],"answer": 1},
+    {"question": "Which event category often includes daily login rewards?","options": ["Login Event", "Rank Event", "Guild War", "Training Event"],"answer": 0},
+    {"question": "What do collaboration events usually introduce?","options": ["New Maps Only", "Crossovers with Brands or Franchises", "Server Resets", "Rank Deletion"],"answer": 1},
+    {"question": "Which event type encourages players to complete missions?","options": ["Mission Event", "Spectator Event", "Voice Chat Event", "Custom Match Event"],"answer": 0},
+    {"question": "What can players often earn from exchange events?","options": ["Event Rewards", "Rank Points Only", "Extra Servers", "Unlimited Diamonds"],"answer": 0},
+    {"question": "Which event is most likely to feature discounted items?","options": ["Special Sale Event", "Training Mode", "Guild Room", "Custom Match"],"answer": 0},
+    {"question": "What is commonly rewarded during weekend events?","options": ["Bonus Items", "Account Reset", "Map Removal", "Character Deletion"],"answer": 0},
+    {"question": "Which event often allows players to spin for prizes?","options": ["Luck Royale", "Rank Match", "Training Ground", "Guild Lobby"],"answer": 0},
+    {"question": "What is the main attraction of special event calendars?","options": ["Daily Rewards and Missions", "Account Ban Appeals", "Server Switching", "Voice Settings"],"answer": 0},
+    {"question": "Which event reward is most attractive to collectors?","options": ["Exclusive Skins", "Gold Coins", "EXP Cards", "Basic Crates"],"answer": 0},
+    {"question": "What should players do regularly during major events?","options": ["Check Event Tab", "Delete Inventory", "Change Server", "Leave Guild"],"answer": 0},
+    {"question": "Why are limited-time events popular in Free Fire?","options": ["They Offer Unique Rewards", "They Remove Characters", "They Reduce Levels", "They Disable Matches"],"answer": 0}
   ]
 }
     
