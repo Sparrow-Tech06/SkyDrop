@@ -2,6 +2,12 @@
 :root{
     --primary:#ff7a00;
     --soft:#fff4e8;
+    --tob-banner: #F08D39 ;
+}
+@media (prefers-color-scheme: dark) {
+ :root {
+     --tob-banner:  ;
+  }
 }
 
 .daily-card{
@@ -14,7 +20,7 @@
 }
 
 .top-banner{
-    background: linear-gradient(135deg,#ff7a00,#ffb347);
+    background: var(--tob-banner);
     padding:22px; color:#fff; }
 
 .daily-badge{
