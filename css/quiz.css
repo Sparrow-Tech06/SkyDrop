@@ -10,6 +10,7 @@
   --wrong-border: #EF4444 !important;
 
   --result-card: linear-gradient(135deg,#fff7ed,#fef3c7) ;
+  --accent:#ff6a00;
   
 }
 @media (prefers-color-scheme: dark) {
