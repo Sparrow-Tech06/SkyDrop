@@ -32,7 +32,7 @@
       <i class="bi bi-x-lg"></i>
     </button>
 
-    <img id="popupImg" src="">
+    <img id="popupImg" src="" loading="lazy" draggable="false">
     <h4 id="popupName"></h4>
     <p id="popupStatus"></p>
   </div>
@@ -71,7 +71,7 @@ BADGES.forEach(b=>{
  <div class="status-icon">
     <i class="bi ${unlocked ? 'bi-patch-check-fill' : 'bi-lock-fill'}"></i>
  </div>
- <img src="${b.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1175/1175571.png'">
+ <img src="${b.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1175/1175571.png'" loading="lazy" draggable="false">
  <div class="name">${b.name}</div>
  <div class="req">${unlocked ? 'Achievement Unlocked' : b.required + ' Coins Needed'}</div>
  <div class="status-label">${unlocked ? 'Unlocked' : 'Locked'}</div>
