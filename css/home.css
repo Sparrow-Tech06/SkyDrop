@@ -4,7 +4,7 @@
 :root{
 --orange:#ff7a00;
 --icon-bg: #FFE0C2 ;
---icon-border:  ;
+--icon-border: none ;
 --icon-color: #000 ;
  
 --card1:linear-gradient(135deg,#fff7ed,#fef3c7);
