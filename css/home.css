@@ -15,6 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
  :root {
+   --orange: rgba(255,255,255,.08) ;
 /*  --card1:#F2676A;
   --card2:#1f2a3a;
   --card3:#6BCB77;
@@ -160,8 +161,7 @@ color:#888;
   display:flex;  
   justify-content:space-between;  
   align-items:center;  
-  border:2px solid #fff;  
-  outline:1px solid var(--orange);  
+  border:1px solid var(--orange);  
   z-index:999;  
   transition:transform .45s cubic-bezier(.22,1,.36,1),
   opacity .35s ease;
