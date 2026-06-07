@@ -204,30 +204,220 @@
 },
 
     {
-      "id": "pet-powers",
-      "title": "Pet Powers",
-      "icon": "assets/petIq.png",
-      "questions": [
-        {
-          "question": "Which pet increases EP conversion?",
-          "options": ["Falco", "Ottero", "Mr. Waggor", "Rockie"],
-          "answer": 1
-        }
-      ]
+  "id": "pet-powers",
+  "title": "Pet Powers",
+  "icon": "assets/petIq.png",
+  "questions": [
+    {
+      "question": "Which pet increases EP conversion?",
+      "options": ["Falco", "Ottero", "Mr. Waggor", "Rockie"],
+      "answer": 1
     },
+    {
+      "question": "Which pet reduces active skill cooldown?",
+      "options": ["Rockie", "Falco", "Dreki", "Poring"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet gives a Gloo Wall grenade when none is available?",
+      "options": ["Ottero", "Mr. Waggor", "Beaston", "Detective Panda"],
+      "answer": 1
+    },
+    {
+      "question": "Which pet helps players land faster after parachuting?",
+      "options": ["Falco", "Rockie", "Yeti", "Agent Hop"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet marks enemies who use medkits?",
+      "options": ["Dreki", "Flash", "Poring", "Moony"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet increases grenade throwing distance?",
+      "options": ["Beaston", "Falco", "Ottero", "Rockie"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet restores HP after getting a kill?",
+      "options": ["Detective Panda", "Yeti", "Moony", "Flash"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet reduces damage taken from explosives?",
+      "options": ["Yeti", "Rockie", "Dreki", "Falco"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet can reduce damage when interacting with Gloo Walls?",
+      "options": ["Poring", "Agent Hop", "Flash", "Dreki"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet boosts movement speed while crouching?",
+      "options": ["Agent Hop", "Rockie", "Ottero", "Yeti"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet can help recover EP over time?",
+      "options": ["Moony", "Ottero", "Falco", "Rockie"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet is shaped like a penguin?",
+      "options": ["Mr. Waggor", "Falco", "Dreki", "Poring"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet resembles a dragon?",
+      "options": ["Dreki", "Flash", "Ottero", "Rockie"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet is known for its eagle-like appearance?",
+      "options": ["Falco", "Yeti", "Beaston", "Moony"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet looks like an otter?",
+      "options": ["Ottero", "Poring", "Flash", "Agent Hop"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet has the ability 'Stay Chill'?",
+      "options": ["Yeti", "Falco", "Rockie", "Beaston"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet has the skill 'Sleuth Nose'?",
+      "options": ["Detective Panda", "Dreki", "Flash", "Moony"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet is best known for reducing skill cooldowns?",
+      "options": ["Rockie", "Falco", "Ottero", "Poring"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet specializes in helping players with throwable items?",
+      "options": ["Beaston", "Mr. Waggor", "Yeti", "Dreki"],
+      "answer": 0
+    },
+    {
+      "question": "Which pet is often paired with active-skill characters like Alok and Chrono?",
+      "options": ["Rockie", "Falco", "Ottero", "Yeti"],
+      "answer": 0
+    }
+  ]
+},
 
     {
-      "id": "battle-iq",
-      "title": "Battle IQ",
-      "icon": "assets/battleiq.png",
-      "questions": [
-        {
-          "question": "Which item protects you from enemy fire?",
-          "options": ["Medkit", "Gloo Wall", "Grenade", "Flashbang"],
-          "answer": 1
-        }
-      ]
+  "id": "battle-iq",
+  "title": "Battle IQ",
+  "icon": "assets/battleiq.png",
+  "questions": [
+    {
+      "question": "Which item protects you from enemy fire?",
+      "options": ["Medkit", "Gloo Wall", "Grenade", "Flashbang"],
+      "answer": 1
     },
+    {
+      "question": "What item is used to restore HP?",
+      "options": ["Inhaler", "Medkit", "Mushroom", "Repair Kit"],
+      "answer": 1
+    },
+    {
+      "question": "Which throwable causes explosive damage?",
+      "options": ["Smoke Grenade", "Flashbang", "Gloo Wall", "Grenade"],
+      "answer": 3
+    },
+    {
+      "question": "What is the safest place to stay during a firefight?",
+      "options": ["Open Field", "Behind Cover", "Road Center", "Rooftop Edge"],
+      "answer": 1
+    },
+    {
+      "question": "Which item creates temporary cover instantly?",
+      "options": ["Landmine", "Medkit", "Gloo Wall", "Smoke Grenade"],
+      "answer": 2
+    },
+    {
+      "question": "What should you do first after taking heavy damage?",
+      "options": ["Rush Enemy", "Reload", "Heal", "Jump"],
+      "answer": 2
+    },
+    {
+      "question": "Which zone continuously damages players outside it?",
+      "options": ["Safe Zone", "Danger Zone", "Play Zone", "Blue Zone"],
+      "answer": 3
+    },
+    {
+      "question": "What is the main advantage of high ground?",
+      "options": ["More Loot", "Better Visibility", "Faster Running", "Extra HP"],
+      "answer": 1
+    },
+    {
+      "question": "Which attachment improves weapon accuracy?",
+      "options": ["Scope", "Muzzle", "Stock", "Foregrip"],
+      "answer": 3
+    },
+    {
+      "question": "What should you do before entering a building with enemies?",
+      "options": ["Stand Still", "Check Corners", "Drop Weapons", "Use Medkit"],
+      "answer": 1
+    },
+    {
+      "question": "Which throwable is best for blocking enemy vision?",
+      "options": ["Grenade", "Smoke Grenade", "Flashbang", "Landmine"],
+      "answer": 1
+    },
+    {
+      "question": "What is the benefit of wearing a helmet?",
+      "options": ["Run Faster", "Reduce Headshot Damage", "Carry More Ammo", "Jump Higher"],
+      "answer": 1
+    },
+    {
+      "question": "Which item repairs damaged armor?",
+      "options": ["Repair Kit", "Inhaler", "Mushroom", "Medkit"],
+      "answer": 0
+    },
+    {
+      "question": "What is the best strategy when outnumbered?",
+      "options": ["Fight in Open Area", "Stay Exposed", "Use Cover and Positioning", "Drop Loot"],
+      "answer": 2
+    },
+    {
+      "question": "Which action makes you a harder target to hit?",
+      "options": ["Standing Still", "Running in Straight Line", "Jumping and Strafing", "Crouching Forever"],
+      "answer": 2
+    },
+    {
+      "question": "Why should you reload after a fight?",
+      "options": ["Increase Damage", "Prepare for Next Enemy", "Gain HP", "Move Faster"],
+      "answer": 1
+    },
+    {
+      "question": "What is the purpose of a Flashbang?",
+      "options": ["Heal Teammates", "Blind Enemies Temporarily", "Create Cover", "Repair Armor"],
+      "answer": 1
+    },
+    {
+      "question": "Which is more important in the final zone?",
+      "options": ["Looting", "Positioning", "Collecting Coins", "Exploring"],
+      "answer": 1
+    },
+    {
+      "question": "What should you do if an enemy throws a grenade near you?",
+      "options": ["Stand Still", "Move Away Quickly", "Use Medkit", "Reload"],
+      "answer": 1
+    },
+    {
+      "question": "What is the key to winning most close-range battles?",
+      "options": ["Good Aim", "Ignoring Cover", "Not Moving", "Using No Attachments"],
+      "answer": 0
+    }
+  ]
+},
 
     {
       "id": "odd-hunter",
@@ -258,16 +448,112 @@
      },
 
     {
-      "id": "ff-events",
-      "title": "FF Events",
-      "icon": "assets/ff-event.png",
-      "questions": [
-        {
-          "question": "Which event usually gives free skins?",
-          "options": ["Booyah Day", "Diamond Royale", "Lucky Wheel", "Top Up"],
-          "answer": 0
-        }
-      ]
+  "id": "ff-events",
+  "title": "FF Events",
+  "icon": "assets/ff-event.png",
+  "questions": [
+    {
+      "question": "Which event usually gives free skins?",
+      "options": ["Booyah Day", "Diamond Royale", "Lucky Wheel", "Top Up"],
+      "answer": 0
+    },
+    {
+      "question": "Which annual Free Fire event celebrates the game's community?",
+      "options": ["Booyah Day", "Rank Push", "Weapon Royale", "Clash Squad Cup"],
+      "answer": 0
+    },
+    {
+      "question": "What is usually required to participate in Top Up events?",
+      "options": ["Gold Coins", "Level 10 Account", "Diamond Purchase", "Guild Membership"],
+      "answer": 2
+    },
+    {
+      "question": "Which event type often offers exclusive emotes as rewards?",
+      "options": ["Web Events", "Training Mode", "Custom Rooms", "Spectator Mode"],
+      "answer": 0
+    },
+    {
+      "question": "What currency is commonly used in Luck Royale events?",
+      "options": ["Gold", "Diamonds", "Guild Tokens", "Rank Tokens"],
+      "answer": 1
+    },
+    {
+      "question": "Which event is most likely to feature limited-time bundles?",
+      "options": ["Special Collaboration Event", "Practice Match", "Custom Room", "Guild Chat"],
+      "answer": 0
+    },
+    {
+      "question": "What do players often collect during token events?",
+      "options": ["Pets", "Characters", "Event Tokens", "Guild Names"],
+      "answer": 2
+    },
+    {
+      "question": "Which event reward is usually considered the rarest?",
+      "options": ["Gold", "Exclusive Bundle", "EXP Card", "Supply Crate"],
+      "answer": 1
+    },
+    {
+      "question": "What is the main purpose of anniversary events?",
+      "options": ["Server Maintenance", "Celebrating Free Fire's Milestones", "Removing Maps", "Resetting Accounts"],
+      "answer": 1
+    },
+    {
+      "question": "Which event category often includes daily login rewards?",
+      "options": ["Login Event", "Rank Event", "Guild War", "Training Event"],
+      "answer": 0
+    },
+    {
+      "question": "What do collaboration events usually introduce?",
+      "options": ["New Maps Only", "Crossovers with Brands or Franchises", "Server Resets", "Rank Deletion"],
+      "answer": 1
+    },
+    {
+      "question": "Which event type encourages players to complete missions?",
+      "options": ["Mission Event", "Spectator Event", "Voice Chat Event", "Custom Match Event"],
+      "answer": 0
+    },
+    {
+      "question": "What can players often earn from exchange events?",
+      "options": ["Event Rewards", "Rank Points Only", "Extra Servers", "Unlimited Diamonds"],
+      "answer": 0
+    },
+    {
+      "question": "Which event is most likely to feature discounted items?",
+      "options": ["Special Sale Event", "Training Mode", "Guild Room", "Custom Match"],
+      "answer": 0
+    },
+    {
+      "question": "What is commonly rewarded during weekend events?",
+      "options": ["Bonus Items", "Account Reset", "Map Removal", "Character Deletion"],
+      "answer": 0
+    },
+    {
+      "question": "Which event often allows players to spin for prizes?",
+      "options": ["Luck Royale", "Rank Match", "Training Ground", "Guild Lobby"],
+      "answer": 0
+    },
+    {
+      "question": "What is the main attraction of special event calendars?",
+      "options": ["Daily Rewards and Missions", "Account Ban Appeals", "Server Switching", "Voice Settings"],
+      "answer": 0
+    },
+    {
+      "question": "Which event reward is most attractive to collectors?",
+      "options": ["Exclusive Skins", "Gold Coins", "EXP Cards", "Basic Crates"],
+      "answer": 0
+    },
+    {
+      "question": "What should players do regularly during major events?",
+      "options": ["Check Event Tab", "Delete Inventory", "Change Server", "Leave Guild"],
+      "answer": 0
+    },
+    {
+      "question": "Why are limited-time events popular in Free Fire?",
+      "options": ["They Offer Unique Rewards", "They Remove Characters", "They Reduce Levels", "They Disable Matches"],
+      "answer": 0
     }
+  ]
+}
+    
   ]
 }
