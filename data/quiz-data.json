@@ -117,106 +117,26 @@
   "title": "Battle IQ",
   "icon": "assets/battleiq.png",
   "questions": [
-    {
-      "question": "Which item protects you from enemy fire?",
-      "options": ["Medkit", "Gloo Wall", "Grenade", "Flashbang"],
-      "answer": 1
-    },
-    {
-      "question": "What item is used to restore HP?",
-      "options": ["Inhaler", "Medkit", "Mushroom", "Repair Kit"],
-      "answer": 1
-    },
-    {
-      "question": "Which throwable causes explosive damage?",
-      "options": ["Smoke Grenade", "Flashbang", "Gloo Wall", "Grenade"],
-      "answer": 3
-    },
-    {
-      "question": "What is the safest place to stay during a firefight?",
-      "options": ["Open Field", "Behind Cover", "Road Center", "Rooftop Edge"],
-      "answer": 1
-    },
-    {
-      "question": "Which item creates temporary cover instantly?",
-      "options": ["Landmine", "Medkit", "Gloo Wall", "Smoke Grenade"],
-      "answer": 2
-    },
-    {
-      "question": "What should you do first after taking heavy damage?",
-      "options": ["Rush Enemy", "Reload", "Heal", "Jump"],
-      "answer": 2
-    },
-    {
-      "question": "Which zone continuously damages players outside it?",
-      "options": ["Safe Zone", "Danger Zone", "Play Zone", "Blue Zone"],
-      "answer": 3
-    },
-    {
-      "question": "What is the main advantage of high ground?",
-      "options": ["More Loot", "Better Visibility", "Faster Running", "Extra HP"],
-      "answer": 1
-    },
-    {
-      "question": "Which attachment improves weapon accuracy?",
-      "options": ["Scope", "Muzzle", "Stock", "Foregrip"],
-      "answer": 3
-    },
-    {
-      "question": "What should you do before entering a building with enemies?",
-      "options": ["Stand Still", "Check Corners", "Drop Weapons", "Use Medkit"],
-      "answer": 1
-    },
-    {
-      "question": "Which throwable is best for blocking enemy vision?",
-      "options": ["Grenade", "Smoke Grenade", "Flashbang", "Landmine"],
-      "answer": 1
-    },
-    {
-      "question": "What is the benefit of wearing a helmet?",
-      "options": ["Run Faster", "Reduce Headshot Damage", "Carry More Ammo", "Jump Higher"],
-      "answer": 1
-    },
-    {
-      "question": "Which item repairs damaged armor?",
-      "options": ["Repair Kit", "Inhaler", "Mushroom", "Medkit"],
-      "answer": 0
-    },
-    {
-      "question": "What is the best strategy when outnumbered?",
-      "options": ["Fight in Open Area", "Stay Exposed", "Use Cover and Positioning", "Drop Loot"],
-      "answer": 2
-    },
-    {
-      "question": "Which action makes you a harder target to hit?",
-      "options": ["Standing Still", "Running in Straight Line", "Jumping and Strafing", "Crouching Forever"],
-      "answer": 2
-    },
-    {
-      "question": "Why should you reload after a fight?",
-      "options": ["Increase Damage", "Prepare for Next Enemy", "Gain HP", "Move Faster"],
-      "answer": 1
-    },
-    {
-      "question": "What is the purpose of a Flashbang?",
-      "options": ["Heal Teammates", "Blind Enemies Temporarily", "Create Cover", "Repair Armor"],
-      "answer": 1
-    },
-    {
-      "question": "Which is more important in the final zone?",
-      "options": ["Looting", "Positioning", "Collecting Coins", "Exploring"],
-      "answer": 1
-    },
-    {
-      "question": "What should you do if an enemy throws a grenade near you?",
-      "options": ["Stand Still", "Move Away Quickly", "Use Medkit", "Reload"],
-      "answer": 1
-    },
-    {
-      "question": "What is the key to winning most close-range battles?",
-      "options": ["Good Aim", "Ignoring Cover", "Not Moving", "Using No Attachments"],
-      "answer": 0
-    }
+    {"question": "Which item protects you from enemy fire?","options": ["Medkit", "Gloo Wall", "Grenade", "Flashbang"],"answer": 1},
+    {"question": "What item is used to restore HP?","options": ["Inhaler", "Medkit", "Mushroom", "Repair Kit"],"answer": 1},
+    {"question": "Which throwable causes explosive damage?","options": ["Smoke Grenade", "Flashbang", "Gloo Wall", "Grenade"],"answer": 3},
+    {"question": "What is the safest place to stay during a firefight?","options": ["Open Field", "Behind Cover", "Road Center", "Rooftop Edge"],"answer": 1},
+    {"question": "Which item creates temporary cover instantly?","options": ["Landmine", "Medkit", "Gloo Wall", "Smoke Grenade"],"answer": 2},
+    {"question": "What should you do first after taking heavy damage?","options": ["Rush Enemy", "Reload", "Heal", "Jump"],"answer": 2},
+    {"question": "Which zone continuously damages players outside it?","options": ["Safe Zone", "Danger Zone", "Play Zone", "Blue Zone"],"answer": 3},
+    {"question": "What is the main advantage of high ground?","options": ["More Loot", "Better Visibility", "Faster Running", "Extra HP"],"answer": 1},
+    {"question": "Which attachment improves weapon accuracy?","options": ["Scope", "Muzzle", "Stock", "Foregrip"],"answer": 3},
+    {"question": "What should you do before entering a building with enemies?","options": ["Stand Still", "Check Corners", "Drop Weapons", "Use Medkit"],"answer": 1},
+    {"question": "Which throwable is best for blocking enemy vision?","options": ["Grenade", "Smoke Grenade", "Flashbang", "Landmine"],"answer": 1},
+    {"question": "What is the benefit of wearing a helmet?","options": ["Run Faster", "Reduce Headshot Damage", "Carry More Ammo", "Jump Higher"],"answer": 1},
+    {"question": "Which item repairs damaged armor?","options": ["Repair Kit", "Inhaler", "Mushroom", "Medkit"],"answer": 0},
+    {"question": "What is the best strategy when outnumbered?","options": ["Fight in Open Area", "Stay Exposed", "Use Cover and Positioning", "Drop Loot"],"answer": 2},
+    {"question": "Which action makes you a harder target to hit?","options": ["Standing Still", "Running in Straight Line", "Jumping and Strafing", "Crouching Forever"],"answer": 2},
+    {"question": "Why should you reload after a fight?","options": ["Increase Damage", "Prepare for Next Enemy", "Gain HP", "Move Faster"],"answer": 1},
+    {"question": "What is the purpose of a Flashbang?","options": ["Heal Teammates", "Blind Enemies Temporarily", "Create Cover", "Repair Armor"],"answer": 1},
+    {"question": "Which is more important in the final zone?","options": ["Looting", "Positioning", "Collecting Coins", "Exploring"],"answer": 1},
+    {"question": "What should you do if an enemy throws a grenade near you?","options": ["Stand Still", "Move Away Quickly", "Use Medkit", "Reload"],"answer": 1},
+    {"question": "What is the key to winning most close-range battles?","options": ["Good Aim", "Ignoring Cover", "Not Moving", "Using No Attachments"],"answer": 0}
   ]
 },
 
