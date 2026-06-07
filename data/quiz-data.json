@@ -61,106 +61,26 @@
   "title": "Hero Skills",
   "icon": "assets/hero.png",
   "questions": [
-    {
-      "question": "What is DJ Alok's ability name?",
-      "options": ["Drop the Beat", "Time Turner", "Xtreme Encounter", "Lead the Pack"],
-      "answer": 0
-    },
-    {
-      "question": "Which character has the ability 'Time Turner'?",
-      "options": ["Chrono", "Alok", "Skyler", "K"],
-      "answer": 0
-    },
-    {
-      "question": "What is Skyler's active ability called?",
-      "options": ["Riptide Rhythm", "Healing Heartbeat", "Crazy Slayer", "Camouflage"],
-      "answer": 0
-    },
-    {
-      "question": "Which character can create EP with 'Master of All'?",
-      "options": ["K", "Jota", "Dimitri", "A124"],
-      "answer": 0
-    },
-    {
-      "question": "What is Jota's skill name?",
-      "options": ["Sustained Raids", "Bushido", "Sharp Shooter", "Hacker's Eye"],
-      "answer": 0
-    },
-    {
-      "question": "Which character has the passive skill 'Bushido'?",
-      "options": ["Hayato", "Antonio", "Moco", "Andrew"],
-      "answer": 0
-    },
-    {
-      "question": "What is Moco's ability called?",
-      "options": ["Hacker's Eye", "Awakening", "Art of Blades", "Dead Silent"],
-      "answer": 0
-    },
-    {
-      "question": "Which character uses the ability 'Healing Heartbeat'?",
-      "options": ["Dimitri", "Alok", "Olivia", "Laura"],
-      "answer": 0
-    },
-    {
-      "question": "What is Wukong's special skill?",
-      "options": ["Camouflage", "Shape Splitter", "Crazy Slayer", "Falcon Fervor"],
-      "answer": 0
-    },
-    {
-      "question": "Which character has the ability 'Thrill of Battle'?",
-      "options": ["Luqueta", "Jai", "Ford", "Leon"],
-      "answer": 0
-    },
-    {
-      "question": "What is A124's active skill called?",
-      "options": ["Thrill of Battle", "Excitement Up", "Battle Surge", "Flash Freeze"],
-      "answer": 3
-    },
-    {
-      "question": "Which character gains extra armor durability with 'Armor Specialist'?",
-      "options": ["Andrew", "Joseph", "Maxim", "Ford"],
-      "answer": 0
-    },
-    {
-      "question": "Which character has the skill 'Crazy Slayer'?",
-      "options": ["Miguel", "Shirou", "Maro", "A124"],
-      "answer": 1
-    },
-    {
-      "question": "What is Kelly's ability called?",
-      "options": ["Dash", "Deadly Velocity", "Sprint Master", "Rapid Run"],
-      "answer": 1
-    },
-    {
-      "question": "Which character restores EP after eliminations?",
-      "options": ["Miguel", "Ford", "Leon", "Rafael"],
-      "answer": 0
-    },
-    {
-      "question": "What is Rafael's skill name?",
-      "options": ["Dead Silent", "Sharp Shooter", "Silent Strike", "Sniper Master"],
-      "answer": 0
-    },
-    {
-      "question": "Which character can mark enemies after hitting them?",
-      "options": ["Moco", "Kelly", "Ford", "Leon"],
-      "answer": 0
-    },
-    {
-      "question": "Which character's skill increases movement speed while taking damage?",
-      "options": ["Joseph", "Antonio", "Ford", "Jai"],
-      "answer": 0
-    },
-    {
-      "question": "What is Antonio's passive ability called?",
-      "options": ["Gangster's Spirit", "Battle Instinct", "Survival Expert", "Iron Body"],
-      "answer": 0
-    },
-    {
-      "question": "Which character can recover HP while moving within a healing zone?",
-      "options": ["Dimitri", "Hayato", "Maro", "Wolfrahh"],
-      "answer": 0
-    }
+    {"question": "What is DJ Alok's ability name?","options": ["Drop the Beat", "Time Turner", "Xtreme Encounter", "Lead the Pack"],"answer": 0},
+    {"question": "Which character has the ability 'Time Turner'?","options": ["Chrono", "Alok", "Skyler", "K"],"answer": 0},
+    {"question": "What is Skyler's active ability called?","options": ["Riptide Rhythm", "Healing Heartbeat", "Crazy Slayer", "Camouflage"],"answer": 0},
+    {"question": "Which character can create EP with 'Master of All'?","options": ["K", "Jota", "Dimitri", "A124"],"answer": 0},
+    {"question": "What is Jota's skill name?","options": ["Sustained Raids", "Bushido", "Sharp Shooter", "Hacker's Eye"],"answer": 0},
+    {"question": "Which character has the passive skill 'Bushido'?","options": ["Hayato", "Antonio", "Moco", "Andrew"],"answer": 0},
+    {"question": "What is Moco's ability called?","options": ["Hacker's Eye", "Awakening", "Art of Blades", "Dead Silent"],"answer": 0},
+    {"question": "Which character uses the ability 'Healing Heartbeat'?","options": ["Dimitri", "Alok", "Olivia", "Laura"],"answer": 0},
+    {"question": "What is Wukong's special skill?","options": ["Camouflage", "Shape Splitter", "Crazy Slayer", "Falcon Fervor"],"answer": 0},
+    {"question": "Which character has the ability 'Thrill of Battle'?","options": ["Luqueta", "Jai", "Ford", "Leon"],"answer": 0},
+    {"question": "What is A124's active skill called?","options": ["Thrill of Battle", "Excitement Up", "Battle Surge", "Flash Freeze"],"answer": 3},
+    {"question": "Which character gains extra armor durability with 'Armor Specialist'?","options": ["Andrew", "Joseph", "Maxim", "Ford"],"answer": 0},
+    {"question": "Which character has the skill 'Crazy Slayer'?","options": ["Miguel", "Shirou", "Maro", "A124"],"answer": 1},
+    {"question": "What is Kelly's ability called?","options": ["Dash", "Deadly Velocity", "Sprint Master", "Rapid Run"],"answer": 1},
+    {"question": "Which character restores EP after eliminations?","options": ["Miguel", "Ford", "Leon", "Rafael"],"answer": 0},
+    {"question": "What is Rafael's skill name?","options": ["Dead Silent", "Sharp Shooter", "Silent Strike", "Sniper Master"],"answer": 0},
+    {"question": "Which character can mark enemies after hitting them?","options": ["Moco", "Kelly", "Ford", "Leon"],"answer": 0},
+    {"question": "Which character's skill increases movement speed while taking damage?","options": ["Joseph", "Antonio", "Ford", "Jai"],"answer": 0},
+    {"question": "What is Antonio's passive ability called?","options": ["Gangster's Spirit", "Battle Instinct", "Survival Expert", "Iron Body"],"answer": 0},
+    {"question": "Which character can recover HP while moving within a healing zone?","options": ["Dimitri", "Hayato", "Maro", "Wolfrahh"],"answer": 0}
   ]
 },
 
