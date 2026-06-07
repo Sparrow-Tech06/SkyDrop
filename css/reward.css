@@ -6,6 +6,12 @@
   --card-radius: 22px;
   --shadow-soft: 0 8px 25px rgba(0,0,0,0.06);
   --shadow-hover: 0 12px 30px rgba(0,0,0,0.1);
+  --reward-card: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --reward-card: ;
+  }
 }
 /***********************************/
 .grid { 
@@ -19,7 +25,7 @@
 
 /* Modern Card Style */
 .card {
-    background: #fff;
+    background: var(--reward-card);
     border-radius: var(--card-radius);
     padding: 10px 20px; border: none ;
     transition: 0.3s ease;
