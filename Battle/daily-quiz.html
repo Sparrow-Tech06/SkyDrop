@@ -31,23 +31,14 @@
 
 <!-- LOADING -->
 
-<div
-v-if="loading"
-class="loading-screen"
->
-
+<div v-if="loading" class="loading-screen">
     <div class="loader"></div>
-
     <div class="loading-text"> Loading Daily Challenge... </div>
-
 </div>
 
 <!-- MAIN -->
 
-<div
-v-if="!loading && todayQuestion"
-class="daily-card"
->
+<div v-if="!loading && todayQuestion" class="daily-card">
 
     <!-- TOP -->
 
@@ -57,7 +48,7 @@ class="daily-card"
 
         <div class="quiz-header">
 
-            <img :src="todayQuestion.icon" class="quiz-icon">
+            <img :src="todayQuestion.icon" class="quiz-icon" draggable="false" loading="lazy">
             <div>
                 <div class="quiz-title"> {{ todayQuestion.title }} </div>
                 <div class="quiz-sub"> New Question Every Day </div>
