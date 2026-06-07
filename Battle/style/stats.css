@@ -1,10 +1,15 @@
 
 :root{
-  --card: linear-gradient(135deg,#fff7ed,#fef3c7);
+  --card: #000 ;
   --orange-dark:#ff7b00;
   --accent2:#fff7ed;
 }
-
+@media (prefers-color-scheme: dark) {
+  :root {
+      
+  }
+}
+/**********************************************/
 .section-title{
   margin-top:25px;
   margin-bottom:14px;
