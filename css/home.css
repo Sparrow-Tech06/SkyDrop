@@ -191,7 +191,7 @@ color:#888;
 }  
   
 .nav-item.active{  
-  color:var(--orange);  
+  color:var(--brand);  
 }  
   
 .nav-item.active::before{  
@@ -203,7 +203,7 @@ color:#888;
   width:24px;  
   height:3px;  
   border-radius:20px;  
-  background:var(--orange);  
+  background:var(--brand);  
 }  
   
 /* PLAY BUTTON */  
@@ -215,7 +215,7 @@ color:#888;
   width:60px;  
   height:60px;  
   border-radius:50%;  
-  background:linear-gradient(135deg,var(--orange),#ff9d3d);  
+  background: var(--brand);  
   display:flex;  
   align-items:center;  
   justify-content:center;  
