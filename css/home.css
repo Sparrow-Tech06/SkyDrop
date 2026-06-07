@@ -33,11 +33,11 @@
   /* DARK THEME CARDS (optimized for #fff text) */
 
  --card1: #1d2026; ; /* Soft Orange */
- --card2: #1d2026; ;   /* Balanced Purple */
- --card3: #1d2026; ; /*  Indigo/Blue (Violet replace) */
- --card4: #1d2026; ; /*  Muted Yellow */
- --card5: #1d2026; ;  /*  Deep Green */
- --card6: #1d2026; ;  /* Teal (NEW - premium feel) */
+ --card2: #2c2c2e ;   /* Balanced Purple */
+ --card3: #2c2c2e ; /*  Indigo/Blue (Violet replace) */
+ --card4: #2c2c2e ; /*  Muted Yellow */
+ --card5: #2c2c2e ;  /*  Deep Green */
+ --card6: #2c2c2e ;  /* Teal (NEW - premium feel) */
 
  --nav-item: #fff ;
   }
