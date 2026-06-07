@@ -10,7 +10,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --reward-card: ;
+    --reward-card: #22252b ;
   }
 }
 /***********************************/
