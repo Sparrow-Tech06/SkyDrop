@@ -9,6 +9,8 @@
 --card4:linear-gradient(135deg,#f0fdf4,#dcfce7);
 --card5:linear-gradient(135deg,#fdf2f8,#fce7f3);
 --card6:linear-gradient(135deg,#eef2ff,#e0e7ff);
+
+--nav-item: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +29,8 @@
 --card4: linear-gradient(135deg, #a16207, #713f12);   /* Muted Yellow */
 --card5: linear-gradient(135deg, #15803d, #14532d);   /* Deep Green */
 --card6: linear-gradient(135deg, #0f766e, #042f2e);   /* Teal (NEW - premium feel) */
+
+ --nav-item: #fff ;
   }
 }
 
@@ -174,8 +178,8 @@ color:#888;
   flex:1;  
   text-align:center;  
   position:relative;  
-  color:#000;  
-  font-size:11px;  
+  color: var(--nav-item);  
+  font-size:12px;  
   font-weight:600;  
 }  
   
@@ -217,7 +221,7 @@ color:#888;
   justify-content:center;  
   color:#fff;  
   box-shadow:0 6px 20px rgba(255,122,0,0.35);  
-  border:6px solid #fff;  
+  border: 4px solid #fff;  
 }  
   
 .play-btn i{  
