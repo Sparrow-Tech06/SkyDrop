@@ -121,8 +121,8 @@
 }
 
 .rank-box{
-  background:linear-gradient(145deg,#fff0cf,#ffe0a1) ;
-  border-radius:18px;
+  background: #fff0cf ;
+  border-radius:16px;
   padding:16px;
   margin-bottom:14px;
 }
@@ -139,13 +139,11 @@
 }
 
 .rank-play{
-  margin-top:4px;
-  color:#cfd5df;
+  margin-top:4px; font-size: 13px;
+  color: var(--text) ;
 }
 
 .empty{
-  text-align:center;
-  padding:60px 20px;
-  color: ;
+  text-align:center; color: var(--text) ; padding:60px 20px;
 }
 
