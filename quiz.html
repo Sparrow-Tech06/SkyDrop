@@ -129,7 +129,7 @@ methods:{
     setTimeout(()=>{ this.next(); }, 600);
   }, */
 
-  const select = (i) => {
+  select = (i) => {
 
   const isCorrect = i === currentQ.value.correctAnswer;
 
@@ -138,6 +138,15 @@ methods:{
   } else {
     navigator.vibrate?.([120, 50, 120]);
   }
+
+    this.selected = i;
+    this.answered = true;
+
+    if(i === this.currentQ.answer){
+      this.score++;
+    }
+
+    setTimeout(()=>{ this.next(); }, 600); 
 },
 
   next(){
