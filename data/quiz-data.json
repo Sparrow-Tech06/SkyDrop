@@ -89,106 +89,26 @@
   "title": "Pet Powers",
   "icon": "assets/petIq.png",
   "questions": [
-    {
-      "question": "Which pet increases EP conversion?",
-      "options": ["Falco", "Ottero", "Mr. Waggor", "Rockie"],
-      "answer": 1
-    },
-    {
-      "question": "Which pet reduces active skill cooldown?",
-      "options": ["Rockie", "Falco", "Dreki", "Poring"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet gives a Gloo Wall grenade when none is available?",
-      "options": ["Ottero", "Mr. Waggor", "Beaston", "Detective Panda"],
-      "answer": 1
-    },
-    {
-      "question": "Which pet helps players land faster after parachuting?",
-      "options": ["Falco", "Rockie", "Yeti", "Agent Hop"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet marks enemies who use medkits?",
-      "options": ["Dreki", "Flash", "Poring", "Moony"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet increases grenade throwing distance?",
-      "options": ["Beaston", "Falco", "Ottero", "Rockie"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet restores HP after getting a kill?",
-      "options": ["Detective Panda", "Yeti", "Moony", "Flash"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet reduces damage taken from explosives?",
-      "options": ["Yeti", "Rockie", "Dreki", "Falco"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet can reduce damage when interacting with Gloo Walls?",
-      "options": ["Poring", "Agent Hop", "Flash", "Dreki"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet boosts movement speed while crouching?",
-      "options": ["Agent Hop", "Rockie", "Ottero", "Yeti"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet can help recover EP over time?",
-      "options": ["Moony", "Ottero", "Falco", "Rockie"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet is shaped like a penguin?",
-      "options": ["Mr. Waggor", "Falco", "Dreki", "Poring"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet resembles a dragon?",
-      "options": ["Dreki", "Flash", "Ottero", "Rockie"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet is known for its eagle-like appearance?",
-      "options": ["Falco", "Yeti", "Beaston", "Moony"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet looks like an otter?",
-      "options": ["Ottero", "Poring", "Flash", "Agent Hop"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet has the ability 'Stay Chill'?",
-      "options": ["Yeti", "Falco", "Rockie", "Beaston"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet has the skill 'Sleuth Nose'?",
-      "options": ["Detective Panda", "Dreki", "Flash", "Moony"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet is best known for reducing skill cooldowns?",
-      "options": ["Rockie", "Falco", "Ottero", "Poring"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet specializes in helping players with throwable items?",
-      "options": ["Beaston", "Mr. Waggor", "Yeti", "Dreki"],
-      "answer": 0
-    },
-    {
-      "question": "Which pet is often paired with active-skill characters like Alok and Chrono?",
-      "options": ["Rockie", "Falco", "Ottero", "Yeti"],
-      "answer": 0
-    }
+    {"question": "Which pet increases EP conversion?","options": ["Falco", "Ottero", "Mr. Waggor", "Rockie"],"answer": 1},
+    {"question": "Which pet reduces active skill cooldown?","options": ["Rockie", "Falco", "Dreki", "Poring"],"answer": 0},
+    {"question": "Which pet gives a Gloo Wall grenade when none is available?","options": ["Ottero", "Mr. Waggor", "Beaston", "Detective Panda"],"answer": 1},
+    {"question": "Which pet helps players land faster after parachuting?","options": ["Falco", "Rockie", "Yeti", "Agent Hop"],"answer": 0},
+    {"question": "Which pet marks enemies who use medkits?","options": ["Dreki", "Flash", "Poring", "Moony"],"answer": 0},
+    {"question": "Which pet increases grenade throwing distance?","options": ["Beaston", "Falco", "Ottero", "Rockie"],"answer": 0},
+    {"question": "Which pet restores HP after getting a kill?","options": ["Detective Panda", "Yeti", "Moony", "Flash"],"answer": 0},
+    {"question": "Which pet reduces damage taken from explosives?","options": ["Yeti", "Rockie", "Dreki", "Falco"],"answer": 0},
+    {"question": "Which pet can reduce damage when interacting with Gloo Walls?","options": ["Poring", "Agent Hop", "Flash", "Dreki"],"answer": 0},
+    {"question": "Which pet boosts movement speed while crouching?","options": ["Agent Hop", "Rockie", "Ottero", "Yeti"],"answer": 0},
+    {"question": "Which pet can help recover EP over time?","options": ["Moony", "Ottero", "Falco", "Rockie"],"answer": 0},
+    {"question": "Which pet is shaped like a penguin?","options": ["Mr. Waggor", "Falco", "Dreki", "Poring"],"answer": 0},
+    {"question": "Which pet resembles a dragon?","options": ["Dreki", "Flash", "Ottero", "Rockie"],"answer": 0},
+    {"question": "Which pet is known for its eagle-like appearance?","options": ["Falco", "Yeti", "Beaston", "Moony"],"answer": 0},
+    {"question": "Which pet looks like an otter?","options": ["Ottero", "Poring", "Flash", "Agent Hop"],"answer": 0},
+    {"question": "Which pet has the ability 'Stay Chill'?","options": ["Yeti", "Falco", "Rockie", "Beaston"],"answer": 0},
+    {"question": "Which pet has the skill 'Sleuth Nose'?","options": ["Detective Panda", "Dreki", "Flash", "Moony"],"answer": 0},
+    {"question": "Which pet is best known for reducing skill cooldowns?","options": ["Rockie", "Falco", "Ottero", "Poring"],"answer": 0},
+    {"question": "Which pet specializes in helping players with throwable items?","options": ["Beaston", "Mr. Waggor", "Yeti", "Dreki"],"answer": 0},
+    {"question": "Which pet is often paired with active-skill characters like Alok and Chrono?","options": ["Rockie", "Falco", "Ottero", "Yeti"],"answer": 0}
   ]
 },
 
