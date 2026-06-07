@@ -116,7 +116,7 @@ methods:{
     return "disabled";
   },
 
-  select(i){
+ /* select(i){
     if(this.answered) return;
 
     this.selected = i;
@@ -127,7 +127,18 @@ methods:{
     }
 
     setTimeout(()=>{ this.next(); }, 600);
-  },
+  }, */
+
+  const select = (i) => {
+
+  const isCorrect = i === currentQ.value.correctAnswer;
+
+  if (isCorrect) {
+    navigator.vibrate?.(60);
+  } else {
+    navigator.vibrate?.([120, 50, 120]);
+  }
+},
 
   next(){
     this.selected = null;
