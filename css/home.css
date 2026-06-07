@@ -24,12 +24,12 @@
   --card6:#1f353a; */
   /* DARK THEME CARDS (optimized for #fff text) */
 
- --card1: #22252b ; /* Soft Orange */
- --card2: #22252b ;   /* Balanced Purple */
- --card3: #22252b ; /*  Indigo/Blue (Violet replace) */
- --card4: #22252b ; /*  Muted Yellow */
- --card5: #22252b ;  /*  Deep Green */
- --card6: #22252b ;  /* Teal (NEW - premium feel) */
+ --card1: #1d2026; ; /* Soft Orange */
+ --card2: #1d2026; ;   /* Balanced Purple */
+ --card3: #1d2026; ; /*  Indigo/Blue (Violet replace) */
+ --card4: #1d2026; ; /*  Muted Yellow */
+ --card5: #1d2026; ;  /*  Deep Green */
+ --card6: #1d2026; ;  /* Teal (NEW - premium feel) */
 
  --nav-item: #fff ;
   }
