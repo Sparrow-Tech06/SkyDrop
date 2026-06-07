@@ -3,6 +3,10 @@
 
 :root{
 --orange:#ff7a00;
+--icon-bg: #FFE0C2 ;
+--icon-border:  ;
+--icon-color: #000 ;
+ 
 --card1:linear-gradient(135deg,#fff7ed,#fef3c7);
 --card2:linear-gradient(135deg,#eff6ff,#e0e7ff);
 --card3:linear-gradient(135deg,#ecfeff,#cffafe);
@@ -16,6 +20,10 @@
 @media (prefers-color-scheme: dark) {
  :root {
    --orange: #2f333b ;
+   --icon-bg: #1d2026 ;
+   --icon-border: #2f333b ;
+   --icon-color: #fff ;
+  
 /*  --card1:#F2676A;
   --card2:#1f2a3a;
   --card3:#6BCB77;
@@ -52,7 +60,8 @@ color:var(--brand);
 /* Coin Button (Highlight) */
 .coin-btn {
   background: var(--icon-bg);
-  color: #000 ;
+  border:1px solid var(--icon-border);
+  color: var(--icon-color) ;
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 14px;
@@ -62,9 +71,10 @@ color:var(--brand);
 
 /* Circular Icon Buttons */
 .icon-circle {
-  width: 38px; color: #000 ;
+  width: 38px; color: var(--icon-color) ;
   height: 38px;
   background: var(--icon-bg);
+  border:1px solid var(--icon-border);
   border-radius: 50%;
   display: flex; transition:0.15s;
   align-items: center;
