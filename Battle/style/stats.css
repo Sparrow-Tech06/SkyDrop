@@ -121,7 +121,7 @@
 }
 
 .rank-box{
-  background: #fff0cf ;
+  background: rgba(255,255,255,.08) ;
   border-radius:16px;
   padding:16px;
   margin-bottom:14px;
