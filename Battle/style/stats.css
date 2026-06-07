@@ -3,6 +3,7 @@
   --card: #000 ;
   --orange-dark:#ff7b00;
   --accent2:#fff7ed;
+  --card-border: #f59e0b ;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -73,7 +74,7 @@
   padding:18px;
   position:relative;
   overflow:hidden;
-  border: 1px solid #f59e0b ;
+  border: 1px solid var(--card-border) ;
   height:100%;
 }
 
