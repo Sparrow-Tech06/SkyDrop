@@ -5,6 +5,11 @@
     --card: #fff ;
     --accent: #ff6a00 ;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+      
+  }
+}
 /******************************/
 
 /* MAIN */
