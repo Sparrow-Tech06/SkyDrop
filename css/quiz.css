@@ -1,5 +1,5 @@
 :root {
-  --card: #fff ;
+  --card: #fff2e7 ;
   --primary-soft:#fff2e7;
   --accent: linear-gradient(90deg,#ff9800,#ff5722) ;
   --soft:#fff ;
@@ -62,7 +62,7 @@
 span {
   width:32px; height:32px; color: #000 ;
   border-radius:50%;
-  background:var(--primary-soft);
+  background:var(--accent);
   display:inline-flex;   /* change */
   justify-content:center;
   align-items:center;
