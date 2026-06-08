@@ -12,7 +12,7 @@
     overlay.innerHTML = `
       <div class="reward-box">
         <div class="reward-content">
-          <img id="rIcon" class="r-icon" src="" alt="reward">
+          <img id="rIcon" class="r-icon" src="" alt="reward" loading="lazy" draggable="false">
           <h3 id="rTitle"></h3>
           <p id="rSub"></p> 
           <button id="rClose"> Ok </button>
@@ -52,8 +52,8 @@
       #rewardOverlay.active .reward-box { transform: scale(1); }
 
       .r-icon { 
-        width: 130px; height: 130px; 
-        margin-top: -80px;
+        width: 130px; height: 130px; border: 2px solid var(--header);
+        margin-top: -80px; padding: 10px;
         background: #fff ; border-radius: 50% ;
       }
 
