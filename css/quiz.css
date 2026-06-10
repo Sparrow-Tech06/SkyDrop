@@ -15,7 +15,7 @@
 }
 @media (prefers-color-scheme: dark) {
  :root {
-  --card: /* #22252b */ #1e1e1e ;
+  --card: #22252b ;
   --primary-soft:#fff2e7;
   --accent:#ff6a00;
   --soft:/* #3a3a3c */ #2a2a2a ;
@@ -77,8 +77,8 @@ span {
   background: none ; font-weight:500 ;
   color: var(--text) ;
 }
-.option.correct{ background: var(--correct-bg) !important; border: 1px solid var(--correct-border); color: #000 ; }
-.option.wrong{ background: var(--wrong-bg) !important; border: 1px solid var(--wrong-border); color: #000 ; }
+.option.correct{ background: var(--correct-bg) !important; border: 1px solid var(--correct-border); color: var(--correct-border) ; }
+.option.wrong{ background: var(--wrong-bg) !important; border: 1px solid var(--wrong-border); color: var(--wrong-border); }
 
 .option.disabled{ pointer-events:none; opacity:0.7; }
 
@@ -101,7 +101,7 @@ span {
    height: 130px ;
    width: 130px ;
    border-radius: 50% ;
-   background: transparent;
+   background: var(--header);
 }
       .score{
         font-size:40px;
