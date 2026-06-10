@@ -17,19 +17,11 @@ const card=`
 
 <div class="quiz-card" onclick="openQuiz('${q.id}')">
 
-<img 
-src="${q.icon}" 
-class="quiz-img" 
-loading="lazy"
-alt="${q.title} icon">
+<img src="${q.icon}" class="quiz-img" loading="lazy"alt="${q.title} icon">
 
-<div class="quiz-title">
-${q.title}
-</div>
+<div class="quiz-title">${q.title}</div>
 
-<div class="quiz-sub">
-${q.questions.length} Questions
-</div>
+<div class="quiz-sub">${q.questions.length} Questions</div>
 
 </div>
 
