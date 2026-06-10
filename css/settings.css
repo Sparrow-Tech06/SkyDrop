@@ -1,12 +1,14 @@
 :root {
     --icon-box: #FFE0C2 ;
     --icon-color: #F08D39 ;
+    --menu-border: #eee ;
     --menu-hover-bg: #fafafa ;
     --menu-hover-color: #000 ;
 }
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark){
 :root{
+    --menu-border: #f59e0b ;
     --menu-hover-bg: #22252b ;
     --menu-hover-color: #fff ;
   }
@@ -57,7 +59,7 @@ height:60px;
 border-radius:50%; z-index: 2;
 object-fit: fill;
 transition:transform .2s ease;
-border: 1px solid #eee ;
+border: 1px solid var(--menu-border) ;
 padding:1px ;
 }
 
@@ -75,7 +77,7 @@ color:#777;
 /* ---------- Menu ---------- */
 
 .menu-card{
-border:1px solid #eee;
+border:1px solid var(--menu-border);
 border-radius:16px;
 overflow:hidden;
 width: 90% ;
@@ -118,7 +120,7 @@ font-size:20px;
 
 .menu-divider{
 height:1px;
-background:#eee;
+background: var(--menu-border) ;
 margin:0 18px;
 }
 
