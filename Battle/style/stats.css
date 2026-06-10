@@ -4,10 +4,12 @@
   --orange-dark:#ff7b00;
   --accent2:#fff7ed;
   --card-border: #f59e0b ;
+  --rank-box: #fff7ed ;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --card: #22252b ;
+    --rank-box: #22252b ;
   }
 }
 /**********************************************/
@@ -121,7 +123,7 @@
 }
 
 .rank-box{
-  background: rgba(255,255,255,.08) ;
+  background: var(--rank-box) ;
   border-radius:16px;
   padding:16px;
   margin-bottom:14px;
