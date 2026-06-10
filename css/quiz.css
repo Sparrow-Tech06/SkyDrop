@@ -11,7 +11,7 @@
 
   --result-card: linear-gradient(135deg,#fff7ed,#fef3c7) ;
   --accent:#ff6a00;
-  --option-border: /* #eee */ ;
+  --option-border: none /* #eee */ ;
 }
 @media (prefers-color-scheme: dark) {
  :root {
