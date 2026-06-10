@@ -39,7 +39,7 @@
 
 .card-box{
   background:var(--card);
-  padding:35px 20px;
+  padding: 40px 20px;
   border-radius:14px;
   border: 1.4px solid var(--accent);
   max-width: 420px ;
@@ -55,9 +55,10 @@
 .option{
   background:var(--soft);
   padding:14px; border:1.4px solid var(--option-border);
-  border-radius:10px;
+  border-radius:16px;
   margin-top:10px;
   cursor:pointer;
+  color: var(--text) ;
 }
 span {
   width:32px; height:32px; color: #000 ;
@@ -74,6 +75,7 @@ span {
 .option-text {
   display:inline;        /* ensure inline flow */ 
   background: none ; font-weight:500 ;
+  color: var(--text) ;
 }
 .option.correct{ background: var(--correct-bg) !important; border: 1px solid var(--correct-border); color: #000 ; }
 .option.wrong{ background: var(--wrong-bg) !important; border: 1px solid var(--wrong-border); color: #000 ; }
