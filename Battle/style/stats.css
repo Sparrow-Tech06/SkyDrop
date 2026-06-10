@@ -9,7 +9,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --card: #22252b ;
-    --rank-box: #22252b ;
+    --rank-box: #16181d ;
   }
 }
 /**********************************************/
