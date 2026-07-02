@@ -1,6 +1,6 @@
 :root {
-  --card: #fff2e7 ;
-  --primary-soft:#fff2e7;
+  --card: #FEF5EF ; /* #fff2e7 */ 
+  --primary-soft: #FEE7D5 /* #fff2e7 */ ;
   --accent: linear-gradient(90deg,#ff9800,#ff5722) ;
   --soft:#fff ;
 
