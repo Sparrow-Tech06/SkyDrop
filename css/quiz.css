@@ -63,7 +63,6 @@
 span {
   width:32px; height:32px; color: #fff ;
  /* border-radius:50%; */
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   background:var(--accent);
   display:inline-flex;   /* change */
   justify-content:center;
@@ -72,7 +71,7 @@ span {
   font-weight:650;
   vertical-align:middle; /* important */
 }
-
+counter { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); border-radius: 10px; }
 .option-text {
   display:inline;        /* ensure inline flow */ 
   background: none ; font-weight:500 ;
