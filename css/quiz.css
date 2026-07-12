@@ -20,9 +20,9 @@
   --accent:#ff6a00;
   --soft:/* #3a3a3c */ #2a2a2a ;
 
-  --correct-bg: green ;  
+  --correct-bg:  ;  
   --correct-border: #22c55e;
-  --wrong-bg: red ;  
+  --wrong-bg:  ;  
   --wrong-border: #ef4444;
 
   --result-card: #22252b ;
