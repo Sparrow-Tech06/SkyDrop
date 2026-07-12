@@ -60,7 +60,7 @@
   cursor:pointer;
   color: var(--text) ;
 }
-span {
+.counter {
   width:32px; height:32px; color: #fff ;
   border-radius:50%;
   background:var(--accent);
