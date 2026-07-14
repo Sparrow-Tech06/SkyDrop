@@ -15,6 +15,7 @@
 --card6:linear-gradient(135deg,#eef2ff,#e0e7ff);
 
 --nav-item: #000;
+--skeleton: linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%) ;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,6 +41,7 @@
  --card6: #22252B ;  /* Teal (NEW - premium feel) */
 
  --nav-item: #fff ;
+ --skeleton: linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%) ;
   }
 }
 
@@ -135,9 +137,9 @@ opacity:.7;
 /* ---------------- SKELETON ---------------- */
 
 .skeleton{
-height:120px;
+height:120px; aspect-ratio: 1/1 ;
 border-radius:18px;
-background:linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%);
+background: var(--skeleton) ;
 background-size:400% 100%;
 animation:skeleton 1.2s infinite;
 
